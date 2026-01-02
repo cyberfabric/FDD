@@ -211,18 +211,46 @@ None (validates current architecture)
 
 ---
 
+### 10. Check for Prohibited Extra Sections
+
+**Requirement**: Design must not contain sections beyond allowed structure
+
+**Allowed Sections**:
+- Section A: Business Context
+- Section B: Requirements & Principles  
+- Section C: Technical Architecture
+- Section D: Project-Specific Details (optional, not validated)
+- Section E: (reserved, not used in Overall Design)
+- Section F: (reserved, not used in Overall Design)
+- Section G: (reserved, not used in Overall Design)
+
+**Prohibited Sections**:
+- Section H and beyond (H, I, J, K, etc.)
+- Any sections after Section G
+
+**Expected Outcome**: Design follows FDD section structure strictly
+
+**Validation Criteria**:
+- No sections labeled H or beyond exist
+- Only A-D present (E-G reserved for future use)
+- Section D is optional but allowed
+- All content fits within allowed sections
+
+**Note**: Section D is for project-specific details not covered by FDD core validation
+
+---
+
 ## Completion Criteria
 
 Overall Design validation is complete when:
 
 - [ ] DESIGN.md exists with ≥200 lines
-- [ ] All sections A-F present with proper headings
+- [ ] Sections A-C present (D optional)
 - [ ] Section A defines vision and capabilities
 - [ ] Section B lists actors and use cases
-- [ ] Section C defines DML formally
-- [ ] Section D documents API contract with specification existing
-- [ ] Section E describes architecture components
-- [ ] Section F defines non-functional requirements
+- [ ] Section C defines technical architecture (domain model, API contracts, architecture overview)
+- [ ] Section D (optional) contains project-specific details
+- [ ] No sections H or beyond present
 - [ ] No TODO/TBD/FIXME placeholders remain
 - [ ] Domain type identifiers use complete format
 - [ ] All required directories exist

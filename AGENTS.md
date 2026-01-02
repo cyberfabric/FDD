@@ -164,7 +164,7 @@ feature-{slug}/
 - Section A: Business Context (vision, actors, capabilities)
 - Section B: Requirements & Principles
 - Section C: Technical Architecture (architecture overview, domain model, API contracts)
-- Section D: Module-Specific Extensions (optional, not validated)
+- Section D: Project-Specific Details (optional, not validated - integrations, future plans, etc.)
 
 **What's Defined by Adapter**:
 - DML (Domain Model Language) - how to reference types

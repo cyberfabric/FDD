@@ -43,36 +43,34 @@
 
 **Required Content**:
 - File: `architecture/DESIGN.md`
-- **Section A**: Vision & Capabilities
+- **Section A**: Business Context (required)
   - System vision description
   - Core capabilities list
-- **Section B**: Actors & Use Cases
-  - Actor definitions
-  - Use case descriptions
-- **Section C**: Domain Model Specification
-  - Domain type definitions
-  - Link to DML directory
-  - Type versioning approach
-- **Section D**: API Contract Specification
-  - API endpoint list
-  - Authentication requirements
-  - Link to API specification file(s)
-- **Section E**: Architecture
-  - High-level components
-  - Data model
+  - Actors and their roles
+- **Section B**: Requirements & Principles (required)
+  - Use cases and actor interactions
+  - Business rules and principles
+  - Key constraints
+- **Section C**: Technical Architecture (required)
+  - Architecture overview and components
+  - Domain model specification (DML)
+  - API contract specification
   - Security model
-- **Section F**: Non-Functional Requirements
-  - Performance requirements
-  - Scalability requirements
-  - Compliance standards
+  - Non-functional requirements
+- **Section D**: Project-Specific Details (optional, not validated)
+  - Integration points
+  - Future enhancements
+  - Project-specific notes
+  - Any additional context not covered by A-C
 
 **Expected Outcome**: Complete DESIGN.md template exists
 
 **Validation Criteria**:
 - File `architecture/DESIGN.md` exists
-- Contains all sections A-F
-- Each section has subsections defined
+- Contains sections A-C (D is optional)
+- Each required section has subsections defined
 - Placeholders for content present
+- No sections H or beyond present
 
 ---
 
