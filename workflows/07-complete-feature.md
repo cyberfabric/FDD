@@ -226,7 +226,7 @@ Feature completion verified when:
 
 **Resolution**: Complete and archive remaining changes:
 ```bash
-cd openspec/
+cd architecture/features/feature-{slug}/
 openspec archive {change-id}
 ```
 

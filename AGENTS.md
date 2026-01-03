@@ -97,20 +97,31 @@ CODE (implementation)
 
 **Key Rules**:
 1. **Use `openspec` CLI tool** - All operations through CLI, not manual scripts
-2. **Changes are atomic** - One change = one deployable unit
-3. **Changes created manually** - Create directory structure manually (no `create` command)
-4. **Required files** - Every change has `proposal.md`, `tasks.md`, `specs/`, optional `design.md`
-5. **Source of truth** - `openspec/specs/` contains merged specifications
+2. **Always run from feature root** - OpenSpec commands MUST run from `architecture/features/feature-{slug}/` directory (where feature DESIGN.md is), NOT from `openspec/` subdirectory
+3. **Always use non-interactive mode** - Agents MUST use appropriate flags to avoid prompts: specify item explicitly (`show <change-name>`, `validate <change-name>`), use `--all --no-interactive` for bulk validate, use `-y` for archive
+4. **Changes are atomic** - One change = one deployable unit
+5. **Changes created manually** - Create directory structure manually (no `create` command)
+6. **Required files** - Every change has `proposal.md`, `tasks.md`, `specs/`, optional `design.md`
+7. **Source of truth** - `openspec/specs/` contains merged specifications
 
 **OpenSpec Commands**:
-- `openspec init [path]` - Initialize OpenSpec structure
 - `openspec list` - List active changes
 - `openspec list --specs` - List specifications
-- `openspec show [item]` - Show change or spec details
-- `openspec validate [item]` - Validate changes or specs
-- `openspec validate [item] --strict` - Comprehensive validation
-- `openspec archive <change-id>` - Archive completed change
-- `openspec archive <change-id> --skip-specs --yes` - Archive without spec updates
+- `openspec show <item>` - Show change or spec details (non-interactive if item specified)
+- `openspec validate <item>` - Validate specific change or spec (non-interactive)
+- `openspec validate <item> --strict` - Comprehensive validation of specific item
+- `openspec validate --all --no-interactive` - Validate all without prompts (recommended for automation)
+- `openspec archive <change-name>` - Archive completed change (interactive)
+- `openspec archive <change-name> -y` - Archive without confirmation (non-interactive)
+- `openspec archive <change-name> --skip-specs -y` - Archive without spec updates (non-interactive)
+- `openspec archive <change-name> --no-validate -y` - Archive without validation (not recommended)
+
+**Non-Interactive Mode**: 
+- Commands with specific item argument (`show <item>`, `validate <item>`) are automatically non-interactive
+- For bulk `validate`: Use `--all --no-interactive` to validate everything without prompts
+- For `archive`: Use `-y` or `--yes` flag to skip confirmation prompts
+
+**Note**: `openspec init` is NOT used - FDD workflows create OpenSpec structure manually
 
 **Change Structure**:
 ```

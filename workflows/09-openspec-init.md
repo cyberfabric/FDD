@@ -123,49 +123,31 @@ Proceed with initialization? (y/n)
 
 ## Requirements
 
-### 1. Initialize OpenSpec with CLI Tool
+### 1. Create OpenSpec Structure
 
-**Requirement**: Use `openspec init` to create structure
-
-**Command**:
-```bash
-cd architecture/features/feature-{slug}/
-openspec init
-```
-
-**What This Does**:
-- Creates `openspec/` directory structure
-- Creates `openspec/specs/` for source of truth
-- Creates `openspec/changes/` for active changes
-- Initializes configuration
-
-**Expected Outcome**: OpenSpec initialized with proper structure
-
-**Verification**: Run `openspec list` to confirm initialization
-
----
-
-### 2. Create First Change Manually
-
-**Requirement**: Manually create change directory structure
+**Requirement**: Create OpenSpec directory structure manually
 
 **Commands**:
 ```bash
-cd openspec/
-mkdir -p changes/{change-name}/specs
+cd architecture/features/feature-{slug}/
+mkdir -p openspec/specs
+mkdir -p openspec/changes/{FIRST_CHANGE_NAME}/specs
 ```
 
 **What This Does**:
-- Creates `changes/{change-name}/` directory
-- Creates `specs/` subdirectory for delta specifications
+- Creates `openspec/` root directory
+- Creates `openspec/specs/` for source of truth (merged specifications)
+- Creates `openspec/changes/` for active changes
+- Creates first change directory `changes/{FIRST_CHANGE_NAME}/`
+- Creates `specs/` subdirectory within change for delta specifications
 
-**Expected Outcome**: Change directory structure created
+**Expected Outcome**: Complete OpenSpec structure created
 
-**Note**: OpenSpec does not have a `create` command. Changes are created manually.
+**Note**: FDD workflow creates OpenSpec structure directly. No external CLI commands needed.
 
 ---
 
-### 3. Generate Proposal Document
+### 2. Generate Proposal Document
 
 **Requirement**: Write proposal.md following OpenSpec format
 
@@ -205,7 +187,7 @@ This change implements the first phase of {FEATURE_NAME} feature.
 
 ---
 
-### 4. Generate Tasks Checklist
+### 3. Generate Tasks Checklist
 
 **Requirement**: Write tasks.md with implementation steps
 
@@ -242,7 +224,7 @@ This change implements the first phase of {FEATURE_NAME} feature.
 
 ---
 
-### 5. Create Delta Specifications
+### 4. Create Delta Specifications
 
 **Requirement**: Write delta specs using OpenSpec format
 
@@ -275,7 +257,7 @@ The system SHALL provide...
 
 ---
 
-### 6. Create design.md (Optional)
+### 5. Create design.md (Optional)
 
 **Requirement**: Create design.md only if needed
 

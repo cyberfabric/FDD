@@ -213,6 +213,7 @@ adapter-config → 01-init-project → 02-validate-architecture → 03-init-feat
 - **Validate before proceeding** - Use validation workflows at checkpoints
 - **One workflow at a time** - Complete current before starting next
 - **Re-validate after fixes** - Use workflow 06 after workflow 07
+- **OpenSpec commands run from feature root** - ALWAYS run `openspec` commands from `architecture/features/feature-{slug}/` directory (where feature DESIGN.md is located), NEVER from `openspec/` subdirectory
 
 ---
 

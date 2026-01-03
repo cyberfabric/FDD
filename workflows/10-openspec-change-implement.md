@@ -26,7 +26,7 @@
 
 **Command**:
 ```bash
-cd architecture/features/feature-{slug}/openspec/
+cd architecture/features/feature-{slug}/
 openspec show {change-id}
 ```
 

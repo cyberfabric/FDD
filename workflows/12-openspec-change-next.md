@@ -127,8 +127,8 @@ Proceed with creation? (y/n)
 
 **Commands**:
 ```bash
-cd architecture/features/feature-{FEATURE_SLUG}/openspec/
-mkdir -p changes/{NEXT_CHANGE_NAME}/specs
+cd architecture/features/feature-{FEATURE_SLUG}/
+mkdir -p openspec/changes/{NEXT_CHANGE_NAME}/specs
 ```
 
 **What This Does**:
@@ -147,8 +147,8 @@ mkdir -p changes/{NEXT_CHANGE_NAME}/specs
 
 **Commands**:
 ```bash
-cd architecture/features/feature-{slug}/openspec/
-mkdir -p changes/{next-change-name}/specs
+cd architecture/features/feature-{slug}/
+mkdir -p openspec/changes/{next-change-name}/specs
 ```
 
 **What This Does**:
