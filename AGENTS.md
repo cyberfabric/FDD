@@ -84,6 +84,37 @@ CODE (implementation)
 
 ---
 
+## 🤖 AI AGENT INTERACTIVE MODE
+
+**Workflows use dialog mode**: AI proposes answers based on context, user reviews/approves.
+
+**Interactive Questions**:
+1. Analyze user's prompt - extract intent and context
+2. Propose specific answers (not open-ended questions)
+3. Present for review - user approves/modifies/rejects
+4. Iterate in dialog until approved
+
+**Domain Model & API Specs - CRITICAL**:
+- Must ensure COMPLETE specifications for validation
+- All types/schemas/objects defined in machine-readable format (GTS, JSON Schema, OpenAPI, etc.)
+- Never accept vague specs ("use JSON" ❌) - require specific paths and formats
+
+**Auto-Validation After Workflow** (MANDATORY):
+- Workflows with validation: 01→02, 03→04, 05→06, 09→12
+- After workflow completes, automatically run validation
+- If passes: suggest next workflow
+- If fails: propose fixes, iterate until passes
+
+**Suggest Next Workflow** (MANDATORY):
+- After every workflow + validation, suggest next logical step
+- Progression paths: New Project (01→02→03→04→05), New Feature (05→06→09→10→11→07), Fix (08→02/06)
+
+**Rules**:
+- ✅ Propose answers (not just ask), show reasoning, batch questions, track context
+- ❌ Never accept incomplete specs, skip validation, or leave user unsure what's next
+
+---
+
 ## OpenSpec Integration (REQUIRED)
 
 **CRITICAL**: Before using any OpenSpec commands (workflows 09-12), **you MUST read the full OpenSpec specification** at `openspec/AGENTS.md`
