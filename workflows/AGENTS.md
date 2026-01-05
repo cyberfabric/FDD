@@ -225,8 +225,8 @@ adapter-config → 01-init-project → 02-validate-architecture → 03-init-feat
 - **Follow workflows sequentially** - Don't jump phases
 - **Validate before proceeding** - Use validation workflows at checkpoints
 - **One workflow at a time** - Complete current before starting next
-- **Re-validate after fixes** - Use workflow 06 after workflow 07
-- **OpenSpec commands run from feature root** - ALWAYS run `openspec` commands from `architecture/features/feature-{slug}/` directory (where feature DESIGN.md is located), NEVER from `openspec/` subdirectory
+- **Re-validate after fixes** - Use workflow 06 after workflow 08
+- **OpenSpec commands run from project root** - Run `openspec` commands from project root directory, NOT from `openspec/` subdirectory
 
 ---
 
@@ -340,17 +340,28 @@ Skip validation, go directly to `03-init-features.md`
 
 ---
 
+## Workflow Validation
 
----
+**Requirements for workflow structure integrity**:
 
-### See Also
+1. **All referenced workflows MUST exist**
+   - Every workflow mentioned in Decision Tree section must have corresponding file
+   - Files located in `workflows/` directory with `.md` extension
+   - Workflows referenced: 01-init-project, 02-validate-architecture, 03-init-features, 04-validate-features, 05-init-feature, 06-validate-feature, 07-complete-feature, 08-fix-design, 09-openspec-change-next, 10-openspec-change-implement, 10-1-openspec-code-validate, 11-openspec-change-complete, 12-openspec-validate, adapter-config, adapter-config-from-code
 
-`../ADAPTER_GUIDE.md` - Creating project adapters
+2. **All file references MUST be valid**
+   - Every path in format `workflows/[name].md` mentioned in this file must point to existing file
+   - No broken links or references to non-existent workflows
+
+3. **Validation output format**
+   - Report missing files with clear indication (e.g., "❌ missing")
+   - Report existing files with confirmation (e.g., "✓ found")
+   - List all broken references if any found
+
+**When to validate**: Before using workflows, after modifications to workflow structure, during CI/CD
 
 ---
 
 ## See Also
 
-- **Core Methodology**: `../AGENTS.md` - FDD principles
-- **FDL Syntax**: `../FDL.md` - Flow and algorithm syntax
-- **Adapters**: `../ADAPTER_GUIDE.md` - Creating project adapters
+`../ADAPTER_GUIDE.md` - Creating project adapters

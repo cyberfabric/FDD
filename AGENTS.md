@@ -141,91 +141,28 @@ CODE (implementation)
 
 **CRITICAL**: Before using any OpenSpec commands (workflows 09-13), **you MUST read the full OpenSpec specification** at `spec/FDD/openspec/AGENTS.md`
 
-### Core OpenSpec Principles
+### Core Principles
 
 **What is OpenSpec**:
 - Atomic change management system for feature implementation
-- Each change is self-contained, traceable, and deployable
 - Single project-level OpenSpec at `openspec/` (project root)
 - Changes tracked in `openspec/changes/`, merged to `openspec/specs/`
 
 **Key Rules**:
-1. **Use `openspec` CLI tool** - All operations through CLI, not manual scripts
-2. **Single OpenSpec location** - `openspec/` at project root, NOT per-feature
-3. **Feature grouping** - Specs organized by feature: `specs/{project-name}-{feature-slug}/spec.md`
-4. **Always run from openspec root** - OpenSpec commands MUST run from `openspec/` directory
-5. **Always use non-interactive mode** - Agents MUST use appropriate flags to avoid prompts: specify item explicitly (`show <change-name>`, `validate <change-name>`), use `--all --no-interactive` for bulk validate, use `-y` for archive
-6. **Changes are atomic** - One change = one deployable unit (implements 1-5 requirements)
-7. **Changes created manually** - Create directory structure manually (no `openspec init` command)
-8. **Required files** - Every change has `proposal.md`, `tasks.md`, `specs/{feature-slug}/spec.md`, optional `design.md`
-9. **Source of truth** - `openspec/specs/` contains merged specifications
-
-**OpenSpec Commands**:
-- `openspec list` - List active changes
-- `openspec list --specs` - List specifications
-- `openspec show <item>` - Show change or spec details (non-interactive if item specified)
-- `openspec validate <item>` - Validate specific change or spec (non-interactive)
-- `openspec validate <item> --strict` - Comprehensive validation of specific item
-- `openspec validate --all --no-interactive` - Validate all without prompts (recommended for automation)
-- `openspec archive <change-name>` - Archive completed change (interactive)
-- `openspec archive <change-name> -y` - Archive without confirmation (non-interactive)
-- `openspec archive <change-name> --skip-specs -y` - Archive without spec updates (non-interactive)
-- `openspec archive <change-name> --no-validate -y` - Archive without validation (not recommended)
-
-**Non-Interactive Mode**: 
-- Commands with specific item argument (`show <item>`, `validate <item>`) are automatically non-interactive
-- For bulk `validate`: Use `--all --no-interactive` to validate everything without prompts
-- For `archive`: Use `-y` or `--yes` flag to skip confirmation prompts
-
-**Project Structure**:
-```
-project-root/
-├── architecture/
-│   ├── DESIGN.md                      # Overall Design
-│   └── features/
-│       └── feature-{slug}/
-│           └── DESIGN.md
-│               Section B: Actor Flows (FDL)
-│               Section C: Algorithms (FDL)
-│               Section D: States (FDL)
-│               Section E: Technical Details
-│               Section F: Validation & Implementation
-│               Section G: Requirements (references to B-E)
-│               Section H: Implementation Plan (changes with status)
-├── openspec/                          # ← SINGLE project-level OpenSpec
-│   ├── project.md                     # Project conventions
-│   ├── specs/                         # Source of truth (merged specs)
-│   │   └── fdd-{project-name}-feature-{feature-slug}/  # ← FDD prefix + project + feature
-│   │       └── spec.md                # ← Requirements from DESIGN.md Section G
-│   └── changes/                       # Active and archived changes
-│       ├── {change-name}/             # Active change (kebab-case)
-│       │   ├── proposal.md            # Why, what, impact
-│       │   ├── tasks.md               # Implementation checklist
-│       │   ├── design.md              # Technical decisions (optional)
-│       │   └── specs/                 # Delta specifications
-│       │       └── fdd-{project-name}-feature-{feature-slug}/  # ← FDD prefix + project + feature
-│       │           └── spec.md        # ← ADDED/MODIFIED/REMOVED
-│       └── archive/                   # Completed changes
-│           └── YYYY-MM-DD-{change-name}/
-└── spec/
-```
+1. **Run from project root** - All `openspec` commands run from project root directory
+2. **Use non-interactive mode** - Use explicit item names or `--all --no-interactive` / `-y` flags
+3. **Changes are atomic** - One change = one deployable unit (implements 1-5 requirements)
+4. **Manual creation** - Create directory structure manually (no `openspec init` command)
 
 **Feature Design Integration**:
-- **Section G**: Requirements (formalized scope, references to flows/algorithms/states)
-- **Section H**: Implementation Plan (changes implementing 1-5 requirements each, with status)
+- **Section G**: Requirements (formalized scope)
+- **Section H**: Implementation Plan (changes with status)
 - Workflows 09-13 are OpenSpec workflows
 - Use after Feature Design validated (workflow 06)
 
-**Workflows**:
-- Create change (first or next) → `workflows/09-openspec-change-next.md`
-- Implement change → `workflows/10-openspec-change-implement.md`
-- Complete change → `workflows/11-openspec-change-complete.md`
-- Validate specs → `workflows/12-openspec-validate.md`
-
 **Resources**:
-- **Full Specification**: `spec/FDD/openspec/AGENTS.md` ⚠️ READ BEFORE USE
+- **Full Specification**: `spec/FDD/openspec/AGENTS.md` ⚠️ **READ BEFORE USE**
 - **Website**: https://openspec.dev
-- **GitHub**: https://github.com/Fission-AI/OpenSpec
 - **Install**: `npm install -g @fission-ai/openspec@latest`
 
 ---
