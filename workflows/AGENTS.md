@@ -30,17 +30,20 @@ Always read the specific workflow file before executing. This guide helps you ch
 
 ### When: No FDD adapter exists (REQUIRED FIRST)
 
-**adapter-config.md** - Create FDD adapter through guided questions
-- **Use when**: Starting FDD on a new project without existing adapter
+**adapter-config.md** - Create FDD adapter (greenfield)
+- **Use when**: New project, choose formats manually
 - **Creates**: Project-specific adapter in `spec/FDD-Adapter/`
-- **Approach**: Interactive questions, minimal output, no unnecessary content
-- **Next step**: Configure agent tools (optional) or initialize project (workflow 01)
+- **Next step**: Initialize project (workflow 01)
 
-**config-agent-tools.md** - Configure AI agent for FDD (optional)
-- **Use when**: After creating adapter, want to set up agent to use FDD natively
-- **Creates**: Agent-specific config files (`.windsurf/`, `.cursorrules`, `.clinerules`, `.aider.conf.yml`)
-- **Configures**: Rules file + workflow references (format follows agent specification)
-- **Goal**: Agent reads adapter AGENTS.md automatically and uses FDD workflows
+**adapter-config-from-code.md** - Create FDD adapter (legacy integration)
+- **Extends**: `adapter-config.md`
+- **Use when**: Existing project, discover formats from code
+- **Proposes**: Formats from code analysis instead of asking
+- **Next step**: Reverse-engineer project (workflow 01-from-code)
+
+**config-agent-tools.md** - Configure AI agent (optional)
+- **Use when**: Want agent to use FDD natively
+- **Creates**: Agent config files (`.windsurf/`, `.cursorrules`, etc.)
 - **Next step**: Initialize project (workflow 01)
 
 ---
@@ -49,10 +52,17 @@ Always read the specific workflow file before executing. This guide helps you ch
 
 ### When: Starting new FDD project or module
 
-**01-init-project.md** - Initialize FDD structure
-- **Use when**: No `architecture/` directory exists
-- **Creates**: Directory structure, DESIGN.md template, feature folders
-- **Next step**: User creates Overall Design content
+**01-init-project.md** - Initialize FDD structure (greenfield)
+- **Use when**: New project, create from scratch
+- **Creates**: Directory structure, DESIGN.md template
+- **Next step**: User fills templates manually
+
+**01-init-project-from-code.md** - Initialize FDD structure (legacy)
+- **Extends**: `01-init-project.md`
+- **Use when**: Existing project, reverse-engineer from code
+- **Proposes**: Vision/actors/capabilities from code analysis
+- **Lowers**: Validation threshold to 70/100
+- **Next step**: Validate architecture (workflow 02)
 
 **02-validate-architecture.md** - Validate Overall Design
 - **Use when**: `architecture/DESIGN.md` is complete
@@ -217,31 +227,122 @@ adapter-config → 01-init-project → 02-validate-architecture → 03-init-feat
 
 ---
 
-## Adapters - Workflow Extensions
+## Creating Workflow Extensions
 
-**Purpose**: Adapters can extend workflows with project-specific pre-checks and validation commands.
+**Purpose**: Extend base workflows with project-specific context modifications.
 
-**Location**: `guidelines/{project-name}-adapter/workflows/`
+---
 
-### Immutable Workflow Rules (Adapters CANNOT Override)
+### What Extensions Can Modify
 
-These are validated by tooling:
+**Any workflow extension can modify**:
+- **Context** - Change input source (manual → code analysis, DB → API, etc.)
+- **Interactive** - Modify questions (propose answers, skip questions, add questions)
+- **Next steps** - Change what runs after (different validation, additional workflows)
 
-1. **Workflow sequence** - Must follow phase order (Architecture → Planning → Implementation)
-2. **Workflow structure** - Each workflow's core steps are fixed
-3. **Validation requirements** - Score thresholds and completeness checks are mandatory
-4. **File structure requirements** - What each workflow creates/validates is fixed
+**Locations**:
+- `FDD/workflows/` - General extensions (e.g., `{base}-from-code.md`)
+- `{adapter}/workflows/` - Project-specific extensions
 
-### What Workflow Adapters Can Define
+**Examples**:
+- `adapter-config-from-code.md` - Changes context (code analysis), proposes answers
+- `{adapter}/workflows/02-validate.md` - Adds project commands, changes next steps
+- `01-init-project-fast.md` - Skips questions, uses defaults
 
-Everything else is project-specific:
+---
 
-- **Pre-workflow checks** - Environment setup, dependencies, services running
-- **Validation commands** - Project-specific validation tools
-- **Post-workflow actions** - Code generation, notifications, CI/CD triggers
-- **Additional setup steps** - Project-specific initialization
+### Requirements for Extensions
 
-**See**: `../ADAPTER_GUIDE.md` for creating workflow extensions
+**File structure**:
+```markdown
+# {Workflow Title}
+
+**Extends**: `{base-workflow}.md`
+**Purpose**: {What context changes}
+
+---
+
+## AI Agent Instructions
+
+Run `{base-workflow}.md` with these modifications:
+
+### Pre-Workflow
+{Bash commands for analysis}
+
+### Modified Questions
+**Q1**: {Base question} → {Modification}
+{Detection logic in bash}
+Propose: {Format}
+
+### Generation Phase
+{Output modifications}
+
+---
+
+## Next Workflow
+`{next-workflow}.md`
+```
+
+**Rules**:
+1. ✅ **AI-only content** - No human explanations, only technical instructions
+2. ✅ **Bash commands** - Include exact commands for detection/analysis
+3. ✅ **Modifications clear** - State exactly what changes vs base workflow
+4. ✅ **Next workflow** - Always specify what runs next
+5. ❌ **No duplication** - Don't repeat base workflow steps
+6. ❌ **No prose** - Skip examples, comparisons, motivation
+
+**Keep under 100 lines** - Extensions should be thin wrappers
+
+---
+
+### Extension Examples
+
+**Context change** (`adapter-config-from-code.md`):
+```markdown
+**Extends**: `adapter-config.md`
+## AI Agent Instructions
+Run `adapter-config.md` with these modifications:
+### Pre-Workflow
+{Bash commands for code scanning}
+### Modified Questions
+Q1: {Propose from code instead of asking}
+```
+
+**Interactive change** (`{adapter}/workflows/01-init.md`):
+```markdown
+**Extends**: `../../FDD/workflows/01-init-project.md`
+## AI Agent Instructions
+### Modified Questions
+Q2: Skip (use default: "{value}")
+Q7: Add new question - "Deployment target?"
+```
+
+**Next steps change** (`01-init-fast.md`):
+```markdown
+**Extends**: `01-init-project.md`
+## AI Agent Instructions
+### Next Workflow
+Skip validation, go directly to `03-init-features.md`
+```
+
+---
+
+### Immutable Rules (CANNOT Override)
+
+1. **Workflow sequence** - Phase order fixed
+2. **Core questions** - Can propose answers, can't skip questions
+3. **Validation thresholds** - Can lower (e.g., 70/100 for legacy), can't disable
+4. **File structure** - Can't change what workflow creates
+5. **Output format** - Can't change DESIGN.md sections
+
+---
+
+
+---
+
+### See Also
+
+`../ADAPTER_GUIDE.md` - Creating project adapters
 
 ---
 

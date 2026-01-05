@@ -120,7 +120,7 @@ Layered approach: core + extensions, never duplicated.
 spec/FDD/AGENTS.md                    # ← STARTING POINT
 ├─ Core Methodology Rules             (immutable, validated)
 ├─ Design Hierarchy                   (OVERALL → FEATURE → OpenSpec → CODE)
-├─ Workflow References                (14 universal workflows)
+├─ Workflow References                (15 universal workflows)
 └─ OpenSpec Integration               (atomic change management)
     ↓ AI agent reads this FIRST
     
@@ -184,7 +184,7 @@ We believe AGENTS.md will become the universal pattern for:
 
 ### 1. 🎯 Interactive Workflows - Your AI Pair Programmer
 
-FDD provides **14 interactive workflows** that guide you step-by-step through the entire development process. Each workflow asks questions, validates answers, and creates exactly what you need.
+FDD provides **15 interactive workflows** that guide you step-by-step through the entire development process. Each workflow asks questions, validates answers, and creates exactly what you need.
 
 **Example: Creating a Project Adapter**
 
@@ -287,8 +287,10 @@ In FDD, **every action is a workflow**. Development becomes predictable and repe
 **Workflow Phases**:
 
 ```
-Phase 0: Setup
-├─ adapter-config.md        → Create project adapter
+Phase 0: Setup & Legacy Integration
+├─ adapter-config.md        → Create project adapter (greenfield)
+├─ adapter-config-from-code.md → Create adapter from existing code
+├─ 01-init-project-from-code.md → Init project from existing code
 └─ config-agent-tools.md    → Configure AI agent (optional)
 
 Phase 1: Architecture

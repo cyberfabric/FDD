@@ -18,13 +18,18 @@ These workflows are **IDE and agent-agnostic** - they describe the FDD methodolo
 
 ## Workflow Categories
 
-**Status**: ✅ All 13 workflows complete
+**Status**: ✅ All 15 workflows complete (13 core + 2 legacy integration)
 
 **Quick Start**: See `AGENTS.md` for workflow selection decision tree and common sequences
 
+### Phase 0: Legacy Integration
+
+0a. ✅ **`adapter-config-from-code.md`** - Context extension for `adapter-config.md` (propose formats from code)
+0b. ✅ **`01-init-project-from-code.md`** - Context extension for `01-init-project.md` (propose answers from code)
+
 ### Phase 1: Architecture Design
 
-1. ✅ **`01-init-project.md`** - Initialize FDD project structure
+1. ✅ **`01-init-project.md`** - Initialize FDD project structure (greenfield)
 2. ✅ **`02-validate-architecture.md`** - Validate Overall Design
 
 ### Phase 2: Feature Planning

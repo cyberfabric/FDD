@@ -52,6 +52,12 @@ Please complete the adapter by adding missing specifications.
 
 ---
 
+## How Extends Works
+
+**When file has `**Extends**: base-file.md`**: Load base file first, then apply modifications from current file. Merge = base instructions + modifications. Never skip base, never replace base rules.
+
+---
+
 ## CRITICAL RULES - NEVER VIOLATE
 
 **Design Hierarchy** (strict order, no violations):
@@ -82,7 +88,6 @@ CODE (implementation)
 5. Update dependent levels
 6. Resume only after validation passes
 
----
 
 ## 🤖 AI AGENT INTERACTIVE MODE
 
