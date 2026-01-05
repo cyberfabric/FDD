@@ -306,6 +306,7 @@ Phase 2: Feature Planning
 Phase 3: Implementation
 ├─ 09-openspec-init.md      → Initialize OpenSpec
 ├─ 10-openspec-change-implement.md → Implement change
+├─ 10-1-openspec-code-validate.md  → Validate code vs spec (auto)
 ├─ 11-openspec-change-complete.md  → Complete change
 ├─ 12-openspec-change-next.md      → Create next change
 ├─ 13-openspec-validate.md  → Validate OpenSpec structure
