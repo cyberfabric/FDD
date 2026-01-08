@@ -103,9 +103,31 @@
 - **Usage**: Each principle must have `**ID**: {id}` as first line after principle heading
 - **Format in document**: `**ID**: \`fdd-project-principle-name\`` (after #### Principle Name)
 
+**Non-Functional Requirement ID Format**: `fdd-{project-name}-nfr-{nfr-name}`
+- **Components**:
+  - `fdd-` - Prefix indicating FDD methodology
+  - `{project-name}` - Project name in kebab-case
+  - `-nfr-` - Non-functional requirement indicator
+  - `{nfr-name}` - NFR category name in kebab-case (1-3 words)
+- **Example**: `fdd-payment-system-nfr-performance`, `fdd-analytics-nfr-scalability`, `fdd-cli-nfr-security`
+- **Usage**: Each NFR category must have `**ID**: {id}` as first line after NFR heading
+- **Format in document**: `**ID**: \`fdd-project-nfr-name\`` (in Section C.5)
+
+**Constraint ID Format**: `fdd-{project-name}-constraint-{constraint-name}`
+- **Components**:
+  - `fdd-` - Prefix indicating FDD methodology
+  - `{project-name}` - Project name in kebab-case
+  - `-constraint-` - Constraint indicator
+  - `{constraint-name}` - Constraint name in kebab-case (2-4 words)
+- **Example**: `fdd-payment-system-constraint-api-dependency`, `fdd-analytics-constraint-data-retention`
+- **Usage**: Each constraint must have `**ID**: {id}` as first line after constraint heading
+- **Format in document**: `**ID**: \`fdd-project-constraint-name\`` (in Section B.4)
+
 **Content requirements**:
 - Each functional requirement must have unique FDD ID
 - Each use case must have unique FDD ID
+- Each non-functional requirement category must have unique FDD ID
+- Each constraint must have unique FDD ID
 - Each requirement: clear, testable, necessary
 - Principles: actionable, not generic platitudes
 
@@ -276,6 +298,8 @@
 6. **Requirement IDs follow FDD format**
    - All functional requirements have unique IDs with `**ID**: \`fdd-{project-name}-req-{short-name}\`` format
    - All principle IDs follow `**ID**: \`fdd-{project-name}-principle-{name}\`` format
+   - All non-functional requirement categories have unique IDs with `**ID**: \`fdd-{project-name}-nfr-{name}\`` format
+   - All constraints have unique IDs with `**ID**: \`fdd-{project-name}-constraint-{name}\`` format
    - All IDs use kebab-case (lowercase with hyphens)
    - IDs are unique within their category
    - Each ID value must be wrapped in backticks (\`...\`)

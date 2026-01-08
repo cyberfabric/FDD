@@ -217,7 +217,64 @@
 
 ---
 
-### Section D: Additional Context (OPTIONAL)
+### Section D: Use Cases
+
+**Purpose**: Detailed use case descriptions showing how actors interact with system capabilities to achieve specific goals.
+
+**Required content**:
+- Each use case has a #### heading with descriptive name
+- Use case ID immediately after heading
+- Actor(s) performing the use case
+- Preconditions required
+- Flow of steps (numbered list)
+- Postconditions after completion
+
+**Use Case ID Format**: `fdd-{project-name}-usecase-{usecase-name}`
+
+**Components**:
+- `fdd-` - Prefix indicating FDD methodology
+- `{project-name}` - Project name in kebab-case
+- `-usecase-` - Use case indicator
+- `{usecase-name}` - Use case name in kebab-case (2-5 words)
+
+**Examples**:
+- `fdd-payment-system-usecase-process-payment`
+- `fdd-analytics-usecase-generate-report`
+
+**Format per use case**:
+```markdown
+#### UC-XXX: Use Case Name
+**ID**: `fdd-project-usecase-name`
+
+**Actor**: `fdd-project-actor-id1`, `fdd-project-actor-id2`
+
+**Preconditions**: Description of required state before execution
+
+**Flow**:
+1. Step 1 (may reference capability: `fdd-project-capability-name`)
+2. Step 2
+3. Step 3 (may reference other use case: `fdd-project-usecase-other`)
+
+**Postconditions**: Description of state after completion
+```
+
+**Content requirements**:
+- Each use case must have unique ID
+- **Actor** field MUST use actor IDs from Section B (wrapped in backticks)
+  - Format: `**Actor**: \`fdd-project-actor-name1\`, \`fdd-project-actor-name2\``
+  - All actor IDs must reference valid actors defined in Section B
+- Flow steps must be clear and actionable
+- Flow steps MAY reference capability IDs from Section C (e.g., "uses capability `fdd-project-capability-name`")
+- Flow steps MAY reference other use case IDs (e.g., "triggers `fdd-project-usecase-other`")
+- Preconditions and postconditions must be specific
+- Use cases demonstrate how capabilities are used in practice
+- All ID references wrapped in backticks
+
+**Note**: Use cases are optional but recommended for complex systems. If present, section D is mandatory.
+
+---
+
+### Section E: Additional Context (OPTIONAL)
 
 **Purpose**: Product owner notes, business rationale, market context, or other relevant details not covered by core FDD structure
 
@@ -253,10 +310,12 @@
    - Section A: VISION
    - Section B: Actors
    - Section C: Capabilities
-   - Section D optional (not validated)
+   - Section D: Use Cases (optional, but if present must be validated)
+   - Section E: Additional Context (optional, not validated)
 
 2. **Section order correct**
-   - A → B → C → D (in this exact order)
+   - A → B → C → D → E (in this exact order)
+   - If Section D (Use Cases) not present, Section E (Additional Context) can follow Section C
    - Section D may be omitted
 
 3. **No prohibited sections**
@@ -296,6 +355,24 @@
    - All referenced actor IDs exist in Section B
    - All IDs wrapped in backticks
 
+4. **Section D: Use Cases** (optional)
+   - If present, ≥1 use case defined
+   - Each use case has:
+     - #### heading with "UC-XXX: Use Case Name" format
+     - **ID**: line immediately after heading
+     - **Actor**: line listing actor IDs (must use IDs, not names)
+     - **Preconditions**: description of required state
+     - **Flow**: numbered list of steps
+     - **Postconditions**: description of state after completion
+   - Use case IDs follow format: `fdd-{project}-usecase-{name}`
+   - All use case IDs are unique
+   - All referenced actor IDs exist in Section B
+   - All actor IDs wrapped in backticks
+   - Flow steps MAY reference capability IDs from Section C
+   - Flow steps MAY reference other use case IDs
+   - Preconditions/Postconditions MAY reference use case IDs
+   - All ID references wrapped in backticks
+
 ### FDD ID Format Validation
 
 1. **Actor IDs**
@@ -310,7 +387,13 @@
    - Unique across document
    - Wrapped in backticks: `\`fdd-...\``
 
-3. **ID Placement**
+3. **Use Case IDs** (if Section D present)
+   - Format: `fdd-{project}-usecase-{name}`
+   - Kebab-case only
+   - Unique across document
+   - Wrapped in backticks: `\`fdd-...\``
+
+4. **ID Placement**
    - Must appear immediately after heading (first line)
    - Format: `**ID**: \`fdd-...\``
    - No blank lines between heading and ID
@@ -321,6 +404,21 @@
    - All actor IDs in **Actors**: lines must exist in Section B
    - Actor IDs must be wrapped in backticks
    - At least one actor per capability
+
+2. **Use Case → Actor references** (if Section D present)
+   - All actor IDs in **Actor**: lines must exist in Section B
+   - Actor IDs must be wrapped in backticks (not plain text names)
+   - At least one actor per use case
+
+3. **Use Case → Capability references** (if Section D present)
+   - Capability IDs referenced in Flow steps must exist in Section C
+   - Capability IDs must be wrapped in backticks
+   - References are optional
+
+4. **Use Case → Use Case references** (if Section D present)
+   - Use case IDs referenced in Preconditions/Flow/Postconditions must exist in Section D
+   - Use case IDs must be wrapped in backticks
+   - References are optional
 
 ---
 
