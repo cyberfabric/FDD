@@ -157,10 +157,16 @@
 - ❌ Invalid: Plain English descriptions, diagrams only
 
 **Reference Requirements**:
-- **Domain Model files**: Must be clickable links to actual schema/type files
-  - Format: `@/path/to/domain-model-file` or markdown links
-  - Example: `@/gts/user.gts`, `@/schemas/project.json`
-- All domain model references must be verifiable and navigable
+- **Domain Model files**: Must be clickable markdown links to actual schema/type files
+  - ✅ **Valid formats**:
+    - Relative path: `[user.gts](../gts/user.gts)`
+    - Absolute path: `[project.json](/schemas/project.json)`
+  - ❌ **Invalid formats**:
+    - Inline code: `\`../gts/user.gts\`` (not clickable)
+    - Plain text: `../gts/user.gts` (not clickable)
+    - Custom notation: `@/schemas/project.json` (IDE-specific, not standard markdown)
+- All domain model references must be clickable in standard markdown viewers
+- Links must point to existing files (verified during validation)
 
 #### C.3: API Contracts
 - **Technology** - Specify format (REST/OpenAPI, GraphQL, gRPC, CLISPEC)
@@ -172,10 +178,16 @@
 - ❌ Invalid: Plain English descriptions, curl examples only
 
 **Reference Requirements**:
-- **API Spec files**: Must be clickable links to actual specification files
-  - Format: `@/path/to/api-spec-file` or markdown links
-  - Example: `@/openapi/users.yaml`, `@/spec/CLI/commands.clispec`
-- All API contract references must be verifiable and navigable
+- **API Spec files**: Must be clickable markdown links to actual specification files
+  - ✅ **Valid formats**:
+    - Relative path: `[users.yaml](../openapi/users.yaml)`
+    - Absolute path: `[commands.clispec](/spec/CLI/commands.clispec)`
+  - ❌ **Invalid formats**:
+    - Inline code: `\`../openapi/users.yaml\`` (not clickable)
+    - Plain text: `../openapi/users.yaml` (not clickable)
+    - Custom notation: `@/spec/CLI/commands.clispec` (IDE-specific, not standard markdown)
+- All API contract references must be clickable in standard markdown viewers
+- Links must point to existing files (verified during validation)
 
 #### C.4: Security Model
 - Authentication approach
