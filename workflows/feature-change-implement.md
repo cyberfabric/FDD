@@ -65,9 +65,7 @@ Follow MUST WHEN instructions for:
 
 **MUST tag all code changes with change identifier**:
 
-**Tag format**: `@fdd-change:fdd-{project}-{feature}-change-{slug}`
-
-**Short format allowed**: `@fdd-change:change-{slug}` (within single feature context)
+**Tag format**: `@fdd-change:fdd-{project}-{feature}-change-{slug}` (ONLY full format allowed)
 
 **Tag placement**:
 - At the beginning of new functions/methods
@@ -77,7 +75,7 @@ Follow MUST WHEN instructions for:
 
 **Examples**:
 ```rust
-// @fdd-change:change-gts-schema-types
+// @fdd-change:fdd-analytics-feature-schema-query-returns-change-gts-schema-types
 pub struct SchemaV1 {
     pub schema_id: String,
     pub version: String,
@@ -85,7 +83,7 @@ pub struct SchemaV1 {
 ```
 
 ```typescript
-// @fdd-change:change-api-rest-endpoints
+// @fdd-change:fdd-analytics-feature-schema-query-returns-change-api-rest-endpoints
 export async function handleSchemaQuery(
     req: Request
 ): Promise<SchemaResponse> {
@@ -95,11 +93,11 @@ export async function handleSchemaQuery(
 
 **Multiple changes in same file**:
 ```python
-# @fdd-change:change-schema-validation
+# @fdd-change:fdd-analytics-feature-schema-query-returns-change-schema-validation
 def validate_schema_structure(schema: dict):
     pass
 
-# @fdd-change:change-type-conversion
+# @fdd-change:fdd-analytics-feature-schema-query-returns-change-type-conversion
 def convert_gts_to_json_schema(gts_schema):
     pass
 ```

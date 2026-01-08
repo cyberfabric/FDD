@@ -140,7 +140,7 @@
 - Module: `{module path}`
 - Functions: {function signatures}
 - Implementation: {high-level implementation approach}
-- **Code Tagging**: MUST tag all code with `@fdd-change:fdd-{project}-{feature}-change-{slug}` or short `@fdd-change:change-{slug}` within feature context
+- **Code Tagging**: MUST tag all code with `@fdd-change:fdd-{project}-{feature}-change-{slug}`
 
 ### Dependencies
 
@@ -177,7 +177,7 @@
 - No linter errors
 - Documentation updated
 - Implements all referenced requirements
-- **Code tagged**: All modified/new code has `@fdd-change:{change-id}` tags
+- **Code tagged**: All modified/new code has `@fdd-change:fdd-{project}-{feature}-change-{slug}` tags (full format only)
 
 ---
 ```
@@ -188,9 +188,7 @@
 
 **Purpose**: Enable traceability from code to change identifiers for auditing, debugging, and impact analysis
 
-**Tag Format**: `@fdd-change:fdd-{project}-{feature}-change-{slug}`
-
-**Short Format Allowed in Code**: `@fdd-change:change-{slug}` (when context is clear within single feature)
+**Tag Format**: `@fdd-change:fdd-{project}-{feature}-change-{slug}` (ONLY full format allowed)
 
 **Mandatory Placement**:
 - At the beginning of all new functions, methods, classes, structs, types
@@ -209,15 +207,14 @@
 **Examples**:
 
 ```rust
-// @fdd-change:change-gts-schema-types
-// OR full format: @fdd-change:fdd-analytics-feature-schema-query-returns-change-gts-schema-types
+// @fdd-change:fdd-analytics-feature-schema-query-returns-change-gts-schema-types
 pub struct SchemaV1 {
     pub schema_id: String,
     pub version: String,
     pub fields: Vec<SchemaField>,
 }
 
-// @fdd-change:change-gts-schema-types
+// @fdd-change:fdd-analytics-feature-schema-query-returns-change-gts-schema-types
 impl SchemaV1 {
     pub fn new(schema_id: String) -> Self {
         Self {
@@ -230,7 +227,7 @@ impl SchemaV1 {
 ```
 
 ```typescript
-// @fdd-change:change-api-rest-endpoints
+// @fdd-change:fdd-analytics-feature-schema-query-returns-change-api-rest-endpoints
 export async function handleSchemaQuery(
     req: Request,
     context: QueryContext
@@ -238,7 +235,7 @@ export async function handleSchemaQuery(
     // Implementation
 }
 
-// @fdd-change:change-api-rest-endpoints
+// @fdd-change:fdd-analytics-feature-schema-query-returns-change-api-rest-endpoints
 export class SchemaQueryHandler {
     async execute(query: SchemaQuery): Promise<SchemaResult> {
         // Implementation
@@ -248,18 +245,18 @@ export class SchemaQueryHandler {
 
 **Multiple Changes in Same File**:
 ```python
-# @fdd-change:change-schema-validation
+# @fdd-change:fdd-analytics-feature-schema-query-returns-change-schema-validation
 def validate_schema_structure(schema: dict) -> ValidationResult:
     pass
 
-# @fdd-change:change-type-conversion
+# @fdd-change:fdd-analytics-feature-schema-query-returns-change-type-conversion
 def convert_gts_to_json_schema(gts_schema: GTSSchema) -> dict:
     pass
 ```
 
 **Test Files**:
 ```rust
-// @fdd-change:change-gts-schema-types
+// @fdd-change:fdd-analytics-feature-schema-query-returns-change-gts-schema-types
 #[cfg(test)]
 mod schema_v1_tests {
     use super::*;

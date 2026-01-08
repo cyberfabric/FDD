@@ -75,8 +75,8 @@ Extract:
 - Build succeeds (per adapter build command)
 - No compilation errors
 - Linter passes (per adapter lint command)
-- **Change ID tags present**: All modified/new code tagged with `@fdd-change:fdd-{project}-{feature}-change-{slug}` or `@fdd-change:change-{slug}`
-  - Use `grep -r "@fdd-change:change-{slug}"` or `grep -r "@fdd-change:fdd-" to verify tag presence
+- **Change ID tags present**: All modified/new code tagged with `@fdd-change:fdd-{project}-{feature}-change-{slug}` (full format only)
+  - Use `grep -r "@fdd-change:fdd-{project}-{feature}-change-{slug}"` to verify tag presence
   - Verify tags in all files listed in CHANGES.md tasks
   - Each major function/class/module related to change MUST have tag
 
@@ -127,7 +127,7 @@ Calculate score:
 ✅ | ❌ Lint status
 
 **Code Tagging** ({X}/10):
-✅ | ❌ Change ID tags present: `@fdd-change:change-{slug}` or full format found in {X} files
+✅ | ❌ Change ID tags present: `@fdd-change:fdd-{project}-{feature}-change-{slug}` found in {X} files
 ✅ | ❌ All task files have corresponding tags
 
 **Test Coverage** ({X}/30):
