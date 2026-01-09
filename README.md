@@ -580,22 +580,6 @@ Completeness: 85% (minimum: 100%)
 
 ---
 
-### When NOT to Use FDD
-
-FDD adds structure and validation. Skip it if:
-- ❌ Prototype/throwaway code (no need for design docs)
-- ❌ Trivial changes (single-line fixes)
-- ❌ Well-understood patterns (no architectural decisions)
-
-**Use FDD when**:
-- ✅ Building production systems
-- ✅ Working with AI assistants
-- ✅ Need stakeholder review
-- ✅ Multiple features with dependencies
-- ✅ Long-term maintenance expected
-
----
-
 ## Core Components
 
 ### 1. Complete Design Hierarchy
@@ -760,6 +744,48 @@ This workflow creates agent-specific files (`.windsurf/rules/`, workflow wrapper
 ## Working with AI Assistants
 
 FDD is designed to work with AI coding assistants (but doesn't require them).
+
+### Recommended AI Setup (By Operation Type)
+
+FDD tasks vary greatly. Each operation class below lists strict, **validated** model options released **≤ 6 months** ago (Aug 2025 – Jan 2026).
+
+#### Model Classes (2025-2026)
+- **Reasoning** – frontier-level logic, best for complex reasoning & strict validation.
+- **Flagship** – balanced capability & speed, strong generalists.
+- **Fast/Lite** – latency-optimised, high throughput, smaller context.
+
+#### 1. Documentation & Design (Writing)
+**Tasks**: Create/expand `BUSINESS.md`, `DESIGN.md`, `FEATURES.md`, `ADR.md`
+**Requirements**: Reasoning + Speed, long generation, strict templates
+
+**Recommended (Aug 2025 – Jan 2026)**
+- **Cloud**: `GPT-5.2 (Flagship)`, `Claude 4.5 Opus (Reasoning)`, `Gemini 3 Flash (Fast Reasoning)`
+- **Local**: `DeepSeek-V3.2 (Reasoning)`, `Llama 4 Maverick 70B`
+
+#### 2. Validation & QA (Checking)
+**Tasks**: Score artifacts, detect contradictions, enforce checklists
+**Requirements**: **Top-Frontier Reasoning ONLY**, negative capability, zero hallucination
+
+**Recommended (Aug 2025 – Jan 2026)**
+- **Cloud**: `OpenAI o3 (Reasoning)`, `OpenAI o1 (Reasoning)`, `Claude 4.5 Opus`
+- **Local**: `DeepSeek-R1 (Reasoning)` – other on-prem models currently fail strictness tests
+
+#### 3. Implementation (Coding)
+**Tasks**: Write/refactor code & tests from `CHANGES.md`
+**Requirements**: High throughput, spec-following, moderate reasoning
+
+**Recommended (Aug 2025 – Jan 2026)**
+- **Cloud**: `Gemini 3 Flash`, `Claude 3.5 Haiku`, `GPT-5.2 Speed-tuned`
+- **Local**: `Qwen3-Coder`, `Mistral Large 3-Coder`, `Llama 4 Maverick-Code`
+
+#### 4. Adapter & Analysis (Scanning)
+**Tasks**: Project scanning, adapter setup, large file trees
+**Requirements**: Huge context window, good speed
+
+**Recommended (Aug 2025 – Jan 2026)**
+- **Cloud**: `Gemini 3 (2 M tokens)`, `GPT-5.2 (400 k)`
+- **Local**: `Llama 4 Maverick (256 k)`, `Mistral Large 3 (128 k)`
+
 
 ### AI Limitations
 

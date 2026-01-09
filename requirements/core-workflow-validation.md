@@ -249,7 +249,7 @@ If good, continue. If not, fix it.
 ## References
 
 **This file is referenced by**:
-- MUST read this file WHEN creating or modifying validation workflows
+- ALWAYS open and follow this file WHEN creating or modifying validation workflows
 
 **References**:
 - `core-workflows.md` - Workflow structure requirements

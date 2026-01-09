@@ -12,7 +12,7 @@ description: Create or update overall design document
 
 ## Requirements
 
-**MUST read**: `../requirements/overall-design-structure.md`
+**ALWAYS open and follow**: `../requirements/overall-design-structure.md`
 
 Extract:
 - Required sections (A: Architecture Overview, B: Requirements & Principles, C: Technical Architecture, D: Additional Context)

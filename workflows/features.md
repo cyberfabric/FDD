@@ -12,7 +12,7 @@ description: Create or update features manifest
 
 ## Requirements
 
-**MUST read**: `../requirements/features-manifest-structure.md`
+**ALWAYS open and follow**: `../requirements/features-manifest-structure.md`
 
 Extract:
 - Required structure (feature list format)

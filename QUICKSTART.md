@@ -55,10 +55,10 @@ This workflow creates/updates agent-specific configuration:
 - **Aider**: `.aider.conf.yml` (YAML config)
 
 **All configs**:
-- ✅ Detects existing config and enters UPDATE mode
-- ✅ Tell agent to read `spec/FDD-Adapter/AGENTS.md` first
-- ✅ Provide FDD workflow references
-- ✅ UPDATE mode: Change content style (minimal ↔ full), add/remove workflow files
+- Detects existing config and enters UPDATE mode
+- Tell agent to ALWAYS open and follow `specs/api-contracts.md` WHEN working with API endpoints
+- Provide FDD workflow references
+- UPDATE mode: Change content style (minimal ↔ full), add/remove workflow files
 
 ### 2. Create or Update Business Context
 
@@ -85,13 +85,13 @@ This workflow creates/updates `architecture/DESIGN.md` with:
 - **Section D**: Additional context (optional)
 
 **Recommended**: Use an AI agent to edit the design. The agent will automatically:
-- ✅ Detect mode (CREATE/UPDATE) and act accordingly
-- ✅ Follow FDD requirements and validation rules
-- ✅ Apply adapter-specific conventions (DML syntax, API linking)
-- ✅ Use FDL (plain English) for flows, never code
-- ✅ Reference domain model and API contracts correctly
-- ✅ Ensure proper structure and completeness
-- ✅ CREATE mode: Auto-creates ADR-0001 (Initial Architecture)
+- Detect mode (CREATE/UPDATE) and act accordingly
+- Follow FDD requirements and validation rules
+- Apply adapter-specific conventions (DML syntax, API linking)
+- Use FDL (plain English) for flows, never code
+- Reference domain types from Overall Design ALWAYS open and follow `specs/domain-model.md` WHEN working with domain types
+- Ensure proper structure and completeness
+- CREATE mode: Auto-creates ADR-0001 (Initial Architecture)
 
 **Key**: Use **FDL** (plain English) for flows, never write code in DESIGN.md
 
@@ -134,13 +134,13 @@ For each feature in `architecture/features/feature-{slug}/DESIGN.md`:
 - **Section G**: Implementation plan (OpenSpec changes)
 
 **Recommended**: Use an AI agent to design features. The agent will automatically:
-- ✅ Detect mode (CREATE/UPDATE) and show current content in UPDATE mode
-- ✅ Follow FDD feature requirements (Section A-G structure)
-- ✅ Apply adapter conventions (DML references, API linking)
-- ✅ Use FDL only, never write code in DESIGN.md
-- ✅ Reference Overall Design types (never redefine)
-- ✅ Start with Actor Flows (Section B) - the primary driver
-- ✅ Ensure 100/100 validation readiness
+- Detect mode (CREATE/UPDATE) and show current content in UPDATE mode
+- Follow FDD feature requirements (Section A-G structure)
+- Apply adapter conventions (DML references, API linking)
+- Use FDL only, never write code in DESIGN.md
+- Reference Overall Design types (never redefine)
+- Start with Actor Flows (Section B) - the primary driver
+- Ensure 100/100 validation readiness
 
 **Key**: Design Section B (Actor Flows) FIRST - everything flows from there
 
@@ -221,8 +221,8 @@ return res.json({ token });
 ### Domain Model
 
 Define types ONCE in Overall Design. Reference them everywhere:
-- ✅ `@DomainModel.User` in Feature Design
-- ❌ Redefining User type in Feature Design
+- `@DomainModel.User` in Feature Design
+- Redefining User type in Feature Design
 
 ### OpenSpec Changes
 
@@ -262,13 +262,13 @@ Each change is atomic and deployable:
 
 ### Common Pitfalls
 
-❌ **Skip adapter creation** → ALL workflows blocked without adapter
-❌ **Incomplete adapter** → Create specs or skip optional sections
-❌ **Write code in DESIGN.md** → Use FDL instead
-❌ **Redefine types** → Reference Overall Design
-❌ **Skip validation** → Catch issues early, not late
-❌ **Make features too large** → Break into smaller features
-❌ **Fix code when design wrong** → Fix design, then re-validate
+**Skip adapter creation** → ALL workflows blocked without adapter
+**Incomplete adapter** → Create specs or skip optional sections
+**Write code in DESIGN.md** → Use FDL instead
+**Redefine types** → Reference Overall Design
+**Skip validation** → Catch issues early, not late
+**Make features too large** → Break into smaller features
+**Fix code when design wrong** → Fix design, then re-validate
 
 ---
 

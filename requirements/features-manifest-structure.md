@@ -1,6 +1,6 @@
 # Features Manifest (FEATURES.md) Structure Requirements
 
-**MUST read and follow**: `../workflows/features.md`
+**ALWAYS open and follow**: `../workflows/features.md`
 
 **This file defines**: Structure only (WHAT to create)  
 **Workflow defines**: Process (HOW to create)

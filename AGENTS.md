@@ -8,6 +8,8 @@
 
 **MUST** = **MANDATORY**. NOT optional. NOT recommended. NOT suggested.
 
+**ALWAYS** = **MANDATORY**. Equivalent to MUST. Used for action-gated instructions.
+
 **If you skip ANY MUST instruction**:
 - 🚫 Your execution is **INVALID**
 - 🚫 Output must be **DISCARDED**
@@ -29,6 +31,7 @@
 - [ ] I will read ALL required files BEFORE proceeding
 - [ ] I will follow workflows step-by-step WITHOUT shortcuts
 - [ ] I will NOT create files without user confirmation (operation workflows)
+- [ ] I will end EVERY response with a list of FDD files read while producing the response, why each file was read, and which initial instruction triggered opening each file
 
 **By proceeding with FDD work, I acknowledge and accept these requirements.**
 
@@ -36,41 +39,41 @@
 
 ## Navigation Rules
 
-MUST check for relevant workflow in `workflows/` directory WHEN receiving any task request
+ALWAYS open and follow `workflows/AGENTS.md` WHEN receiving any task request
 
-MUST read `requirements/extension.md` WHEN you see **Extends**: {file}
+ALWAYS open and follow `requirements/extension.md` WHEN you see **Extends**: {file}
 
-MUST read `requirements/core.md` WHEN modifying any FDD core files
+ALWAYS open and follow `requirements/core.md` WHEN modifying any FDD core files
 
-MUST read `{adapter-directory}/FDD-Adapter/AGENTS.md` WHEN starting any FDD work
+ALWAYS open and follow `{adapter-directory}/FDD-Adapter/AGENTS.md` WHEN starting any FDD work
 
-MUST read `requirements/FDL.md` WHEN you see FDL
+ALWAYS open and follow `requirements/FDL.md` WHEN you see FDL
 
-MUST read `requirements/workflow-selection.md` WHEN selecting which workflow to execute
+ALWAYS open and follow `requirements/workflow-selection.md` WHEN selecting which workflow to execute
 
-MUST read `requirements/execution-protocol.md` WHEN executing any workflow (FIRST)
+ALWAYS open and follow `requirements/execution-protocol.md` WHEN executing any workflow (FIRST)
 
-MUST read `requirements/workflow-execution.md` WHEN executing any workflow
+ALWAYS open and follow `requirements/workflow-execution.md` WHEN executing any workflow
 
-MUST read `requirements/core-workflows.md` WHEN creating or modifying workflow files
+ALWAYS open and follow `requirements/core-workflows.md` WHEN creating or modifying workflow files
 
-MUST read `requirements/core-requirements.md` WHEN creating or modifying requirements files
+ALWAYS open and follow `requirements/core-requirements.md` WHEN creating or modifying requirements files
 
-MUST read `requirements/core-agents.md` WHEN creating or modifying AGENTS.md files
+ALWAYS open and follow `requirements/core-agents.md` WHEN creating or modifying AGENTS.md files
 
-MUST read `requirements/business-context-structure.md` WHEN working with BUSINESS.md
+ALWAYS open and follow `requirements/business-context-structure.md` WHEN working with BUSINESS.md
 
-MUST read `requirements/overall-design-structure.md` WHEN working with DESIGN.md
+ALWAYS open and follow `requirements/overall-design-structure.md` WHEN working with DESIGN.md
 
-MUST read `requirements/adr-structure.md` WHEN working with ADR.md
+ALWAYS open and follow `requirements/adr-structure.md` WHEN working with ADR.md
 
-MUST read `requirements/features-manifest-structure.md` WHEN working with FEATURES.md
+ALWAYS open and follow `requirements/features-manifest-structure.md` WHEN working with FEATURES.md
 
-MUST read `requirements/feature-design-structure.md` WHEN working with feature DESIGN.md
+ALWAYS open and follow `requirements/feature-design-structure.md` WHEN working with feature DESIGN.md
 
-MUST read `requirements/feature-changes-structure.md` WHEN working with feature CHANGES.md
+ALWAYS open and follow `requirements/feature-changes-structure.md` WHEN working with feature CHANGES.md
 
-MUST read `requirements/adapter-structure.md` WHEN creating or configuring FDD adapter
+ALWAYS open and follow `requirements/adapter-structure.md` WHEN creating or configuring FDD adapter
 
 ---
 

@@ -122,7 +122,7 @@ Everything else is adapter-specific. Define as needed:
 {adapter-directory}/             # Configurable: spec/, guidelines/, docs/
 ├── FDD/                         # Core (immutable rules)
 └── FDD-Adapter/                 # Your project-specific extensions
-    ├── AGENTS.md                # MUST WHEN navigation to specs
+    ├── AGENTS.md                # Navigation rules (WHEN executing workflows: ...)
     └── specs/                   # Detailed specifications
         ├── domain-model.md      # Domain model format and location
         ├── api-contracts.md     # API contract format and location
@@ -149,17 +149,17 @@ Everything else is adapter-specific. Define as needed:
 
 ---
 
-MUST read `specs/domain-model.md` WHEN working with domain types
+ALWAYS open and follow `specs/domain-model.md` WHEN executing workflows: design.md, design-validate.md, adr.md, adr-validate.md, features.md, features-validate.md, feature.md, feature-validate.md, feature-changes.md, feature-changes-validate.md, feature-change-implement.md, feature-change-validate.md
 
-MUST read `specs/api-contracts.md` WHEN working with API endpoints
+ALWAYS open and follow `specs/api-contracts.md` WHEN executing workflows: design.md, design-validate.md, adr.md, adr-validate.md, feature.md, feature-validate.md, feature-changes.md, feature-changes-validate.md, feature-change-implement.md, feature-change-validate.md
 
-MUST read `specs/testing.md` WHEN writing or running tests
+ALWAYS open and follow `specs/testing.md` WHEN executing workflows: feature-change-implement.md, feature-change-validate.md, feature-qa.md
 
-MUST read `specs/build-deploy.md` WHEN building or deploying
+ALWAYS open and follow `specs/build-deploy.md` WHEN executing workflows: feature-change-implement.md, feature-change-validate.md, feature-qa.md
 
-MUST read `specs/project-structure.md` WHEN creating files or directories
+ALWAYS open and follow `specs/project-structure.md` WHEN executing workflows: adapter.md, adapter-auto.md, adapter-manual.md, adapter-bootstrap.md, adapter-agents.md, adapter-validate.md, business-context.md, business-validate.md, design.md, design-validate.md, adr.md, adr-validate.md, features.md, features-validate.md, feature.md, feature-validate.md, feature-changes.md, feature-changes-validate.md
 
-MUST read `specs/conventions.md` WHEN writing code or documentation
+ALWAYS open and follow `specs/conventions.md` WHEN executing workflows: adapter.md, adapter-auto.md, adapter-manual.md, adapter-bootstrap.md, adapter-validate.md, feature-change-implement.md, feature-change-validate.md
 ```
 
 **Example spec file** (`specs/domain-model.md`):

@@ -60,7 +60,7 @@ Merged Result (base + modifications)
 ```markdown
 # FDD AI Agent Navigation
 
-MUST read `requirements/core.md` WHEN modifying FDD files
+ALWAYS open and follow `requirements/core.md` WHEN modifying FDD files
 ```
 
 **Extension**: `{adapter-directory}/FDD-Adapter/AGENTS.md`
@@ -69,9 +69,9 @@ MUST read `requirements/core.md` WHEN modifying FDD files
 
 **Extends**: `../FDD/AGENTS.md`
 
-MUST read `{adapter-directory}/domain-model.gts` WHEN working with domain types
+ALWAYS open and follow `{adapter-directory}/domain-model.gts` WHEN executing workflows: design.md, design-validate.md, adr.md, adr-validate.md
 
-MUST read `{adapter-directory}/api-contracts.yaml` WHEN working with API endpoints
+ALWAYS open and follow `{adapter-directory}/api-contracts.yaml` WHEN executing workflows: design.md, design-validate.md, adr.md, adr-validate.md
 ```
 
 **Result**: Agent reads FDD/AGENTS.md first, then adds project-specific instructions

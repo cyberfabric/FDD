@@ -10,7 +10,7 @@
 
 **AGENTS.md files** - AI agent navigation instructions
 
-**Core principle**: AGENTS.md contains ONLY "MUST read {file} WHEN {condition}" instructions
+**Core principle**: AGENTS.md contains ONLY action-gated navigation instructions
 
 **Purpose**: Direct agents to correct specification files based on context
 
@@ -23,10 +23,24 @@
 ## Key Principle
 
 **AGENTS.md MUST contain ONLY**:
-- Navigation instructions: `MUST read {file} WHEN {condition}`
+- Navigation instructions in one of these formats:
+  - `ALWAYS open and follow {file} WHEN {trigger}` (preferred)
+  - `ALWAYS execute {workflow} WHEN {trigger}` (preferred)
+  - `ALWAYS do {action} WHEN {trigger}` (preferred)
 - NO content duplication from referenced files
 - NO context or explanations beyond navigation
 - NO detailed requirements or specifications
+
+**Exception (core FDD only)**:
+- `FDD/AGENTS.md` MAY include mandatory instruction semantics and enforcement sections (e.g. instruction meaning, acknowledgments, violation handling)
+- These sections MUST NOT duplicate requirements content from referenced files
+
+**Adapter AGENTS.md WHEN rule (mandatory)**:
+- For `{adapter-directory}/FDD-Adapter/AGENTS.md`, each navigation rule MUST use a WHEN clause that is ONLY a list of FDD workflows.
+- Canonical form:
+  - `ALWAYS open and follow {spec-file} WHEN executing workflows: {workflow1.md}, {workflow2.md}, ...`
+- The workflow names MUST match files under `guidelines/FDD/workflows/`.
+- The WHEN clause MUST NOT use generic conditions like "working with domain types".
 
 **Rationale**: Single source of truth - content lives in spec files, AGENTS.md only directs to them
 
@@ -107,7 +121,7 @@
 
 When adapter AGENTS.md has `**Extends**: ../FDD/AGENTS.md`:
 
-1. Agent MUST read base file first (`FDD/AGENTS.md`)
+1. Agent ALWAYS open and follow base file first (`FDD/AGENTS.md`)
 2. Agent applies modifications from adapter file
 3. Merge = base instructions + adapter specifics
 4. Never skip base rules
@@ -174,7 +188,7 @@ Maybe check the files.
 ## References
 
 **This file is referenced by**:
-- MUST read `core.md` WHEN creating or modifying AGENTS.md files
+- ALWAYS open and follow `core.md` WHEN creating or modifying AGENTS.md files
 - All workflows reference adapter AGENTS.md for project specifics
 - `adapter-structure.md` - More detailed adapter requirements
 

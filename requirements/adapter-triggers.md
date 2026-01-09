@@ -1,7 +1,7 @@
 # Adapter Evolution Triggers
 
 **Version**: 1.0  
-**Purpose**: Define when AI agent MUST propose running adapter workflow to capture technical decisions  
+**Purpose**: Define when AI agent ALWAYS proposes running adapter workflow to capture technical decisions  
 **Scope**: All FDD workflows that create/modify technical artifacts
 
 **Philosophy**: Adapter evolves naturally as project progresses - agent detects changes and proposes updates
@@ -12,7 +12,7 @@
 
 **BEFORE any FDD workflow execution**:
 
-MUST check adapter exists:
+ALWAYS do check that adapter exists:
 - Search for `{adapter-directory}/FDD-Adapter/AGENTS.md` in common locations:
   - `guidelines/FDD-Adapter/AGENTS.md`
   - `spec/FDD-Adapter/AGENTS.md`
@@ -31,7 +31,7 @@ IF adapter exists (minimal or evolved):
 
 ## Trigger Rules
 
-Agent MUST propose running `adapter` workflow (Mode 2 Discovery or Mode 3 Evolution) WHEN:
+Agent ALWAYS proposes running `adapter` workflow (Mode 2 Discovery or Mode 3 Evolution) WHEN:
 
 ### 1. Design Decisions Made
 
@@ -241,7 +241,7 @@ At ANY workflow step:
 
 ## Agent Responsibilities
 
-Agent MUST:
+Agent ALWAYS do:
 1. ✅ Check adapter initialization before ANY workflow
 2. ✅ Monitor for trigger events during workflow execution
 3. ✅ Scan for candidates when trigger detected
@@ -249,7 +249,7 @@ Agent MUST:
 5. ✅ Respect user decision (accept/reject)
 6. ✅ Never silently skip adapter opportunities
 
-Agent MUST NOT:
+Agent ALWAYS do NOT:
 1. ❌ Run adapter workflow without user approval
 2. ❌ Hardcode adapter calls in workflow steps
 3. ❌ Skip adapter proposals to "save time"
@@ -314,7 +314,7 @@ Instead of hardcoding adapter calls in each workflow, workflows reference this f
 
 ## Prerequisites
 
-**MUST read**: `requirements/adapter-triggers.md`
+**ALWAYS open and follow**: `requirements/adapter-triggers.md`
 
 Execute: Check adapter initialization
 Execute: Monitor triggers during workflow

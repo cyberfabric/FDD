@@ -223,7 +223,7 @@ What should the vision be?
 
 ### Structure Following
 
-**MUST follow requirements exactly**:
+**ALWAYS follow requirements exactly**:
 - Section order
 - Section numbering
 - Required subsections
@@ -365,7 +365,7 @@ What should the vision be?
 ## References
 
 **This file is referenced by**:
-- MUST read WHEN executing operation workflows
+- ALWAYS open and follow WHEN executing operation workflows
 
 **References**:
 - `workflow-execution.md` - General execution instructions

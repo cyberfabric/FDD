@@ -12,7 +12,7 @@ description: Complete feature quality assurance
 
 ## Requirements
 
-**MUST read**:
+**ALWAYS open and follow**:
 - `../requirements/feature-design-structure.md` (test scenarios)
 - `../requirements/feature-changes-structure.md` (changes structure)
 - `{adapter-directory}/FDD-Adapter/specs/testing.md` (test requirements)

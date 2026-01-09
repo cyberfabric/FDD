@@ -1,6 +1,6 @@
 # Feature Design Structure Requirements
 
-**MUST read and follow**: `../workflows/feature.md`
+**ALWAYS open and follow**: `../workflows/feature.md`
 
 **This file defines**: Structure only (WHAT to create)  
 **Workflow defines**: Process (HOW to create)

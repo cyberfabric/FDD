@@ -26,7 +26,7 @@ description: FDD Adapter Router - Choose adapter workflow mode
 
 ## Requirements
 
-**MUST read**: `../requirements/adapter-structure.md`
+**ALWAYS open and follow**: `../requirements/adapter-structure.md`
 
 Extract:
 - Adapter lifecycle phases

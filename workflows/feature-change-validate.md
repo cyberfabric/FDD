@@ -10,18 +10,18 @@ description: Validate implemented change
 
 ---
 
-## ⚠️ PRE-FLIGHT CHECKLIST (MUST Complete Before Proceeding)
+## ⚠️ PRE-FLIGHT CHECKLIST (ALWAYS Complete Before Proceeding)
 
-**Agent MUST verify before starting this workflow**:
+**Agent ALWAYS verifies before starting this workflow**:
 
 **Navigation Rules Compliance**:
-- [ ] ✅ Read `../requirements/execution-protocol.md` (MANDATORY BASE)
-- [ ] ✅ Read `../requirements/workflow-execution.md` (General execution)
-- [ ] ✅ Read `../requirements/workflow-execution-validations.md` (Validation specifics)
+- [ ] ✅ Open and follow `../requirements/execution-protocol.md` (MANDATORY BASE)
+- [ ] ✅ Open and follow `../requirements/workflow-execution.md` (General execution)
+- [ ] ✅ Open and follow `../requirements/workflow-execution-validations.md` (Validation specifics)
 
 **Workflow-Specific Requirements**:
-- [ ] ✅ Read `../requirements/feature-changes-structure.md` (This workflow's requirements)
-- [ ] ✅ Read adapter specs/testing.md (Test requirements)
+- [ ] ✅ Open and follow `../requirements/feature-changes-structure.md` (This workflow's requirements)
+- [ ] ✅ Open and follow adapter specs/testing.md (Test requirements)
 - [ ] ✅ Check adapter initialization (FDD-Adapter/AGENTS.md exists)
 - [ ] ✅ Validate all prerequisites from Prerequisites section below
 
@@ -38,7 +38,7 @@ description: Validate implemented change
 
 ## Requirements
 
-**MUST read**:
+**ALWAYS open and follow**:
 - `../requirements/feature-changes-structure.md` (change requirements)
 - `{adapter-directory}/FDD-Adapter/specs/testing.md` (test requirements)
 

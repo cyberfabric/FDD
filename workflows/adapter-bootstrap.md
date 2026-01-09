@@ -19,7 +19,7 @@ Create minimal adapter for new projects - just `AGENTS.md` with `Extends` declar
 
 ## Requirements
 
-**MUST read**: `../requirements/adapter-structure.md`
+**ALWAYS open and follow**: `../requirements/adapter-structure.md`
 
 Extract:
 - Minimal AGENTS.md format

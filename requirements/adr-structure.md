@@ -1,6 +1,6 @@
 # Architecture Decision Records (ADR) Structure Requirements
 
-**MUST read and follow**: `../workflows/adr.md`
+**ALWAYS open and follow**: `../workflows/adr.md`
 
 **This file defines**: Structure only (WHAT to create)  
 **Workflow defines**: Process (HOW to create)

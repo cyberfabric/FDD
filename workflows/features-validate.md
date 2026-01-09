@@ -10,17 +10,17 @@ description: Validate features manifest
 
 ---
 
-## ⚠️ PRE-FLIGHT CHECKLIST (MUST Complete Before Proceeding)
+## ⚠️ PRE-FLIGHT CHECKLIST (ALWAYS Complete Before Proceeding)
 
-**Agent MUST verify before starting this workflow**:
+**Agent ALWAYS verifies before starting this workflow**:
 
 **Navigation Rules Compliance**:
-- [ ] ✅ Read `../requirements/execution-protocol.md` (MANDATORY BASE)
-- [ ] ✅ Read `../requirements/workflow-execution.md` (General execution)
-- [ ] ✅ Read `../requirements/workflow-execution-validations.md` (Validation specifics)
+- [ ] ✅ Open and follow `../requirements/execution-protocol.md` (MANDATORY BASE)
+- [ ] ✅ Open and follow `../requirements/workflow-execution.md` (General execution)
+- [ ] ✅ Open and follow `../requirements/workflow-execution-validations.md` (Validation specifics)
 
 **Workflow-Specific Requirements**:
-- [ ] ✅ Read `../requirements/features-manifest-structure.md` (This workflow's requirements)
+- [ ] ✅ Open and follow `../requirements/features-manifest-structure.md` (This workflow's requirements)
 - [ ] ✅ Check adapter initialization (FDD-Adapter/AGENTS.md exists)
 - [ ] ✅ Validate all prerequisites from Prerequisites section below
 
@@ -37,7 +37,7 @@ description: Validate features manifest
 
 ## Requirements
 
-**MUST read**: `../requirements/features-manifest-structure.md`
+**ALWAYS open and follow**: `../requirements/features-manifest-structure.md`
 
 Extract:
 - Required structure

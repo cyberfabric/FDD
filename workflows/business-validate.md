@@ -10,17 +10,17 @@ description: Validate business context document
 
 ---
 
-## ⚠️ PRE-FLIGHT CHECKLIST (MUST Complete Before Proceeding)
+## ⚠️ PRE-FLIGHT CHECKLIST (ALWAYS Complete Before Proceeding)
 
-**Agent MUST verify before starting this workflow**:
+**Agent ALWAYS verifies before starting this workflow**:
 
 **Navigation Rules Compliance**:
-- [ ] ✅ Read `../requirements/execution-protocol.md` (MANDATORY BASE)
-- [ ] ✅ Read `../requirements/workflow-execution.md` (General execution)
-- [ ] ✅ Read `../requirements/workflow-execution-validations.md` (Validation specifics)
+- [ ] ✅ Open and follow `../requirements/execution-protocol.md` (MANDATORY BASE)
+- [ ] ✅ Open and follow `../requirements/workflow-execution.md` (General execution)
+- [ ] ✅ Open and follow `../requirements/workflow-execution-validations.md` (Validation specifics)
 
 **Workflow-Specific Requirements**:
-- [ ] ✅ Read `../requirements/business-context-structure.md` (This workflow's requirements)
+- [ ] ✅ Open and follow `../requirements/business-context-structure.md` (This workflow's requirements)
 - [ ] ✅ Check adapter initialization (FDD-Adapter/AGENTS.md exists)
 - [ ] ✅ Validate all prerequisites from Prerequisites section below
 
@@ -37,7 +37,7 @@ description: Validate business context document
 
 ## Requirements
 
-**MUST read**: `../requirements/business-context-structure.md`
+**ALWAYS open and follow**: `../requirements/business-context-structure.md`
 
 Extract:
 - Required sections structure
@@ -60,14 +60,14 @@ Extract:
 
 ### 1. Execute Detailed Validation
 
-**⚠️ CRITICAL**: MUST read `../requirements/workflow-execution-validations.md` for detailed validation requirements
+**⚠️ CRITICAL**: ALWAYS open and follow `../requirements/workflow-execution-validations.md` for detailed validation requirements
 
-**⚠️ MUST** perform validation with **MAXIMUM ATTENTION TO DETAIL**
+**⚠️ ALWAYS** perform validation with **MAXIMUM ATTENTION TO DETAIL**
 
 Follow validation criteria from `business-context-structure.md`:
 
 #### Structure Validation (25 pts)
-**MUST verify EACH item**:
+**ALWAYS verify EACH item**:
 - [ ] Section A: VISION present with exact heading
 - [ ] Section B: Actors present with exact heading
 - [ ] Section C: Capabilities present with exact heading
@@ -80,7 +80,7 @@ Follow validation criteria from `business-context-structure.md`:
 - [ ] No prohibited sections present
 
 #### Completeness Validation (30 pts)
-**MUST check EVERY line**:
+**ALWAYS check EVERY line**:
 - [ ] Section A contains: Purpose, Target Users, Key Problems Solved, Success Criteria
 - [ ] Success criteria are measurable (specific numbers/percentages)
 - [ ] At least 2 paragraphs in Section A
@@ -94,7 +94,7 @@ Follow validation criteria from `business-context-structure.md`:
 - [ ] All content is substantive, not placeholder text
 
 #### ID Formats Validation (25 pts)
-**MUST verify EACH ID individually**:
+**ALWAYS verify EACH ID individually**:
 - [ ] ALL actor IDs follow format: `fdd-{project}-actor-{name}` in kebab-case
 - [ ] ALL capability IDs follow format: `fdd-{project}-capability-{name}` in kebab-case
 - [ ] If Section D present: ALL use case IDs follow format: `fdd-{project}-usecase-{name}`
@@ -104,7 +104,7 @@ Follow validation criteria from `business-context-structure.md`:
 - [ ] Project name is consistent across all IDs
 
 #### Consistency Validation (20 pts)
-**MUST verify EVERY reference**:
+**ALWAYS verify EVERY reference**:
 - [ ] Build index of ALL actor IDs from Section B
 - [ ] For EACH capability in Section C:
   - [ ] Verify **Actors**: line exists

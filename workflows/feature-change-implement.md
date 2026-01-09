@@ -12,7 +12,7 @@ description: Implement specific change from implementation plan
 
 ## Requirements
 
-**MUST read**: 
+**ALWAYS open and follow**: 
 - `../requirements/feature-changes-structure.md` (change structure)
 - `{adapter-directory}/FDD-Adapter/AGENTS.md` (code conventions)
 

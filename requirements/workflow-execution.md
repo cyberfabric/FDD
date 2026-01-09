@@ -8,7 +8,7 @@
 
 ## Overview
 
-**⚠️ MUST READ FIRST**: `execution-protocol.md` - Mandatory protocol for ALL workflows
+**⚠️ ALWAYS open and follow FIRST**: `execution-protocol.md` - Mandatory protocol for ALL workflows
 
 **Workflow execution** - Instructions for agents to execute workflows correctly
 
@@ -20,9 +20,9 @@
 - Operation workflows (create/update documents)
 - Validation workflows (validate structure/completeness)
 
-MUST read `workflow-execution-operations.md` WHEN executing operation workflows
+ALWAYS open and follow `workflow-execution-operations.md` WHEN executing operation workflows
 
-MUST read `workflow-execution-validations.md` WHEN executing validation workflows
+ALWAYS open and follow `workflow-execution-validations.md` WHEN executing validation workflows
 
 ---
 
@@ -32,7 +32,7 @@ MUST read `workflow-execution-validations.md` WHEN executing validation workflow
 
 **MUST**:
 1. **Follow Execution Protocol** - MANDATORY
-   - Read `requirements/execution-protocol.md` FIRST
+   - Open and follow `requirements/execution-protocol.md` FIRST
    - Complete all protocol phases (1-4)
    - Answer all readiness check questions
    - Verify protocol compliance before proceeding
@@ -105,7 +105,7 @@ MUST read `workflow-execution-validations.md` WHEN executing validation workflow
 
 ### Adapter Trigger Monitoring
 
-**MUST read**: `adapter-triggers.md`
+**ALWAYS open and follow**: `adapter-triggers.md`
 
 **During workflow execution**:
 1. Monitor for trigger events (file changes, validations, decisions)
@@ -250,7 +250,7 @@ MUST read `workflow-execution-validations.md` WHEN executing validation workflow
 ## References
 
 **This file is referenced by**:
-- MUST read this file WHEN executing any workflow
+- ALWAYS open and follow this file WHEN executing any workflow
 
 **References**:
 - `workflow-execution-operations.md` - Operation workflow execution specifics

@@ -116,13 +116,13 @@
 
 **Location**: `FDD/workflows/*.md`
 
-MUST read `core-workflows.md` WHEN creating or modifying workflow files
+ALWAYS open and follow `core-workflows.md` WHEN creating or modifying workflow files
 
 ### Requirements Files
 
 **Location**: `FDD/requirements/*.md`
 
-MUST read `core-requirements.md` WHEN creating or modifying requirements files
+ALWAYS open and follow `core-requirements.md` WHEN creating or modifying requirements files
 
 ### Specification Files
 
@@ -130,7 +130,7 @@ MUST read `core-requirements.md` WHEN creating or modifying requirements files
 
 **Type**: AGENTS.md, FDL.md, etc.
 
-MUST read `core-agents.md` WHEN creating or modifying AGENTS.md files
+ALWAYS open and follow `core-agents.md` WHEN creating or modifying AGENTS.md files
 
 ---
 
@@ -160,13 +160,17 @@ MUST read `core-agents.md` WHEN creating or modifying AGENTS.md files
 
 ### References
 
-**Format**: All file references MUST use conditional format with WHEN clause
+**Format**: All references MUST use an action-gated conditional format with a WHEN clause
 
 **MUST**:
-- Use `MUST read {file}` WHEN `{condition}`
-- Specify clear condition for when reference applies
-- Use exact file paths
-- Make condition verifiable
+- Use one of these formats:
+  - `ALWAYS open and follow {file} WHEN {trigger}` (preferred)
+  - `ALWAYS execute {workflow} WHEN {trigger}` (preferred)
+  - `ALWAYS do {action} WHEN {trigger}` (preferred)
+- For `ALWAYS do {action}`: the action MUST reference a concrete FDD artifact (a file path or a workflow)
+- Specify a clear trigger/condition for when the action applies
+- Use exact file paths (or exact workflow file names under `workflows/`)
+- Make the trigger/condition verifiable
 
 **MUST NOT**:
 - Duplicate content from referenced file
@@ -178,8 +182,8 @@ MUST read `core-agents.md` WHEN creating or modifying AGENTS.md files
 
 **Example**:
 ```markdown
-✅ MUST read `core-workflows.md` WHEN creating or modifying workflow files
-✅ MUST read `requirements/business-context-structure.md` WHEN validating BUSINESS.md
+✅ ALWAYS open and follow `core-workflows.md` WHEN creating or modifying workflow files
+✅ ALWAYS open and follow `requirements/business-context-structure.md` WHEN validating BUSINESS.md
 
 ❌ Read core-workflows.md for workflow structure (no WHEN condition)
 ❌ Workflows must have YAML frontmatter (duplicates core-workflows.md content)
@@ -201,7 +205,7 @@ MUST read `core-agents.md` WHEN creating or modifying AGENTS.md files
 2. **OS agnostic**: No OS commands | Forward slashes | Cross-platform
 3. **Agent-centric**: Executable steps | Explicit prerequisites | Clear criteria
 4. **Complete**: No TODO/TBD | No empty sections | All examples present
-5. **References**: All references use MUST WHEN format | No content duplication from referenced files
+5. **References**: All references use action-gated WHEN format | No content duplication from referenced files
 
 ### Validation Scoring
 
@@ -308,13 +312,13 @@ This document talks about how you might want to structure files...
 ## References
 
 **This file is referenced by**:
-- `AGENTS.md` - MUST read before modifying FDD
+- `AGENTS.md` - ALWAYS open and follow before modifying FDD
 - All workflow files - Follow these principles
 - All requirement files - Follow these structures
 
 **Related files**:
 - `AGENTS.md` - Core FDD specification for agents
 - `adapter-structure.md` - Project-specific adapter requirements
-- MUST read `core-workflows.md` WHEN creating or modifying workflow files
-- MUST read `core-requirements.md` WHEN creating or modifying requirements files
-- MUST read `core-agents.md` WHEN creating or modifying AGENTS.md files
+- ALWAYS open and follow `core-workflows.md` WHEN creating or modifying workflow files
+- ALWAYS open and follow `core-requirements.md` WHEN creating or modifying requirements files
+- ALWAYS open and follow `core-agents.md` WHEN creating or modifying AGENTS.md files

@@ -37,7 +37,7 @@
 2. **Structure** - Required sections, format, organization
 3. **Validation Criteria** - Scoring breakdown, thresholds, pass/fail
 4. **Examples** - Valid and invalid examples
-5. **References** - Related files with MUST WHEN conditions
+5. **References** - Related files with action-gated WHEN conditions
 
 ---
 
@@ -256,8 +256,8 @@ You should include these sections...
 ## References
 
 **This file is referenced by**:
-- MUST read `core.md` WHEN creating or modifying requirements files
-- All requirements files MUST follow this structure
+- ALWAYS open and follow `core.md` WHEN creating or modifying requirements files
+- All requirements files ALWAYS follow this structure
 
 **References**:
 - `core.md` - Core FDD principles

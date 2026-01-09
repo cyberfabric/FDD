@@ -1,6 +1,6 @@
 # FDD Validation Workflow Execution
 
-**Version**: 1.1  
+**Version**: 1.2  
 **Purpose**: Define execution specifics for validation workflows  
 **Scope**: All validation workflows (validate structure/completeness)
 
@@ -28,11 +28,16 @@
 
 **One missed issue = INVALID validation**
 
+**Model suitability is a hard gate**:
+- ✅ **MUST** follow `execution-protocol.md` Phase 2, Step 11 (Model Suitability Verification)
+- ✅ **MUST** stop if model identity/class is not proven (no guessing)
+- ✅ **MUST NOT** proceed with validation/checking tasks until user confirms the exact model (or class)
+
 ---
 
 ## Overview
 
-**⚠️ MUST READ FIRST**: `execution-protocol.md` - Mandatory protocol including self-test
+**⚠️ ALWAYS open and follow FIRST**: `execution-protocol.md` - Mandatory protocol including self-test
 
 **Validation workflows** - Fully automated procedures to validate artifacts
 
@@ -101,16 +106,16 @@
 
 ### 3.5. Adapter Specs Validation (MANDATORY)
 
-**⚠️ MUST ALWAYS READ ADAPTER SPECS**:
+**⚠️ ALWAYS open and follow ADAPTER SPECS**:
 
 **Mandatory reading**:
-1. ✅ **MUST** read `{adapter-directory}/FDD-Adapter/AGENTS.md`
-2. ✅ **MUST** read ALL specs listed as MANDATORY in adapter's AGENTS.md
-3. ✅ **MUST** read ALL specs relevant to artifact being validated (as specified by adapter)
+1. ✅ **ALWAYS** open and follow `{adapter-directory}/FDD-Adapter/AGENTS.md`
+2. ✅ **ALWAYS** open and follow ALL specs listed as MANDATORY in adapter's AGENTS.md
+3. ✅ **ALWAYS** open and follow ALL specs relevant to artifact being validated (as specified by adapter)
 
 **Adapter defines validation scope**:
 - Adapter's AGENTS.md specifies which specs are MANDATORY vs optional
-- Adapter's AGENTS.md specifies WHEN to read each spec (e.g., "WHEN working with REST APIs")
+- Adapter's AGENTS.md specifies WHEN to read each spec (canonical: "WHEN executing workflows: ...")
 - Follow adapter's navigation rules exactly as written
 
 **Generic validation checks** (adapter defines specifics):
@@ -123,7 +128,7 @@
 7. ✅ All test structures follow adapter's testing guidelines
 8. ✅ All technical specifications match adapter's technology stack requirements
 
-**MUST verify**:
+**ALWAYS verify**:
 - Read EVERY spec file listed in adapter's AGENTS.md for this artifact type
 - Check artifact content against EVERY rule defined in adapter specs
 - Verify conformance with adapter's architecture patterns
@@ -143,7 +148,7 @@
 
 ### 4. Structure Validation
 
-**⚠️ MUST verify EACH item individually**:
+**⚠️ ALWAYS verify EACH item individually**:
 
 **Check against requirements**:
 1. ✅ Section A present and correctly named
@@ -158,7 +163,7 @@
 10. ✅ No extra sections beyond what's allowed
 11. ✅ No prohibited sections present
 
-**MUST check**:
+**ALWAYS check**:
 - Read the ENTIRE artifact from line 1 to end
 - Verify EACH section heading matches requirements EXACTLY
 - Check section names character-by-character (e.g., "Use Cases" vs "Additional Context")
@@ -178,7 +183,7 @@
 
 ### 5. Completeness Validation
 
-**⚠️ MUST check EVERY line for issues**:
+**⚠️ ALWAYS check EVERY line for issues**:
 
 **Check**:
 1. ✅ No placeholder markers: TODO, TBD, [Description], [Fill in], etc.
@@ -192,7 +197,7 @@
 9. ✅ All tables/structures are complete
 10. ✅ All cross-references point to valid targets
 
-**MUST verify**:
+**ALWAYS verify**:
 - Read EVERY line of the artifact
 - Check EVERY ID individually against format requirements
 - Search for ALL common placeholder patterns
@@ -236,7 +241,7 @@
 
 ### 7. Coverage Validation
 
-**⚠️ MUST verify EVERY reference and requirement**:
+**⚠️ ALWAYS verify EVERY reference and requirement**:
 
 **Check**:
 1. ✅ All parent requirements addressed (check EACH requirement individually)
@@ -249,7 +254,7 @@
 8. ✅ All capability references point to valid capabilities
 9. ✅ All use case references point to valid use cases
 
-**MUST verify**:
+**ALWAYS verify**:
 - Build complete index of ALL IDs in parent artifacts
 - Check EVERY single reference in current artifact against index
 - Verify EVERY actor ID in **Actors**: lines exists in parent
@@ -280,54 +285,58 @@
 
 **⚠️ Complete BEFORE outputting validation results**
 
-**Agent MUST answer YES to ALL questions**:
+**Agent ALWAYS answers YES to ALL questions**:
 
 #### Execution Completeness Check
 1. ⚠️ **Did I read execution-protocol.md before starting?**
    - [ ] YES - Read and followed all 4 phases
    - [ ] NO - Validation is INVALID, must restart
 
-2. ⚠️ **Did I read the ENTIRE artifact line by line?**
+2. ⚠️ **Did I verify model suitability with evidence (execution-protocol Phase 2, Step 11)?**
+    - [ ] YES - Model identity source proven; class mapped; suitability checked
+    - [ ] NO - Validation is INVALID, must restart
+
+3. ⚠️ **Did I read the ENTIRE artifact line by line?**
    - [ ] YES - Read from line 1 to end
    - [ ] NO - Validation is INVALID, must restart
 
-3. ⚠️ **Did I check EVERY validation criterion from requirements?**
+4. ⚠️ **Did I check EVERY validation criterion from requirements?**
    - [ ] YES - Verified each criterion individually
    - [ ] NO - Validation is INVALID, must restart
 
-4. ⚠️ **Did I verify EACH ID format individually?**
+5. ⚠️ **Did I verify EACH ID format individually?**
    - [ ] YES - Checked each ID against format requirements
    - [ ] NO - Validation is INVALID, must restart
 
 #### Systematic Verification Check
-5. ⚠️ **Did I run grep searches for common issues?**
+6. ⚠️ **Did I run grep searches for common issues?**
    - [ ] YES - Ran: TODO, TBD, `**ID**:`, placeholders
    - [ ] NO - Validation is INVALID, must restart
 
-6. ⚠️ **Did I check ADR headers for ID fields? (if validating ADR.md)**
+7. ⚠️ **Did I check ADR headers for ID fields? (if validating ADR.md)**
    - [ ] YES - Verified `**ID**:` after EACH `## ADR-` heading
    - [ ] NO - Validation is INVALID, must restart
 
-7. ⚠️ **Did I check requirement traceability? (if validating DESIGN.md)**
+8. ⚠️ **Did I check requirement traceability? (if validating DESIGN.md)**
    - [ ] YES - Verified `**Capabilities**:`, `**Actors**:` fields
    - [ ] NO - Validation is INVALID, must restart
 
-8. ⚠️ **Did I cross-reference EVERY actor/capability/requirement?**
+9. ⚠️ **Did I cross-reference EVERY actor/capability/requirement?**
    - [ ] YES - Built index, verified each reference
    - [ ] NO - Validation is INVALID, must restart
 
 #### Score Verification Check
-9. ⚠️ **Is my score calculation arithmetically correct?**
+10. ⚠️ **Is my score calculation arithmetically correct?**
    - [ ] YES - Verified addition
    - [ ] NO - Must recalculate, validation may be invalid
 
-10. ⚠️ **Did I compare score to correct threshold from requirements?**
+11. ⚠️ **Did I compare score to correct threshold from requirements?**
     - [ ] YES - Used exact threshold from requirements file
-    - [ ] NO - Must check threshold, validation may be invalid
+    - [ ] NO - ALWAYS check threshold before proceeding
 
-**If ANY answer 1-8 is NO → Validation is INVALID, must restart with execution-protocol.md**
+**If ANY answer 1-9 is NO → Validation is INVALID, must restart with execution-protocol.md**
 
-**If answers 9-10 are NO → Fix calculation, may need to restart**
+**If answers 10-11 are NO → Fix calculation, may need to restart**
 
 ---
 
@@ -392,7 +401,7 @@
 
 **Agent confirms**:
 ✅ Completed self-test (Section 9)
-✅ All 10 questions answered YES
+✅ All 11 questions answered YES
 ✅ Validation execution was systematic and complete
 ✅ Protocol compliance verified
 
@@ -657,7 +666,7 @@ Should be: `fdd-actor-admin`
 ## References
 
 **This file is referenced by**:
-- MUST read WHEN executing validation workflows
+- ALWAYS open and follow WHEN executing validation workflows
 
 **References**:
 - `workflow-execution.md` - General execution instructions

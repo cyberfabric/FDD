@@ -1,6 +1,6 @@
 # Business Context Structure Requirements
 
-**MUST read and follow**: `../workflows/business-context.md`
+**ALWAYS open and follow**: `../workflows/business-context.md`
 
 **This file defines**: Structure only (WHAT to create)  
 **Workflow defines**: Process (HOW to create)
@@ -497,7 +497,7 @@ We have users and admins.
 ## References
 
 **This file is referenced by**:
-- MUST read this file WHEN creating or modifying BUSINESS.md
+- ALWAYS open and follow this file WHEN creating or modifying BUSINESS.md
 
 **References**:
 - `core.md` - Core FDD principles

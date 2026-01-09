@@ -194,7 +194,7 @@ Make sure it looks good.
 ## References
 
 **This file is referenced by**:
-- MUST read this file WHEN creating or modifying operation workflows
+- ALWAYS open and follow this file WHEN creating or modifying operation workflows
 
 **References**:
 - `core-workflows.md` - Workflow structure requirements

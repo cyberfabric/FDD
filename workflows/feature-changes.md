@@ -12,7 +12,7 @@ description: Create or update feature implementation plan
 
 ## Requirements
 
-**MUST read**: `../requirements/feature-changes-structure.md`
+**ALWAYS open and follow**: `../requirements/feature-changes-structure.md`
 
 Extract:
 - Required structure (change entries)

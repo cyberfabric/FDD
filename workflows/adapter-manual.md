@@ -20,7 +20,7 @@ Manually add or update adapter specifications based on user decisions.
 
 ## Requirements
 
-**MUST read**: `../requirements/adapter-structure.md`
+**ALWAYS open and follow**: `../requirements/adapter-structure.md`
 
 Extract:
 - Spec file types and formats
@@ -325,7 +325,7 @@ Check if MUST rule exists for this spec.
 ```
 Adding to AGENTS.md:
 
-MUST read `specs/tech-stack.md` WHEN checking dependencies or versions
+ALWAYS open and follow `specs/tech-stack.md` WHEN executing workflows: adapter.md, adapter-auto.md, adapter-manual.md, adapter-bootstrap.md, adapter-validate.md, design.md, design-validate.md, adr.md, adr-validate.md, feature-change-implement.md, feature-change-validate.md, feature-qa.md
 
 Add this rule? [Yes] [No] [Edit]
 ```

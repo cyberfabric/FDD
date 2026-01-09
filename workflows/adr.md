@@ -12,7 +12,7 @@ description: Create or update Architecture Decision Records
 
 ## Requirements
 
-**MUST read**: `../requirements/adr-structure.md`
+**ALWAYS open and follow**: `../requirements/adr-structure.md`
 
 Extract:
 - MADR format structure

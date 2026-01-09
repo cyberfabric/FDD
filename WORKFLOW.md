@@ -25,12 +25,12 @@
 
 **Adapter Structure**:
 - Primary file: `{adapter-directory}/FDD-Adapter/AGENTS.md`
-- Format: MUST WHEN instructions (like FDD/AGENTS.md)
+- Format: ALWAYS ... WHEN instructions (like FDD/AGENTS.md)
 - Content: Navigation to adapter-specific configuration files
 - Purpose: Project-specific conventions, formats, paths
 
 **Adapter Auto-Trigger Rules**:
-- Agent MUST stop and run `adapter` workflow WHEN:
+- Agent ALWAYS stop and run `adapter` workflow WHEN:
   - User specifies domain model format/location
   - User specifies API contract format/location
   - User specifies custom file structures
@@ -48,7 +48,7 @@
 **Operation Workflows** (Type: Operation):
 - Create or update documents/code
 - Include user interactions (questions, proposals)
-- Require user confirmation before file changes
+- ALWAYS open and follow `core.md` WHEN creating or modifying FDD core files changes
 - Run validation workflow after completion
 
 **Validation Workflows** (Type: Validation):
@@ -59,7 +59,7 @@
 
 ### Validation Requirements
 
-**Every validation MUST check**:
+**Every validation ALWAYS do check**:
 1. **Structure**: Compliance with requirements file structure
 2. **Non-contradiction**: No conflicts with dependency artifacts
 3. **Coverage**: All requirements from dependencies addressed
@@ -105,7 +105,7 @@
 
 **Requirements**:
 - Architecture and code MUST NOT contradict business requirements
-- All business requirements MUST be addressed in design
+- All business requirements ALWAYS do be addressed in design
 - Product Manager can validate design for business alignment control
 
 **Adapter Requirement**: NOT required (business context is generic, no customization needed)
@@ -132,8 +132,8 @@
 
 **Requirements**:
 - Design MUST NOT contradict business context
-- Features decomposition MUST cover entire design
-- ADR MUST be consistent with design
+- Features decomposition ALWAYS do cover entire design
+- ADR ALWAYS do be consistent with design
 
 **Adapter Requirement**: OPTIONAL by default, REQUIRED when:
 - Specifying domain model format/location
@@ -158,7 +158,7 @@
 
 **Requirements**:
 - Feature MUST NOT contradict overall design
-- Feature MUST address requirements from FEATURES.md
+- Feature ALWAYS do address requirements from FEATURES.md
 - Feature MUST NOT redefine types from overall design
 
 **Adapter Requirement**: OPTIONAL (can use generic templates), RECOMMENDED for:
@@ -184,16 +184,16 @@
 - `feature-change-validate` - Validate code (vs adapter requirements, vs feature requirements, run tests)
 
 **Requirements**:
-- Each change MUST implement 1-N requirements from feature DESIGN.md
+- Each change ALWAYS do implement 1-N requirements from feature DESIGN.md
 - Code MUST pass all tests
-- Code MUST follow adapter conventions
-- Code MUST be tagged with `@fdd-change:{change-id}` comments for traceability
+- Code ALWAYS do follow adapter conventions
+- Code ALWAYS do be tagged with `@fdd-change:{change-id}` comments for traceability
 
 **Adapter Requirement**: REQUIRED
 - Code conventions mandatory
 - Testing requirements mandatory
 - Build/deployment configuration mandatory
-- Agent MUST stop and run `adapter` workflow if adapter missing
+- Agent ALWAYS stop and run `adapter` workflow if adapter missing
 
 ---
 
@@ -210,8 +210,8 @@
 - `feature-change-validate` - Individual change validation (shared with Developer)
 
 **Requirements**:
-- All test scenarios from feature DESIGN.md MUST be validated
-- All changes MUST pass validation
+- All test scenarios from feature DESIGN.md ALWAYS do be validated
+- All changes ALWAYS do pass validation
 
 ---
 

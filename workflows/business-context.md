@@ -12,7 +12,7 @@ description: Create or update business context document
 
 ## Requirements
 
-**MUST read**: `../requirements/business-context-structure.md`
+**ALWAYS open and follow**: `../requirements/business-context-structure.md`
 
 Extract:
 - Required sections (A: Vision, B: Actors, C: Capabilities, D: Additional Context)

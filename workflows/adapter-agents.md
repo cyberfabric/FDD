@@ -12,7 +12,7 @@ description: Configure or update AI agent integration for FDD
 
 ## Requirements
 
-**MUST read**: `../requirements/adapter-structure.md` (if adapter exists)
+**ALWAYS open and follow**: `../requirements/adapter-structure.md` (if adapter exists)
 
 Extract adapter conventions if available
 
@@ -120,7 +120,7 @@ Store as:
 **Question 3**: What content style for {AGENT_TYPE} configuration?
 
 **Options**:
-1. Minimal - Only MUST READ instructions to AGENTS.md
+1. Minimal - Only ALWAYS open and follow instructions to AGENTS.md
 2. Full - Include workflow table, navigation rules, examples
 3. Custom - Specify what to include
 
@@ -130,8 +130,8 @@ Store as:
 Store as: `CONTENT_STYLE`
 
 **If CONTENT_STYLE = Custom, ask**:
-**Question 4**: What to include in configuration?
-- [ ] MUST READ instructions
+**Question 4: What to include in configuration?**
+- [ ] {{ALWAYS open and follow instructions to AGENTS.md}}
 - [ ] Workflow reference table
 - [ ] Workflow-specific navigation rules
 - [ ] Project-specific examples
@@ -172,9 +172,9 @@ Store as: `WORKFLOW_SPECIFIC`
 ```markdown
 # FDD Rules
 
-MUST READ `guidelines/FDD/WORKFLOW.md` for workflow system.
+ALWAYS open and follow `guidelines/FDD/WORKFLOW.md` for workflow system.
 
-MUST READ `{adapter-path}/AGENTS.md` for project conventions.
+ALWAYS open and follow `{adapter-path}/AGENTS.md` for project conventions.
 
 Check `{workflows-path}` before starting tasks.
 ```
@@ -183,8 +183,8 @@ Check `{workflows-path}` before starting tasks.
 ```markdown
 # FDD Rules
 
-MUST READ `guidelines/FDD/WORKFLOW.md` for workflow system.
-MUST READ `{adapter-path}/AGENTS.md` for project conventions.
+ALWAYS open and follow `guidelines/FDD/WORKFLOW.md` for workflow system.
+ALWAYS open and follow `{adapter-path}/AGENTS.md` for project conventions.
 
 ## Quick Workflow Reference
 [Table with workflows from WORKFLOW.md]
@@ -293,9 +293,9 @@ Test AI agent integration:
 ```markdown
 # FDD Rules
 
-MUST READ `guidelines/FDD/WORKFLOW.md` for workflow system.
+ALWAYS open and follow `guidelines/FDD/WORKFLOW.md` for workflow system.
 
-MUST READ `guidelines/FDD-Adapter/AGENTS.md` for project conventions.
+ALWAYS open and follow `guidelines/FDD-Adapter/AGENTS.md` for project conventions.
 
 Check `.windsurf/workflows/` before starting tasks.
 ```
@@ -306,8 +306,8 @@ Check `.windsurf/workflows/` before starting tasks.
 ```markdown
 # FDD Rules
 
-MUST READ guidelines/FDD/WORKFLOW.md for workflow system.
-MUST READ guidelines/FDD-Adapter/AGENTS.md for project conventions.
+ALWAYS open and follow guidelines/FDD/WORKFLOW.md for workflow system.
+ALWAYS open and follow guidelines/FDD-Adapter/AGENTS.md for project conventions.
 ```
 
 ### Windsurf Cascade - Full with Workflows

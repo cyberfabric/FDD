@@ -1,6 +1,6 @@
 # Technical Design (DESIGN.md) Structure Requirements
 
-**MUST read and follow**: `../workflows/design.md`
+**ALWAYS open and follow**: `../workflows/design.md`
 
 **This file defines**: Structure only (WHAT to create)  
 **Workflow defines**: Process (HOW to create)

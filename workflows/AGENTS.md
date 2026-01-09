@@ -2,15 +2,15 @@
 
 **Version**: 1.0
 
-MUST read `../requirements/workflow-selection.md` WHEN selecting which workflow to execute
+ALWAYS open and follow `../requirements/workflow-selection.md` WHEN selecting which workflow to execute
 
-MUST read `../requirements/workflow-execution.md` WHEN executing any workflow
+ALWAYS open and follow `../requirements/workflow-execution.md` WHEN executing any workflow
 
-MUST read specific workflow file from `workflows/` directory BEFORE executing workflow
+ALWAYS open and follow the specific workflow file from `workflows/` directory WHEN executing that workflow
 
-MUST read `../requirements/extension.md` WHEN workflow has **Extends**: {file}
+ALWAYS open and follow `../requirements/extension.md` WHEN workflow has **Extends**: {file}
 
-MUST check for `{adapter-directory}/FDD-Adapter/AGENTS.md` BEFORE selecting workflow
+ALWAYS do check for `{adapter-directory}/FDD-Adapter/AGENTS.md` WHEN selecting which workflow to execute
 
 ---
 

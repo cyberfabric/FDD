@@ -1,6 +1,6 @@
 # Feature Changes (Implementation Plan) Structure Requirements
 
-**MUST read and follow**: `../workflows/feature-changes.md`
+**ALWAYS open and follow**: `../workflows/feature-changes.md`
 
 **This file defines**: Structure only (WHAT to create)  
 **Workflow defines**: Process (HOW to create)

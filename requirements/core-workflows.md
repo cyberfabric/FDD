@@ -76,9 +76,9 @@
 
 **Validation workflows** - Validate structure/completeness (suffix `-validate`, e.g., `design-validate.md`)
 
-MUST read `core-workflow-operations.md` WHEN creating or modifying operation workflows
+ALWAYS open and follow `core-workflow-operations.md` WHEN creating or modifying operation workflows
 
-MUST read `core-workflow-validation.md` WHEN creating or modifying validation workflows
+ALWAYS open and follow `core-workflow-validation.md` WHEN creating or modifying validation workflows
 
 ---
 
@@ -273,10 +273,10 @@ You should probably check if the file exists first.
 ## References
 
 **This file is referenced by**:
-- MUST read `core.md` WHEN creating or modifying FDD core files
-- All workflow files MUST follow this structure
+- ALWAYS open and follow `core.md` WHEN creating or modifying FDD core files
+- All workflow files ALWAYS follow this structure
 
 **References**:
-- MUST read `core-workflow-operations.md` WHEN creating or modifying operation workflows
-- MUST read `core-workflow-validation.md` WHEN creating or modifying validation workflows
+- ALWAYS open and follow `core-workflow-operations.md` WHEN creating or modifying operation workflows
+- ALWAYS open and follow `core-workflow-validation.md` WHEN creating or modifying validation workflows
 - `core.md` - Core FDD principles

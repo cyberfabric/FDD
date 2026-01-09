@@ -12,7 +12,7 @@ description: Create or update feature design document
 
 ## Requirements
 
-**MUST read**: `../requirements/feature-design-structure.md`
+**ALWAYS open and follow**: `../requirements/feature-design-structure.md`
 
 Extract:
 - Required sections (A-G)

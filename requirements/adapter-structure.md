@@ -1,6 +1,6 @@
 # FDD Adapter Structure Requirements
 
-**MUST read and follow**: `../workflows/adapter.md`
+**ALWAYS open and follow**: `../workflows/adapter.md`
 
 **This file defines**: Structure only (WHAT to create)  
 **Workflow defines**: Process (HOW to create)
@@ -73,6 +73,12 @@ FDD-Adapter/
 
 **Purpose**: Adapter-specific navigation for AI agents (MUST WHEN format)
 
+**Adapter AGENTS.md WHEN rule (mandatory)**:
+- Each navigation rule MUST use a WHEN clause that is ONLY a list of FDD workflows.
+- The WHEN clause MUST NOT use generic conditions like "working with domain types".
+- Allowed canonical form:
+  - `ALWAYS open and follow {spec-file} WHEN executing workflows: {workflow1.md}, {workflow2.md}, ...`
+
 **Two Phases**:
 
 #### Phase 1: Bootstrap (Minimal)
@@ -98,22 +104,24 @@ FDD-Adapter/
 
 ---
 
-MUST read `specs/tech-stack.md` WHEN checking dependencies or versions
+ALWAYS open and follow `specs/tech-stack.md` WHEN executing workflows: adapter-auto.md, adapter-validate.md, design.md, design-validate.md, adr.md, adr-validate.md, feature-change-implement.md, feature-change-validate.md, feature-qa.md
 
-MUST read `specs/domain-model.md` WHEN working with domain types
+ALWAYS open and follow `specs/domain-model.md` WHEN executing workflows: design.md, design-validate.md, adr.md, adr-validate.md, features.md, features-validate.md, feature.md, feature-validate.md, feature-changes.md, feature-changes-validate.md, feature-change-implement.md, feature-change-validate.md
 
-MUST read `specs/api-contracts.md` WHEN working with API endpoints
+ALWAYS open and follow `specs/api-contracts.md` WHEN executing workflows: design.md, design-validate.md, adr.md, adr-validate.md, feature.md, feature-validate.md, feature-changes.md, feature-changes-validate.md, feature-change-implement.md, feature-change-validate.md
 
-MUST read `specs/patterns.md` WHEN implementing architecture patterns
+ALWAYS open and follow `specs/patterns.md` WHEN executing workflows: design.md, design-validate.md, adr.md, adr-validate.md, feature.md, feature-validate.md, feature-change-implement.md, feature-change-validate.md
 
-MUST read `specs/conventions.md` WHEN writing code or documentation
+ALWAYS open and follow `specs/conventions.md` WHEN executing workflows: adapter.md, adapter-auto.md, adapter-manual.md, adapter-bootstrap.md, adapter-validate.md, feature-change-implement.md, feature-change-validate.md
 
-MUST read `specs/build-deploy.md` WHEN building or deploying
+ALWAYS open and follow `specs/build-deploy.md` WHEN executing workflows: feature-change-implement.md, feature-change-validate.md, feature-qa.md
 
-MUST read `specs/testing.md` WHEN writing or running tests
+ALWAYS open and follow `specs/testing.md` WHEN executing workflows: feature-change-implement.md, feature-change-validate.md, feature-qa.md
+
+ALWAYS open and follow `specs/project-structure.md` WHEN executing workflows: adapter.md, adapter-auto.md, adapter-manual.md, adapter-bootstrap.md, adapter-validate.md, feature.md, feature-validate.md, feature-changes.md, feature-changes-validate.md
 ```
 
-**Note**: MUST rules are added **only after** corresponding spec files are created
+**Note**: Navigation rules are added **only after** corresponding spec files are created
 
 **Specification Files** (created dynamically in `specs/`):
 

@@ -1,6 +1,6 @@
 # FDD Workflow Execution Protocol
 
-**Version**: 1.0  
+**Version**: 1.1  
 **Purpose**: MANDATORY execution protocol for ALL workflows  
 **Scope**: EVERY workflow execution without exceptions
 
@@ -8,7 +8,7 @@
 
 ## ⚠️ MANDATORY PRE-EXECUTION PROTOCOL ⚠️
 
-**Before executing ANY workflow, agent MUST follow this protocol**
+**Before executing ANY workflow, agent ALWAYS follows this protocol**
 
 This protocol is **NON-NEGOTIABLE** and applies to **EVERY** workflow without exception.
 
@@ -20,16 +20,16 @@ This protocol is **NON-NEGOTIABLE** and applies to **EVERY** workflow without ex
 
 ### Step 1: Acknowledge Protocol
 
-Agent MUST explicitly acknowledge:
+Agent ALWAYS explicitly acknowledges:
 ```
 I am about to execute workflow: {workflow-name}
-I acknowledge that I MUST follow the FDD Execution Protocol.
+I acknowledge that I ALWAYS follow the FDD Execution Protocol.
 I will NOT skip any steps.
 ```
 
 ### Step 2: Load Base Requirements
 
-**MUST read in this order**:
+**ALWAYS open and follow in this order**:
 1. [ ] `requirements/workflow-execution.md` - General execution rules
 2. [ ] `requirements/workflow-execution-validations.md` - For validation workflows
    OR
@@ -42,7 +42,7 @@ I will NOT skip any steps.
 
 ### Step 3: Load Workflow Requirements
 
-**MUST read**:
+**ALWAYS open and follow**:
 1. [ ] `workflows/{workflow-name}.md` - Specific workflow file
 2. [ ] Extract prerequisites section
 3. [ ] Extract required files list
@@ -57,7 +57,7 @@ I will NOT skip any steps.
 
 ### Step 4: Load Artifact Requirements
 
-**MUST read**:
+**ALWAYS open and follow**:
 1. [ ] `requirements/{artifact}-structure.md` - Structure requirements
 2. [ ] Extract validation criteria (100-point breakdown)
 3. [ ] Extract EVERY single validation item
@@ -83,50 +83,77 @@ I will NOT skip any steps.
 
 ## Phase 2: Execution Readiness Check
 
-**Agent MUST answer YES to ALL questions before proceeding**:
+**Agent ALWAYS answers YES to ALL questions before proceeding**:
 
 ### Knowledge Verification
 1. ⚠️ **Have I read workflow-execution.md?**
    - [ ] YES - I read it completely
-   - [ ] NO - I MUST read it now, cannot proceed
+   - [ ] NO - ALWAYS open and follow it now, cannot proceed
 
 2. ⚠️ **Have I read workflow-execution-{type}.md?**
    - [ ] YES - I read the type-specific file
-   - [ ] NO - I MUST read it now, cannot proceed
+   - [ ] NO - ALWAYS open and follow it now, cannot proceed
 
 3. ⚠️ **Have I read the specific workflow file?**
    - [ ] YES - I read {workflow-name}.md
-   - [ ] NO - I MUST read it now, cannot proceed
+   - [ ] NO - ALWAYS open and follow it now, cannot proceed
 
 4. ⚠️ **Have I read the artifact structure requirements?**
    - [ ] YES - I read {artifact}-structure.md
-   - [ ] NO - I MUST read it now, cannot proceed
+   - [ ] NO - ALWAYS open and follow it now, cannot proceed
 
 ### Comprehension Verification
 5. ⚠️ **Do I understand "Maximum Attention to Detail" requirement?**
    - [ ] YES - I will check EVERY criterion individually
-   - [ ] NO - I MUST re-read workflow-execution-validations.md lines 9-29
+   - [ ] NO - ALWAYS re-read workflow-execution-validations.md lines 9-29
 
 6. ⚠️ **Do I have a complete list of validation criteria?**
    - [ ] YES - I extracted EVERY criterion from requirements
-   - [ ] NO - I MUST re-read requirements file
+   - [ ] NO - ALWAYS re-read requirements file
 
 7. ⚠️ **Am I ready to check each item individually, not in groups?**
    - [ ] YES - I will verify each criterion separately
-   - [ ] NO - I MUST re-read "Maximum Attention" section
+   - [ ] NO - ALWAYS re-read "Maximum Attention" section
 
 ### Preparation Verification
 8. ⚠️ **Do I have a plan for systematic verification?**
    - [ ] YES - I will use grep, read line-by-line, check each ID
-   - [ ] NO - I MUST create verification plan
+   - [ ] NO - ALWAYS create verification plan
 
 9. ⚠️ **Do I know what tools to use for verification?**
    - [ ] YES - grep for IDs, read_file for content, line-by-line check
-   - [ ] NO - I MUST review tool usage
+   - [ ] NO - ALWAYS review tool usage
 
 10. ⚠️ **Am I prepared to report EVERY issue, no matter how small?**
     - [ ] YES - I will report all issues found
-    - [ ] NO - I MUST adjust my mindset
+    - [ ] NO - ALWAYS adjust my mindset
+
+### Model Suitability Verification
+11. ⚠️ **Have I verified my model suitability?**
+    - [ ] **Verify Model Identity Source (NO guessing allowed)**:
+        - **Allowed evidence sources** (pick exactly one):
+          - **System / runtime metadata** explicitly states model name or class
+          - **User confirmation** explicitly states exact model name (or class) used in this run
+        - **Forbidden**:
+          - Guessing based on "I feel like" / style / speed
+          - Assuming provider/model family (e.g. "I am Claude") without evidence
+        - **If I cannot prove identity/class**:
+          - STOP immediately
+          - Ask user: "What exact model (name) is running here?"
+          - Do NOT execute validation/checking workflows until clarified
+    - [ ] **Identify My Model Class (based on the verified source above)**:
+        - **Reasoning**: o1 / o3, DeepSeek-R1, Claude 4.5 Opus (Frontier reasoning)
+        - **Flagship**: GPT-5.2, Gemini 3 Pro, Llama 4 Maverick 405B (High capability)
+        - **Fast/Lite**: o4-mini, Gemini 3 Flash, Claude 3.5 Haiku, Llama 4 8B (Speed optimised)
+    - [ ] **Validate Against Task Rule**:
+        - **Checking/Validation**: MUST use **Top Frontier / Reasoning** (Strictness is key). *Speed models FORBIDDEN.*
+        - **Writing/Design**: **Reasoning** preferred (for coherence), but **Flagship** allowed.
+        - **Coding**: **Fast/Flagship** preferred (Speed is key). *Reasoning models often overkill.*
+        - **Scanning/Analysis**: **Fast/Lite** (or Flagship) with **Large Context ≥ 128k tokens** preferred.
+    - [ ] **Result**:
+        - [ ] YES - My model class fits the task rule.
+        - [ ] NO - ALWAYS Warn User: "⚠️ Model Mismatch: I am a [My Class] model, but this [Task Type] task requires [Required Class]."
+        - [ ] UNKNOWN - ALWAYS stop and ask user to confirm model; do not proceed.
 
 **If ANY answer is NO → STOP, fix the issue, restart readiness check**
 
@@ -136,7 +163,7 @@ I will NOT skip any steps.
 
 ### During Execution Rules
 
-**Agent MUST**:
+**ALWAYS do**:
 1. Follow checklist item by item
 2. Check EVERY criterion individually (never group checks)
 3. Read ENTIRE artifact from line 1 to end
@@ -146,7 +173,7 @@ I will NOT skip any steps.
 7. Report intermediate progress
 8. Execute mini self-checks after each category
 
-**Agent MUST NOT**:
+**ALWAYS do NOT**:
 1. Skip any validation criteria
 2. Group checks together without individual verification
 3. Assume sections are correct without checking
@@ -160,7 +187,7 @@ I will NOT skip any steps.
 
 ### Self-Test Before Reporting (MANDATORY)
 
-**Agent MUST complete self-test before outputting results**:
+**Agent ALWAYS completes self-test before outputting results**:
 
 #### Execution Completeness
 1. ⚠️ **Did I read the ENTIRE artifact line by line?**
@@ -203,13 +230,13 @@ I will NOT skip any steps.
 
 10. ⚠️ **Did I compare score to correct threshold?**
     - [ ] YES - Used threshold from requirements
-    - [ ] NO - Must check threshold
+    - [ ] NO - Validation invalid, check threshold
 
 **If ANY answer is NO → Validation is INVALID, must restart execution**
 
 ### Output Format Verification
 
-**Agent MUST verify output includes**:
+**Agent ALWAYS verifies output includes**:
 - [ ] Score breakdown by category
 - [ ] All issues listed with ✅/❌
 - [ ] Recommendations prioritized by severity
@@ -220,7 +247,7 @@ I will NOT skip any steps.
 
 ## Protocol Compliance Report
 
-**Agent MUST include in output**:
+**Agent ALWAYS includes in output**:
 
 ```markdown
 ---
@@ -235,7 +262,7 @@ I will NOT skip any steps.
 ✅ Extracted all validation criteria
 
 **Phase 2: Readiness Check**
-✅ Passed all 10 readiness questions
+✅ Passed all 11 readiness questions
 ✅ Understood "Maximum Attention to Detail"
 ✅ Created complete validation checklist
 
@@ -269,7 +296,7 @@ I will NOT skip any steps.
 
 3. ❌ **Not completing readiness check**
    - Consequence: INVALID execution
-   - Fix: Complete all 10 questions
+   - Fix: Complete all 11 questions
 
 4. ❌ **Not running systematic grep searches**
    - Consequence: Likely missed issues
@@ -319,7 +346,7 @@ I will NOT skip any steps.
 
 ## References
 
-**This file MUST be read**:
+**ALWAYS open and follow this file**:
 - Before executing ANY workflow
 - Referenced in all workflow files
 - Part of Navigation Rules
