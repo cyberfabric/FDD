@@ -77,6 +77,16 @@ This file defines requirements that are shared across multiple `*-structure.md` 
 - Use HTML comment placeholders in artifact docs (e.g., `<!-- TODO: ... -->`)
 - Leave `{placeholder}` content in artifact docs
 
+### Placeholders (Adapter Spec Docs)
+
+**MUST NOT**:
+- Use TODO placeholders in adapter spec docs (e.g., `TODO`, `[TODO]`)
+- Use TBD placeholders in adapter spec docs (e.g., `TBD`, `[TBD]`)
+- Use FIXME placeholders in adapter spec docs (e.g., `FIXME`)
+- Use `XXX` markers in adapter spec docs
+- Use HTML comment placeholders in adapter spec docs (e.g., `<!-- TODO: ... -->`)
+- Leave `{placeholder}` content in adapter spec docs
+
 ### Markdown Validity (Artifacts)
 
 **MUST**:
@@ -184,6 +194,18 @@ This file defines requirements that are shared across multiple `*-structure.md` 
 - [ ] No occurrences of `@DESIGN.md` in adapter spec docs under `{adapter-directory}/FDD-Adapter/specs/`
 - [ ] No occurrences of `@BUSINESS.md` in adapter spec docs under `{adapter-directory}/FDD-Adapter/specs/`
 - [ ] No occurrences of `@ADR.md` in adapter spec docs under `{adapter-directory}/FDD-Adapter/specs/`
+
+### Placeholders (Adapter Spec Docs)
+
+**Check**:
+- [ ] No occurrences of `TODO` in adapter spec docs under `{adapter-directory}/FDD-Adapter/specs/`
+- [ ] No occurrences of `[TODO]` in adapter spec docs under `{adapter-directory}/FDD-Adapter/specs/`
+- [ ] No occurrences of `TBD` in adapter spec docs under `{adapter-directory}/FDD-Adapter/specs/`
+- [ ] No occurrences of `[TBD]` in adapter spec docs under `{adapter-directory}/FDD-Adapter/specs/`
+- [ ] No occurrences of `FIXME` in adapter spec docs under `{adapter-directory}/FDD-Adapter/specs/`
+- [ ] No occurrences of `XXX` in adapter spec docs under `{adapter-directory}/FDD-Adapter/specs/`
+- [ ] No occurrences of `{placeholder}` content in adapter spec docs under `{adapter-directory}/FDD-Adapter/specs/`
+- [ ] No occurrences of HTML comment placeholders in adapter spec docs under `{adapter-directory}/FDD-Adapter/specs/`
 
 ### Placeholders (Artifacts)
 

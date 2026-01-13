@@ -176,7 +176,6 @@ Allowed formats:
 
 1. **File exists**
    - `architecture/features/FEATURES.md` exists
-   - File has substantive content
 
 2. **Header present**
    - Project name in title
@@ -328,10 +327,10 @@ BUSINESS.md:
 ### For Validator (Workflow 04)
 
 **Validate**:
-1. File-level (exists, has content)
-2. Structure (header, feature list format)
-3. Content (directories exist, dependencies valid)
-4. Cross-validation (alignment with Overall Design)
+1. File-level (exists)
+2. Structure
+3. Content
+4. Cross-validation
 
 ---
 

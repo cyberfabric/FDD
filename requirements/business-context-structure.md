@@ -321,7 +321,7 @@
    - No top-level sections E or beyond
    - Only A-D allowed at top level (D is optional)
 
-4. **Markdown formatting valid**
+4. **Headers use proper levels**
    - Headers use proper levels (## for A-D, #### for actors/capabilities)
 
 ### Content Validation

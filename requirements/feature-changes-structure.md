@@ -364,7 +364,6 @@ mod schema_v1_tests {
    - Each task specifies affected files
    - Each task has validation criteria
    - Tasks in logical order
-   - No placeholders
    - Each change includes a dedicated code tagging task group ensuring tags are added to code comments
 
 3. **Specification completeness**
@@ -419,11 +418,7 @@ mod schema_v1_tests {
    - Coverage map shows 100% coverage
    - No requirements orphaned
 
-2. **No placeholders**
-   - No empty specifications
-   - All tasks have clear actions
-
-3. **Change atomicity**
+2. **Change atomicity**
    - Each change implements 1-5 requirements
    - Each change is deployable independently (after dependencies)
    - No change too large (>10 tasks)
@@ -433,7 +428,7 @@ mod schema_v1_tests {
 
 **Breakdown**:
 - File structure (10 points): CHANGES.md + change directories
-- Change structure (20 points): All required sections, no placeholders
+- Change structure (20 points): All required sections
 - Task breakdown (15 points): Granular, actionable, validated
 - Specification (15 points): Complete domain/API/DB/code specs
 - Code tagging (5 points): Tag format specified, validation approach defined

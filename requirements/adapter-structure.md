@@ -204,9 +204,9 @@ Adapter validation depends on project phase:
 
 **Check**:
 - [ ] All specs have clear format descriptions (5)
-- [ ] Examples are concrete (not generic placeholders) (5)
+- [ ] Examples are concrete (5)
 - [ ] Commands are cross-platform compatible (5)
-- [ ] No `[TODO]`, `[TBD]`, or placeholder text (5)
+- [ ] Examples match declared technology and paths (5)
 
 #### Integration (25 points)
 
@@ -353,13 +353,6 @@ Missing specifications:
 ```
 Run workflow: adapter-validate
 ```
-
-**Expected output**:
-- Score: X/100
-- Status: PASS (≥90) | FAIL (<90)
-- Issues: List of missing/invalid items
-- Recommendations: What to fix
-
 ---
 
 ## References

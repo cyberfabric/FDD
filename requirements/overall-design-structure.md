@@ -288,7 +288,7 @@ Each functional requirement (FR) MUST include the following fields:
 
 ### File-Level Validation
 
-1. **File exists and has adequate content**
+1. **File exists**
    - File `architecture/DESIGN.md` exists
    - File contains ≥200 lines (recommended: 500-2000 lines)
 
@@ -309,7 +309,7 @@ Each functional requirement (FR) MUST include the following fields:
    - Only A-D allowed at top level (D is optional)
    - Section C has exactly 5 subsections (C.1-C.5)
 
-4. **Markdown formatting valid**
+4. **Headers use proper levels**
    - Headers use proper levels (## for A-D, ### for C.1-C.5)
 
 ### Content Validation
@@ -326,11 +326,7 @@ Each functional requirement (FR) MUST include the following fields:
    - At least one diagram in Section C.1
    - Can be embedded image, Mermaid code, or ASCII art
 
-4. **No placeholders remain**
-   - No empty or stub sections
-   - All sections have substantive content
-
-5. **Domain type identifiers use complete format**
+4. **Domain type identifiers use complete format**
    - Must include namespace/module identifier
    - Must include type name
    - Must include version
@@ -338,13 +334,13 @@ Each functional requirement (FR) MUST include the following fields:
    - No short-form identifiers without namespace
    - Notation consistent throughout document
 
-6. **Requirement IDs follow FDD format**
+5. **Requirement IDs follow FDD format**
    - All functional requirements have unique IDs with `**ID**: \`fdd-{project-name}-req-{short-name}\`` format
    - All principle IDs follow `**ID**: \`fdd-{project-name}-principle-{name}\`` format
    - All non-functional requirement categories have unique IDs with `**ID**: \`fdd-{project-name}-nfr-{name}\`` format
    - All constraints have unique IDs with `**ID**: \`fdd-{project-name}-constraint-{name}\`` format
 
-7. **Cross-references are valid**
+6. **Cross-references are valid**
    - References to BUSINESS.md elements (actors, capabilities) use valid IDs
    - References to domain model files are valid paths
    - References to API contract files are valid paths
@@ -483,16 +479,15 @@ DESIGN.md Section B.1 (Functional Requirements):
 ### For Validator (Workflow 02)
 
 **Validate**:
-1. Structure completeness (sections, subsections)
-2. Domain model accessibility (files exist, parseable)
-3. API contracts accessibility (files exist, parseable)
-4. Content substantiveness (no empty sections)
+1. Structure completeness
+2. Domain model accessibility
+3. API contracts accessibility
 
 **Scoring**:
 - Structure (30 points): All sections present
 - Domain Model (25 points): Valid machine-readable format
 - API Contracts (25 points): Valid machine-readable format
-- Content Quality (20 points): Substantive, no placeholders
+- Content Quality (20 points)
 
 ---
 

@@ -303,7 +303,6 @@
 1. **File exists and size**
    - File `architecture/features/feature-{slug}/DESIGN.md` exists
    - File ≤4000 lines (warning if >3000)
-   - File has substantial content
 
 ### Structure Validation
 
@@ -396,9 +395,7 @@
 
 ### Completeness Validation
 
-1. **No placeholders**
-
-2. **No type redefinitions**
+1. **No type redefinitions**
    - No phrases like "type definition"
    - No schema definitions in JSON/YAML blocks
    - All types referenced from Overall Design
@@ -418,11 +415,11 @@
 ### For Validator (Workflow 06)
 
 **Validate**:
-1. File-level (exists, size)
-2. Structure (all sections present, correct order)
-3. Content (FDL syntax, no code, sufficient detail)
-4. Cross-validation (alignment with Overall Design)
-5. Completeness (no placeholders, no type redefinitions)
+1. File-level
+2. Structure
+3. Content
+4. Cross-validation
+5. Completeness
 
 **Scoring**:
 - Structure (20 points): All required sections present (A-F)
