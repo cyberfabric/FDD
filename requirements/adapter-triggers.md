@@ -16,7 +16,7 @@
 
 ALWAYS do check that adapter exists:
 - Search for `{adapter-directory}/FDD-Adapter/AGENTS.md` in common locations:
-  - `guidelines/FDD-Adapter/AGENTS.md`
+  - `/FDD-Adapter/AGENTS.md`
   - `spec/FDD-Adapter/AGENTS.md`
   - `docs/FDD-Adapter/AGENTS.md`
 

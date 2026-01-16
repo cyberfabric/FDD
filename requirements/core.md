@@ -190,6 +190,48 @@ ALWAYS open and follow `core-agents.md` WHEN creating or modifying AGENTS.md fil
 
 **MUST NOT**: `[TODO]`, `[TBD]` | Empty sections
 
+### Validation Criteria & Checklists
+
+**MUST**: All requirements files and adapter specs MUST include validation criteria and checklists
+
+**Requirements for validation sections**:
+- **Validation Criteria**: Structured breakdown with point values (100-point scale)
+- **Checklist format**: Use `- [ ]` checkboxes for agent self-verification
+- **Self-test sections**: Questions agent must answer before completing work
+- **Pass thresholds**: Clear minimum scores (e.g., ≥90/100)
+
+**Purpose**: Enable agent self-checking and systematic verification
+
+**Example structure**:
+```markdown
+## Validation Criteria
+
+### Category 1 (30 points)
+- [ ] Criterion 1 (10 points)
+- [ ] Criterion 2 (10 points)
+- [ ] Criterion 3 (10 points)
+
+### Category 2 (40 points)
+- [ ] Criterion 4 (20 points)
+- [ ] Criterion 5 (20 points)
+
+**Pass threshold**: ≥90/100
+
+## Self-Test Checklist
+
+Before completing, verify:
+- [ ] Did I check every criterion individually?
+- [ ] Did I verify all required elements?
+- [ ] Is my scoring accurate?
+```
+
+**Applies to**:
+- All `requirements/*-structure.md` files
+- All adapter `specs/*.md` files
+- All validation workflow files
+
+---
+
 ### References
 
 **Format**: All references MUST use an action-gated conditional format with a WHEN clause
@@ -239,6 +281,7 @@ ALWAYS open and follow `core-agents.md` WHEN creating or modifying AGENTS.md fil
 4. **Complete**: No TODO/TBD | No empty sections | All examples present
 5. **Markdown rendering**: Metadata lines do not collapse | No reliance on soft-wrap | Prefer list format
 6. **References**: All references use action-gated WHEN format | No content duplication from referenced files
+7. **Validation criteria**: Requirements files and adapter specs MUST include validation criteria and checklists
 
 ### Validation Scoring
 

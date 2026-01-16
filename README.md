@@ -118,13 +118,13 @@ All operation workflows automatically detect whether you're creating something n
 
 First time:
 ```
-Follow @guidelines/FDD/workflows/adapter.md
+Follow @/FDD/workflows/adapter.md
 → No adapter found → CREATE mode
 ```
 
 Later, to update:
 ```
-Follow @guidelines/FDD/workflows/adapter.md
+Follow @/FDD/workflows/adapter.md
 → Adapter exists → UPDATE mode
 → What to update?
    - Domain model specs
@@ -155,7 +155,7 @@ Q3: API contract format?
 **Example: Iterating on Feature Design**
 
 ```
-Follow @guidelines/FDD/workflows/feature.md
+Follow @/FDD/workflows/feature.md
 → Feature exists → UPDATE mode
 → What to update?
    - Add new actor flow
@@ -711,13 +711,12 @@ feature-login/
 **Option A: Copy FDD core**
 ```bash
 # In your project root
-mkdir -p guidelines
-cp -r /path/to/FDD guidelines/FDD
+cp -r /path/to/FDD /FDD
 ```
 
 **Option B: Git submodule** (recommended for shared projects)
 ```bash
-git submodule add <fdd-repo-url> guidelines/FDD
+git submodule add <fdd-repo-url> /FDD
 ```
 
 ### 3. Create Project Adapter (5-10 minutes) 
@@ -726,7 +725,7 @@ git submodule add <fdd-repo-url> guidelines/FDD
 
 With AI agent:
 ```
-Follow @guidelines/FDD/workflows/adapter.md to create FDD adapter
+Follow @/FDD/workflows/adapter.md to create FDD adapter
 ```
 
 This interactive workflow will:
@@ -764,8 +763,8 @@ All configs:
 
 **AI agent workflows**: 
 ```
-Follow @guidelines/FDD/workflows/business-context.md
-Follow @guidelines/FDD/workflows/design.md
+Follow @/FDD/workflows/business-context.md
+Follow @/FDD/workflows/design.md
 ```
 
 These workflows guide you through creating BUSINESS.md and DESIGN.md with interactive questions.
@@ -774,8 +773,8 @@ These workflows guide you through creating BUSINESS.md and DESIGN.md with intera
 
 **AI agent workflows**:
 ```
-Follow @guidelines/FDD/workflows/features.md  # Generate FEATURES.md
-Follow @guidelines/FDD/workflows/feature.md   # Create feature design
+Follow @/FDD/workflows/features.md  # Generate FEATURES.md
+Follow @/FDD/workflows/feature.md   # Create feature design
 ```
 
 These workflows extract features from design and guide you through creating feature designs.

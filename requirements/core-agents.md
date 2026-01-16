@@ -41,7 +41,7 @@
 - For `{adapter-directory}/FDD-Adapter/AGENTS.md`, each navigation rule MUST use a WHEN clause that is ONLY a list of FDD workflows.
 - Canonical form:
   - `ALWAYS open and follow {spec-file} WHEN executing workflows: {workflow1.md}, {workflow2.md}, ...`
-- The workflow names MUST match files under `guidelines/FDD/workflows/`.
+- The workflow names MUST match files under `/FDD/workflows/`.
 - The WHEN clause MUST NOT use generic conditions like "working with domain types".
 
 **Rationale**: Single source of truth - content lives in spec files, AGENTS.md only directs to them

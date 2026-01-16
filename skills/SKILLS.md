@@ -61,7 +61,7 @@ If a skill contains `scripts/`, it MUST:
 - Cover both PASS and FAIL cases for every supported artifact kind/branch in the script
 
 To run tests:
-- `python3 -m unittest discover -s guidelines/FDD/skills/<skill>/tests -p 'test_*.py'`
+- `python3 -m unittest discover -s /FDD/skills/<skill>/tests -p 'test_*.py'`
 
 ---
 

@@ -44,11 +44,15 @@
 3. **Evolution** (during design): Design decisions → update adapter specs
 4. **Refinement** (during implementation): Code patterns → update adapter specs
 
-**Location**: `{adapter-directory}/FDD-Adapter/` where user chooses:
-- `guidelines/FDD-Adapter/` (common)
-- `spec/FDD-Adapter/` (alternative)
-- `docs/FDD-Adapter/` (alternative)
-- Custom path
+**Location**: `FDD-Adapter/` at project root (required)
+
+**Correct locations**:
+- `{project-root}/FDD-Adapter/` (recommended, simple path)
+- `{project-root}/guidelines/FDD-Adapter/` (alternative)
+- `{project-root}/spec/FDD-Adapter/` (alternative)
+- `{project-root}/docs/FDD-Adapter/` (alternative)
+
+**Important**: Adapter MUST be discoverable from project root. Avoid deep nesting in subdirectories.
 
 **Bootstrap Structure**:
 ```
@@ -127,6 +131,12 @@ ALWAYS open and follow `specs/build-deploy.md` WHEN executing workflows: feature
 
 ALWAYS open and follow `specs/testing.md` WHEN executing workflows: feature-change-implement.md, feature-code-validate.md
 
+ALWAYS open and follow `specs/linting.md` WHEN executing workflows: feature-change-implement.md, feature-code-validate.md
+
+ALWAYS open and follow `specs/security.md` WHEN executing workflows: design.md, design-validate.md, feature.md, feature-validate.md, feature-change-implement.md, feature-code-validate.md
+
+ALWAYS open and follow `specs/performance.md` WHEN executing workflows: design.md, design-validate.md, feature.md, feature-validate.md, feature-change-implement.md, feature-code-validate.md
+
 ALWAYS open and follow `specs/project-structure.md` WHEN executing workflows: adapter.md, adapter-auto.md, adapter-manual.md, adapter-bootstrap.md, adapter-validate.md, feature.md, feature-validate.md, feature-changes.md, feature-changes-validate.md
 ```
 
@@ -143,8 +153,47 @@ ALWAYS open and follow `specs/project-structure.md` WHEN executing workflows: ad
 | `conventions.md` | Code analysis + ADRs + configs | Naming, style, file organization |
 | `build-deploy.md` | Configs + ADRs + discovery | Build commands, CI/CD, deployment steps |
 | `testing.md` | Test code + ADRs + discovery | Test frameworks, structure, commands |
+| `linting.md` | Linter configs + ADRs | Linting rules, tools, custom lints |
+| `security.md` | Security requirements + ADRs | Auth, validation, encryption, audit logging |
+| `performance.md` | Performance requirements + ADRs | Benchmarks, profiling, optimization guidelines |
+| `project-structure.md` | Directory analysis | File organization, module structure |
+| `rest-api-guidelines.md` | API design + ADRs | REST conventions, endpoint patterns, versioning |
+| `architectural-lints.md` | Custom lints + ADRs | Project-specific architectural rules |
+| `module-creation.md` | Module patterns + ADRs | How to create new modules, templates |
 | `snippets/{category}.md` | Implementation code | Reusable code snippets, utilities |
 | `examples/{feature}.md` | Feature implementations | Pattern usage examples from features |
+
+**Required spec structure** (applies to all spec files):
+
+Each spec file MUST include:
+
+1. **Header**: Version, Purpose, Scope
+2. **Content sections**: Specific to spec type
+3. **Validation criteria**: Checklist for agent self-verification
+4. **Examples**: Valid and invalid examples with ✅/❌
+
+**Validation criteria format**:
+```markdown
+## Validation Checklist
+
+Agent MUST verify before implementation:
+- [ ] Criterion 1: {specific check}
+- [ ] Criterion 2: {specific check}
+- [ ] Criterion 3: {specific check}
+
+**Self-test**:
+- [ ] Did I check all criteria?
+- [ ] Are examples concrete and project-specific?
+- [ ] Do commands work on target platform?
+```
+
+**Purpose**: Enable systematic agent self-checking during workflow execution
+
+**Common spec categories**:
+- **Core specs**: tech-stack, domain-model, api-contracts, conventions, testing, build-deploy
+- **Quality specs**: linting, security, performance, architectural-lints
+- **Structure specs**: project-structure, patterns, module-creation
+- **API specs**: rest-api-guidelines (for REST APIs), graphql-guidelines (for GraphQL), cli-spec (for CLI tools)
 
 **Creation triggers** (see adapter workflow)
 
@@ -216,6 +265,54 @@ Adapter validation depends on project phase:
 - [ ] Specs consistent with DESIGN.md (if exists) (5)
 
 **Pass threshold**: ≥80/100
+
+---
+
+## Validation Criteria for This File
+
+**This section validates adapter-structure.md itself against core.md requirements**
+
+### Structure (20 points)
+
+**Check**:
+- [ ] Header present: Title, Version, Purpose, Scope (5)
+- [ ] Overview section explains philosophy and lifecycle (5)
+- [ ] All required sections present (5)
+- [ ] References section lists dependencies (5)
+
+### Content (30 points)
+
+**Check**:
+- [ ] Language is imperative and agent-centric (10)
+- [ ] All placeholders use {descriptive-name} format (5)
+- [ ] No TODO/TBD or empty sections (5)
+- [ ] Valid and invalid examples provided with ✅/❌ (10)
+
+### Validation Criteria (30 points)
+
+**Check**:
+- [ ] Two-phase validation clearly defined (10)
+- [ ] All criteria use checkbox format `- [ ]` (5)
+- [ ] Point values sum to 100 for each phase (10)
+- [ ] Pass thresholds specified (5)
+
+### References (20 points)
+
+**Check**:
+- [ ] All references use WHEN clause format (10)
+- [ ] No content duplication from referenced files (5)
+- [ ] Related files listed at bottom (5)
+
+**Pass threshold**: ≥95/100
+
+### Self-Test Checklist
+
+**Before considering adapter-structure.md complete, verify**:
+- [ ] Did I check every validation criterion individually?
+- [ ] Are all examples concrete and understandable?
+- [ ] Do validation checklists enable agent self-verification?
+- [ ] Is scoring arithmetic correct (sums to 100)?
+- [ ] Are all WHEN clauses properly formatted?
 
 ---
 

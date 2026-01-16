@@ -200,7 +200,7 @@ mkdir -p src/{domain,infrastructure,api}
 
 ```bash
 # 1. Open workflow
-cat guidelines/FDD/workflows/01-init-project.md
+cat /FDD/workflows/01-init-project.md
 
 # 2. Follow steps
 mkdir -p architecture/features
@@ -215,7 +215,7 @@ ls -la architecture/
 ### AI Agent
 
 ```python
-workflow = parse_markdown("guidelines/FDD/workflows/01-init-project.md")
+workflow = parse_markdown("/FDD/workflows/01-init-project.md")
 for step in workflow.steps:
     execute(step.commands)
     validate(step.expected_result)

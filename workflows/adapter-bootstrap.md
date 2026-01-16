@@ -48,12 +48,12 @@ Extract:
 Ask user to select adapter directory:
 
 **Options**:
-1. `guidelines/FDD-Adapter/` (recommended for docs-heavy projects)
+1. `/FDD-Adapter/` (recommended for docs-heavy projects)
 2. `spec/FDD-Adapter/` (recommended for technical projects)
 3. `docs/FDD-Adapter/` (alternative)
 4. Custom path
 
-**Default**: `guidelines/FDD-Adapter/`
+**Default**: `/FDD-Adapter/`
 
 Store as: `ADAPTER_DIR`
 
@@ -62,17 +62,17 @@ Store as: `ADAPTER_DIR`
 Calculate path from `ADAPTER_DIR` to FDD core:
 
 ```yaml
-If guidelines/FDD-Adapter/:
+If /FDD-Adapter/:
   relative_path = ../FDD/AGENTS.md
 
 If spec/FDD-Adapter/:
-  relative_path = ../../guidelines/FDD/AGENTS.md
+  relative_path = ../..//FDD/AGENTS.md
 
 If docs/FDD-Adapter/:
-  relative_path = ../../guidelines/FDD/AGENTS.md
+  relative_path = ../..//FDD/AGENTS.md
 
 If custom/{path}/FDD-Adapter/:
-  Calculate: relative path to guidelines/FDD/AGENTS.md
+  Calculate: relative path to /FDD/AGENTS.md
 ```
 
 Store as: `RELATIVE_PATH`
@@ -184,8 +184,8 @@ Automatically runs `adapter-validate` at completion
 ### Example Output
 
 ```
-✓ Created: guidelines/FDD-Adapter/
-✓ Created: guidelines/FDD-Adapter/AGENTS.md
+✓ Created: /FDD-Adapter/
+✓ Created: /FDD-Adapter/AGENTS.md
 
 Content:
 # FDD Adapter: Acronis MCP Server

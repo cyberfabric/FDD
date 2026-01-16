@@ -51,7 +51,7 @@ Extract:
 ### 1. Check Adapter State
 
 Search for adapter:
-- `guidelines/FDD-Adapter/AGENTS.md`
+- `/FDD-Adapter/AGENTS.md`
 - `spec/FDD-Adapter/AGENTS.md`
 - `docs/FDD-Adapter/AGENTS.md`
 

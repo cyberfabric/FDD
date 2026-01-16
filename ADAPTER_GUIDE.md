@@ -74,7 +74,14 @@ Everything else is adapter-specific. Define as needed:
 
 **Note**: All FDD operation workflows now support **CREATE and UPDATE modes**. Adapters can be created once and updated anytime as project evolves. Use `adapter.md` workflow to create or update your adapter.
 
-### Domain Model Format
+### Tech Stack (`specs/tech-stack.md`)
+- Primary language and version
+- Frameworks (backend, frontend)
+- Database type and version
+- Additional services (cache, message queue, search)
+- Development tools (package manager, build tool, linter, formatter)
+
+### Domain Model Format (`specs/domain-model.md`)
 - Technology (TypeScript, JSON Schema, Protobuf, GTS, etc.)
 - Location (`architecture/domain-model/`, per-feature, etc.)
 - DML syntax (`@DomainModel.TypeName` for clickable references)
@@ -82,7 +89,7 @@ Everything else is adapter-specific. Define as needed:
 - Naming conventions
 - Traceability requirements (clickable links from Feature→Overall)
 
-### API Contract Format
+### API Contract Format (`specs/api-contracts.md`)
 - Technology (OpenAPI, GraphQL, gRPC, CLISPEC, etc.)
 - Location (`architecture/api-specs/`, `architecture/cli-specs/`, etc.)
 - Linking syntax (`@API.GET:/path`, `@CLI.command-name`, `@Feature.{slug}` for clickable references)
@@ -92,14 +99,75 @@ Everything else is adapter-specific. Define as needed:
 
 **Note**: For CLI tools, consider using **CLISPEC** - a built-in, simple format for CLI command documentation. See `CLISPEC.md` for specification.
 
-### Implementation Details
-- Database technology and patterns
-- Authentication/authorization approach
+### Patterns & Architecture (`specs/patterns.md`)
+- Architecture style (layered, hexagonal, microservices, etc.)
+- Core design patterns (DI, repository, error handling, etc.)
+- Anti-patterns to avoid
+- Module organization guidelines
+
+### Code Conventions (`specs/conventions.md`)
+- Naming conventions (files, directories, variables, functions, classes)
+- Code style (indentation, line length, braces, imports)
+- Documentation requirements
 - Error handling patterns
-- Testing strategy (frameworks, locations)
-- Build/deployment commands
-- Code style and linting rules
-- Validation output format (MUST be chat output only, NO report files)
+
+### Testing Strategy (`specs/testing.md`)
+- Test frameworks (unit, integration, E2E)
+- Test organization and structure
+- Coverage requirements
+- Mocking strategy
+- Test commands
+
+### Build & Deployment (`specs/build-deploy.md`)
+- Build tool and commands
+- Development environment setup
+- CI/CD pipeline configuration
+- Deployment strategy and environments
+- Database migrations
+
+### Linting (`specs/linting.md`)
+- Linter configuration
+- Formatting tools
+- Pre-commit hooks
+- CI integration
+- Custom lint rules
+
+### Security (`specs/security.md`)
+- Authentication and authorization strategy
+- Input validation requirements
+- Data protection (encryption, sensitive data handling)
+- API security (rate limiting, CORS, headers)
+- Secrets management
+- Security testing
+
+### Performance (`specs/performance.md`)
+- Performance requirements and SLAs
+- Benchmarking strategy and tools
+- Profiling guidelines
+- Optimization best practices
+- Caching strategies
+- Resource usage limits
+
+### Project Structure (`specs/project-structure.md`)
+- Directory organization
+- File naming conventions
+- FDD artifact locations
+- Source code structure
+- Test and documentation locations
+
+### Additional Specs (as needed)
+- `rest-api-guidelines.md` - REST API conventions
+- `graphql-guidelines.md` - GraphQL schema patterns
+- `architectural-lints.md` - Custom architectural rules
+- `module-creation.md` - Module creation templates
+- Language-specific guidelines (e.g., `rust-guidelines.md`, `typescript-guidelines.md`)
+
+**Required in all spec files**:
+- **Validation checklist**: Agent self-verification criteria
+- **Examples**: Valid ✅ and invalid ❌ examples
+- **Commands**: Concrete, cross-platform verification commands
+
+**Validation output format**: MUST be chat output only, NO report files
 
 ### Behavior Description Language (Optional Override)
 - **Default**: FDL (Flow Description Language) for flows/algorithms/states
@@ -119,20 +187,38 @@ Everything else is adapter-specific. Define as needed:
 ## Adapter Structure
 
 ```bash
-{adapter-directory}/             # Configurable: spec/, guidelines/, docs/
-├── FDD/                         # Core (immutable rules)
-└── FDD-Adapter/                 # Your project-specific extensions
-    ├── AGENTS.md                # Navigation rules (WHEN executing workflows: ...)
-    └── specs/                   # Detailed specifications
-        ├── domain-model.md      # Domain model format and location
-        ├── api-contracts.md     # API contract format and location
-        ├── testing.md           # Testing frameworks and commands
-        ├── build-deploy.md      # Build and deployment commands
-        ├── project-structure.md # Directory structure
-        └── conventions.md       # Coding standards and patterns
+{project-root}/
+├── FDD-Adapter/                 # Your project-specific extensions (at root level)
+│   ├── AGENTS.md                # Navigation rules (WHEN executing workflows: ...)
+│   └── specs/                   # Detailed specifications
+│       ├── tech-stack.md        # Languages, frameworks, databases, versions
+│       ├── domain-model.md      # Domain model format and location
+│       ├── api-contracts.md     # API contract format and location
+│       ├── patterns.md          # Architecture patterns and design principles
+│       ├── conventions.md       # Coding standards and naming rules
+│       ├── testing.md           # Testing frameworks and commands
+│       ├── build-deploy.md      # Build and deployment commands
+│       ├── linting.md           # Linting rules and tools
+│       ├── security.md          # Security requirements and practices
+│       ├── performance.md       # Performance requirements and optimization
+│       └── project-structure.md # Directory structure and organization
+└── FDD/                         # Core FDD (as git submodule or direct copy)
 ```
 
-**Note**: `{adapter-directory}` is configured by project owner (commonly `spec/`, `guidelines/`, or `docs/`)
+**Important**: FDD-Adapter MUST be at project root level, discoverable from `{project-root}/FDD-Adapter/`
+
+**Alternative locations** (if needed):
+- `{project-root}/guidelines/FDD-Adapter/`
+- `{project-root}/spec/FDD-Adapter/`
+- `{project-root}/docs/FDD-Adapter/`
+
+**Avoid**: Deep nesting like `{project-root}/guidelines/subfolder/FDD-Adapter/` ❌
+
+**Common spec files** (create as needed):
+- **Core**: tech-stack, domain-model, api-contracts, conventions, testing, build-deploy
+- **Quality**: linting, security, performance, architectural-lints
+- **Structure**: project-structure, patterns, module-creation
+- **API-specific**: rest-api-guidelines, graphql-guidelines, cli-spec
 
 ---
 
@@ -192,6 +278,26 @@ Reference as: `@DomainModel.User`
 ## Traceability
 
 All Feature DESIGN.md files MUST use clickable links to domain model types.
+```
+
+**Example spec file** (`specs/tech-stack.md`):
+```markdown
+# Tech Stack Specification
+
+**Primary Language**: Rust 1.75+  
+**Backend Framework**: Axum 0.7  
+**Database**: PostgreSQL 15 with SQLx  
+**Caching**: Redis 7
+
+## Testing Tools
+- Unit tests: `cargo test`
+- Integration tests: `cargo test --test '*'`
+- E2E tests: Custom test framework
+
+## Build Commands
+- Build: `cargo build --release`
+- Lint: `cargo clippy -- -D warnings`
+- Format: `cargo fmt --check`
 ```
 
 ---

@@ -86,17 +86,17 @@ class TestDetectRequirements(unittest.TestCase):
     def test_detect_requirements_overall_design(self):
         kind, req_path = VA.detect_requirements(Path("/tmp/architecture/DESIGN.md"))
         self.assertEqual(kind, "overall-design")
-        self.assertTrue(str(req_path).endswith("guidelines/FDD/requirements/overall-design-structure.md"))
+        self.assertTrue(str(req_path).endswith("/FDD/requirements/overall-design-structure.md"))
 
     def test_detect_requirements_feature_design(self):
         kind, req_path = VA.detect_requirements(Path("/tmp/architecture/features/feature-x/DESIGN.md"))
         self.assertEqual(kind, "feature-design")
-        self.assertTrue(str(req_path).endswith("guidelines/FDD/requirements/feature-design-structure.md"))
+        self.assertTrue(str(req_path).endswith("/FDD/requirements/feature-design-structure.md"))
 
     def test_detect_requirements_archived_feature_changes(self):
         kind, req_path = VA.detect_requirements(Path("/tmp/architecture/features/feature-x/archive/2026-01-08-CHANGES.md"))
         self.assertEqual(kind, "feature-changes")
-        self.assertTrue(str(req_path).endswith("guidelines/FDD/requirements/feature-changes-structure.md"))
+        self.assertTrue(str(req_path).endswith("/FDD/requirements/feature-changes-structure.md"))
 
 
 class TestFeatureDesignValidation(unittest.TestCase):

@@ -176,7 +176,7 @@ Store as: `WORKFLOW_SPECIFIC`
 ```markdown
 # FDD Rules
 
-ALWAYS open and follow `guidelines/FDD/WORKFLOW.md` for workflow system.
+ALWAYS open and follow `/FDD/WORKFLOW.md` for workflow system.
 
 ALWAYS open and follow `{adapter-path}/AGENTS.md` for project conventions.
 
@@ -187,7 +187,7 @@ Check `{workflows-path}` before starting tasks.
 ```markdown
 # FDD Rules
 
-ALWAYS open and follow `guidelines/FDD/WORKFLOW.md` for workflow system.
+ALWAYS open and follow `/FDD/WORKFLOW.md` for workflow system.
 ALWAYS open and follow `{adapter-path}/AGENTS.md` for project conventions.
 
 ## Quick Workflow Reference
@@ -297,9 +297,9 @@ Test AI agent integration:
 ```markdown
 # FDD Rules
 
-ALWAYS open and follow `guidelines/FDD/WORKFLOW.md` for workflow system.
+ALWAYS open and follow `/FDD/WORKFLOW.md` for workflow system.
 
-ALWAYS open and follow `guidelines/FDD-Adapter/AGENTS.md` for project conventions.
+ALWAYS open and follow `/FDD-Adapter/AGENTS.md` for project conventions.
 
 Check `.windsurf/workflows/` before starting tasks.
 ```
@@ -310,8 +310,8 @@ Check `.windsurf/workflows/` before starting tasks.
 ```markdown
 # FDD Rules
 
-ALWAYS open and follow guidelines/FDD/WORKFLOW.md for workflow system.
-ALWAYS open and follow guidelines/FDD-Adapter/AGENTS.md for project conventions.
+ALWAYS open and follow /FDD/WORKFLOW.md for workflow system.
+ALWAYS open and follow /FDD-Adapter/AGENTS.md for project conventions.
 ```
 
 ### Windsurf Cascade - Full with Workflows

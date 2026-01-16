@@ -15,7 +15,7 @@ This guide helps you select the correct FDD workflow based on:
 - Artifacts that exist or need creation
 - Phase of development
 
-**All workflows located in**: `guidelines/FDD/workflows/`
+**All workflows located in**: `/FDD/workflows/`
 
 ---
 
@@ -23,11 +23,14 @@ This guide helps you select the correct FDD workflow based on:
 
 **BEFORE selecting any workflow**:
 
-1. Check if `{adapter-directory}/FDD-Adapter/AGENTS.md` exists
-2. Common locations:
-   - `spec/FDD-Adapter/AGENTS.md`
-   - `guidelines/FDD-Adapter/AGENTS.md`  
-   - `docs/FDD-Adapter/AGENTS.md`
+1. Check if `FDD-Adapter/AGENTS.md` exists at project root level
+2. Check these locations (in order):
+   - `{project-root}/FDD-Adapter/AGENTS.md` (recommended)
+   - `{project-root}/guidelines/FDD-Adapter/AGENTS.md`
+   - `{project-root}/spec/FDD-Adapter/AGENTS.md`
+   - `{project-root}/docs/FDD-Adapter/AGENTS.md`
+
+**Important**: Adapter MUST be at project root level, NOT deeply nested in subdirectories
 
 **If NO adapter** → Start with `adapter.md` workflow
 
@@ -41,7 +44,8 @@ This guide helps you select the correct FDD workflow based on:
 
 **adapter.md** - Create or update FDD adapter
 - **Use when**: No adapter exists OR need to update adapter
-- **Creates**: `{adapter-directory}/FDD-Adapter/AGENTS.md` + spec files
+- **Creates**: `{project-root}/FDD-Adapter/AGENTS.md` + spec files
+- **Location**: Project root level (not nested in subdirectories)
 - **Modes**: CREATE or UPDATE
 - **Next**: `business-context` or `adapter-validate`
 
@@ -374,4 +378,4 @@ feature (UPDATE mode) → feature-validate
 - `core-workflows.md` - Workflow file format specification
 - All requirement files in `requirements/` - Referenced by workflows
 
-**All workflows located in**: `guidelines/FDD/workflows/`
+**All workflows located in**: `/FDD/workflows/`

@@ -66,7 +66,7 @@ Extract:
 ### 1. Locate Adapter
 
 Search common locations:
-- `guidelines/FDD-Adapter/AGENTS.md`
+- `/FDD-Adapter/AGENTS.md`
 - `spec/FDD-Adapter/AGENTS.md`
 - `docs/FDD-Adapter/AGENTS.md`
 

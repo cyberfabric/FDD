@@ -6,7 +6,28 @@ from typing import Dict, List, Optional, Tuple
 
 
 def _fdd_root_from_this_file() -> Path:
-    # .../guidelines/FDD/skills/<skill>/scripts/<script>.py
+    """
+    Find FDD root by walking up directory tree looking for FDD markers.
+    FDD can be located anywhere (as submodule, copied, etc.)
+    """
+    current = Path(__file__).resolve().parent
+    
+    # Walk up directory tree looking for FDD root markers
+    for _ in range(10):  # Limit search depth to avoid infinite loop
+        # Check for FDD root markers: AGENTS.md + requirements/ + workflows/
+        if (
+            (current / "AGENTS.md").exists() and
+            (current / "requirements").is_dir() and
+            (current / "workflows").is_dir()
+        ):
+            return current
+        
+        parent = current.parent
+        if parent == current:  # Reached filesystem root
+            break
+        current = parent
+    
+    # Fallback to old behavior if markers not found
     return Path(__file__).resolve().parents[3]
 
 
