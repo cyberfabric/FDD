@@ -205,7 +205,7 @@ This feature solves the problem of inconsistent design documentation by providin
    1. [x] - `ph-1` - **RETURN** path to `workflows/feature.md` - `inst-return-feature`
 8. [x] - `ph-1` - **IF** request contains "validate" - `inst-check-validate`
    1. [x] - `ph-1` - Extract artifact type from request - `inst-extract-artifact-type`
-   2. [x] - `ph-1` - **RETURN** path to `workflows/{artifact-type}-validate.md` - `inst-return-validate`
+   2. [x] - `ph-1` - **RETURN** path to `workflows/<artifact-type>-validate.md` - `inst-return-validate`
 9. [x] - `ph-1` - **IF** request contains "changes" - `inst-check-changes`
    1. [x] - `ph-1` - **RETURN** path to `workflows/feature-changes.md` - `inst-return-changes`
 10. [x] - `ph-1` - **IF** request contains "implement" - `inst-check-implement`
