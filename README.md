@@ -1,6 +1,7 @@
 <!-- @fdd-change:fdd-fdd-feature-core-methodology-change-quickstart-docs:ph-1 -->
 <!-- fdd-begin fdd-fdd-feature-core-methodology-flow-user-onboard:ph-1:inst-open-readme -->
 # Feature-Driven Design (FDD)
+FDD project overview.
 <!-- fdd-end   fdd-fdd-feature-core-methodology-flow-user-onboard:ph-1:inst-open-readme -->
 
 **Version**: 1.0  

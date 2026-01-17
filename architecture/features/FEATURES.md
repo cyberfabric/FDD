@@ -1,6 +1,6 @@
 # Features: FDD
 
-**Status Overview**: 13 features total (0 completed, 0 in progress, 13 not started)
+**Status Overview**: 13 features total (0 completed, 1 in progress, 12 not started)
 
 **Meaning**:
 - ⏳ NOT_STARTED
@@ -11,7 +11,7 @@
 
 ## Features List
 
-### 1. [fdd-fdd-feature-core-methodology](feature-core-methodology/) 🚧 CRITICAL
+### 1. [fdd-fdd-feature-core-methodology](feature-core-methodology/) 🔄 CRITICAL
 
 - **Purpose**: Foundation FDD methodology framework with requirements files, workflow specifications, and base AGENTS.md navigation
 - **Status**: IN_PROGRESS
@@ -226,7 +226,7 @@
 - **Phases**:
   - `ph-1`: ⏳ NOT_STARTED — ADR creation and MADR format validation
 - **Requirements Covered**:
-  - fdd-fdd-req-adr-management
+  - fdd-fdd-req-arch-decision-mgmt
 - **Scope**:
   - MADR format (Markdown ADR)
   - ADR ID format follows pattern: `ADR-NNNN` or `fdd-PROJECT-adr-NAME`

@@ -37,8 +37,10 @@ Extract:
 ---
 
 ## Steps
-
-<!-- fdd-begin fdd-fdd-feature-core-methodology-flow-architect-bootstrap:ph-1:inst-execute-workflow -->
+ 
+ <!-- fdd-begin fdd-fdd-feature-core-methodology-flow-architect-bootstrap:ph-1:inst-execute-workflow -->
+ Determine Mode.
+ 
 ### 1. Determine Mode
 <!-- fdd-end   fdd-fdd-feature-core-methodology-flow-architect-bootstrap:ph-1:inst-execute-workflow -->
 

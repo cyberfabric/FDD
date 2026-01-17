@@ -1,3 +1,5 @@
+# @fdd-test:fdd-fdd-feature-core-methodology-test-parse-workflow:ph-1
+# @fdd-test:fdd-fdd-feature-core-methodology-test-validate-workflow-structure:ph-1
 """
 Test workflow file parsing and structure validation.
 
@@ -62,8 +64,10 @@ def test_validate_all_workflows_have_required_structure():
     workflows_dir = Path(__file__).parent.parent / "workflows"
     assert workflows_dir.exists(), "workflows/ directory not found"
     
-    # Get all workflow markdown files
-    workflow_files = list(workflows_dir.glob("*.md"))
+    # Get all workflow markdown files, excluding non-workflow files
+    all_files = list(workflows_dir.glob("*.md"))
+    exclude_files = {'README.md', 'AGENTS.md', 'adapter.md'}
+    workflow_files = [f for f in all_files if f.name not in exclude_files]
     assert len(workflow_files) > 0, "No workflow files found"
     
     required_sections = ['## Prerequisites', '## Steps', '## Validation']

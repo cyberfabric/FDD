@@ -71,10 +71,15 @@ Follow MUST WHEN instructions for:
 - Testing requirements
 - Build requirements
 
-### 3.1 Code Tagging<!-- fdd-begin fdd-fdd-feature-core-methodology-flow-developer-implement:ph-1:inst-add-tags -->
+### 3.1 Code Tagging
+<!-- fdd-begin fdd-fdd-feature-core-methodology-flow-developer-implement:ph-1:inst-add-tags -->
+Tag code with required @fdd-* markers.
+
 ## Step 4: Add FDD Tags
 
 **Action**: Tag code with @fdd-* markers
+
+Tag code with required @fdd-* markers.
 <!-- fdd-end   fdd-fdd-feature-core-methodology-flow-developer-implement:ph-1:inst-add-tags -->
 
 **Rule**: Phase MUST be encoded as a postfix on feature-scoped tags. Standalone phase tags MUST NOT be used.
@@ -122,6 +127,7 @@ Follow MUST WHEN instructions for:
 - Prefer multiple tags when a block covers multiple IDs (e.g., change + req + algo)
 
 **Examples (multiple IDs allowed)**:
+<!-- !no-fdd-begin -->
 ```rust
 // @fdd-change:fdd-analytics-feature-schema-query-returns-change-gts-schema-types:ph-1
 // @fdd-req:fdd-analytics-feature-schema-query-returns-req-routing:ph-1
@@ -165,7 +171,6 @@ match decision {
 ```
 
 ```rust
-// External middleware / platform library integration point (tag the attachment point).
 // fdd-begin fdd-analytics-feature-gts-core-flow-route-crud-operations:ph-1:inst-if-jwt-invalid
 // fdd-begin fdd-analytics-feature-gts-core-flow-route-crud-operations:ph-1:inst-return-401
 use modkit_security::SecurityCtx;
@@ -182,7 +187,6 @@ export async function handleSchemaQuery(
 }
 ```
 
-**Multiple changes/IDs in same file**:
 ```python
 # @fdd-change:fdd-analytics-feature-schema-query-returns-change-schema-validation:ph-1
 # @fdd-req:fdd-analytics-feature-schema-query-returns-req-validation:ph-1
@@ -193,6 +197,7 @@ def validate_schema_structure(schema: dict):
 def convert_gts_to_json_schema(gts_schema):
     pass
 ```
+<!-- !no-fdd-end -->
 
 ### 3.2 Tag Verification (agent checklist)
 
@@ -205,26 +210,38 @@ def convert_gts_to_json_schema(gts_schema):
 - `@fdd-change:` to list change-tagged files
 - `@fdd-flow:`, `@fdd-algo:`, `@fdd-state:`, `@fdd-req:`, `@fdd-test:` to confirm DESIGN coverage
 
-#<!-- fdd-begin fdd-fdd-feature-core-methodology-flow-developer-implement:ph-1:inst-run-tests -->
+<!-- fdd-begin fdd-fdd-feature-core-methodology-flow-developer-implement:ph-1:inst-run-tests -->
+Run the project test suite.
+
 ## Step 5: Run Tests
 
 **Action**: Execute test suite
 <!-- fdd-end   fdd-fdd-feature-core-methodology-flow-developer-implement:ph-1:inst-run-tests -->
 
 <!-- fdd-begin fdd-fdd-feature-core-methodology-flow-developer-implement:ph-1:inst-write-code -->
+Implement code changes for the selected task.
+
 ### 4. Implement Tasks
 
 **For each task in change**:
 1. Read task specification from CHANGES.md (hierarchical format: `1.1.1`, `1.2.1`, etc.)
 2. Implement according to adapter conventions
 3. Run task validation
+
 <!-- fdd-end   fdd-fdd-feature-core-methodology-flow-developer-implement:ph-1:inst-write-code -->
-4.<!-- fdd-begin fdd-fdd-feature-core-methodology-flow-developer-implement:ph-1:inst-mark-complete -->
+
+4.
+
+<!-- fdd-begin fdd-fdd-feature-core-methodology-flow-developer-implement:ph-1:inst-mark-complete -->
+Mark the task as complete in CHANGES.md.
+
 ## Step 6: Update CHANGES.md
 
 **Action**: Mark task as completed
-<!-- fdd-end   fdd-fdd-feature-core-methodology-flow-developer-implement:ph-1:inst-mark-complete -->ckbox from `- [ ]` to `- [x]`
+
+ckbox from `- [ ]` to `- [x]`
    - Example: `- [ ] 1.1.1 Task description` → `- [x] 1.1.1 Task description`
+<!-- fdd-end   fdd-fdd-feature-core-methodology-flow-developer-implement:ph-1:inst-mark-complete -->
 5. Proceed to next task
 
 **After each task**:

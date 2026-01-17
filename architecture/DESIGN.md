@@ -151,9 +151,9 @@ All specifications MUST be executable by humans or AI. Artifact structure MUST b
 
 #### FR-008: ADR Management
 
-**ID**: `fdd-fdd-req-adr-management`
+**ID**: `fdd-fdd-req-arch-decision-mgmt`
 
-**Capabilities**: `fdd-fdd-capability-adr-management`
+**Capabilities**: `fdd-fdd-capability-arch-decision-mgmt`
 
 **Actors**: `fdd-fdd-actor-architect`, `fdd-fdd-actor-technical-lead`, `fdd-fdd-actor-security-engineer`
 
@@ -526,7 +526,8 @@ The FDD system consists of 6 core components organized in a layered architecture
 **Technology**: CLISPEC for command-line interface (fdd tool)
 
 **Location**: 
-- Main specification: `CLISPEC.md`
+- Format specification: `CLISPEC.md`
+- Command specification: `skills/fdd/fdd.clispec`
 - Implementation: `skills/fdd/scripts/fdd.py`
 
 **Endpoints Overview**:

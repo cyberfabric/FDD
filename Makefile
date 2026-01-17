@@ -1,4 +1,4 @@
-.PHONY: test test-verbose test-quick validate validate-feature install clean help
+.PHONY: test test-verbose test-quick validate validate-feature validate-code validate-code-feature install clean help
 
 # Detect Python version with pytest installed
 PYTHON := $(shell python3.11 -c "import pytest" 2>/dev/null && echo python3.11 || echo python3)
@@ -8,14 +8,16 @@ help:
 	@echo "FDD Makefile"
 	@echo ""
 	@echo "Available targets:"
-	@echo "  make test           - Run all tests"
-	@echo "  make test-verbose   - Run tests with verbose output"
-	@echo "  make test-quick     - Run fast tests only (skip slow integration tests)"
-	@echo "  make validate       - Run FDD validator on core methodology feature"
-	@echo "  make validate-feature FEATURE=<name> - Validate specific feature"
-	@echo "  make install        - Install Python dependencies"
-	@echo "  make clean          - Clean Python cache files"
-	@echo "  make help           - Show this help message"
+	@echo "  make test                          - Run all tests"
+	@echo "  make test-verbose                  - Run tests with verbose output"
+	@echo "  make test-quick                    - Run fast tests only (skip slow integration tests)"
+	@echo "  make validate                      - Validate core methodology feature"
+	@echo "  make validate-feature FEATURE=name - Validate specific feature"
+	@echo "  make validate-code                 - Validate codebase traceability (entire project)"
+	@echo "  make validate-code-feature FEATURE=name - Validate code traceability for specific feature"
+	@echo "  make install                       - Install Python dependencies"
+	@echo "  make clean                         - Remove Python cache files"
+	@echo "  make help                          - Show this help message"
 
 # Run all tests
 test:
@@ -59,9 +61,24 @@ validate-feature:
 		exit 1; \
 	fi
 	@echo "Validating feature: $(FEATURE)..."
-	$(PYTHON) skills/fdd/scripts/fdd.py validate \
+	@python3.11 skills/fdd/scripts/fdd.py validate \
 		--artifact architecture/features/$(FEATURE)/CHANGES.md \
 		--design architecture/features/$(FEATURE)/DESIGN.md
+
+# Validate codebase traceability for entire project
+validate-code:
+	@echo "Validating codebase traceability..."
+	@python3.11 skills/fdd/scripts/fdd.py validate --artifact .
+
+# Validate code traceability for specific feature
+validate-code-feature:
+	@if [ -z "$(FEATURE)" ]; then \
+		echo "Error: FEATURE parameter required"; \
+		echo "Usage: make validate-code-feature FEATURE=feature-name"; \
+		exit 1; \
+	fi
+	@echo "Validating code traceability for feature: $(FEATURE)..."
+	@python3.11 skills/fdd/scripts/fdd.py validate --artifact architecture/features/$(FEATURE)
 
 # Install Python dependencies
 install:

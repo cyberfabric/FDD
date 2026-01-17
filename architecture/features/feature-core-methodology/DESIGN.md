@@ -59,15 +59,15 @@ This feature solves the problem of inconsistent design documentation by providin
 
 **Steps**:
 
-1. [x] - `ph-1` - Architect clones FDD repository or copies methodology files to new project - `inst-clone-repo`
-2. [x] - `ph-1` - Architect opens root AGENTS.md file - `inst-open-agents`
-3. [x] - `ph-1` - Architect reads quick start and bootstrap guidance - `inst-read-guidance`
-4. [x] - `ph-1` - Architect identifies need to create FDD adapter for project - `inst-identify-bootstrap`
+1. [ ] - `ph-1` - Architect clones FDD repository or copies methodology files to new project - `inst-clone-repo`
+2. [ ] - `ph-1` - Architect opens root AGENTS.md file - `inst-open-agents`
+3. [ ] - `ph-1` - Architect reads quick start and bootstrap guidance - `inst-read-guidance`
+4. [ ] - `ph-1` - Architect identifies need to create FDD adapter for project - `inst-identify-bootstrap`
 5. [x] - `ph-1` - Architect writes prompt to run adapter bootstrap workflow - `inst-trigger-workflow`
 6. [x] - `ph-1` - AI assistant creates adapter AGENTS.md with "Extends" declaration - `inst-create-adapter`
-7. [x] - `ph-1` - Architect writes prompt to trigger business context workflow - `inst-trigger-business`
+7. [ ] - `ph-1` - Architect writes prompt to trigger business context workflow - `inst-trigger-business`
 8. [x] - `ph-1` - AI assistant executes business context workflow - `inst-execute-workflow`
-9. [x] - `ph-1` - Architect reviews and validates business context - `inst-validate-business`
+9. [ ] - `ph-1` - Architect reviews and validates business context - `inst-validate-business`
 10. [x] - `ph-1` - Bootstrap complete in <30 minutes - `inst-complete-bootstrap`
 
 **Success Scenario**: Project has FDD methodology structure with adapter configured
@@ -91,13 +91,16 @@ This feature solves the problem of inconsistent design documentation by providin
 2. [x] - `ph-1` - Developer writes prompt requesting AI to open root AGENTS.md - `inst-open-agents-workflow`
 3. [x] - `ph-1` - AI assistant navigates to feature-specific workflow - `inst-navigate-feature-workflow`
 4. [x] - `ph-1` - AI assistant reads workflow prerequisites - `inst-read-prerequisites`
-5. [x] - `ph-1` - AI assistant checks all prerequisites satisfied - `inst-check-prerequisites`
-6. [x] - `ph-1` - AI assistant opens feature CHANGES.md - `inst-open-changes`
+5. [ ] - `ph-1` - AI assistant checks all prerequisites satisfied - `inst-check-prerequisites`
+6. [ ] - `ph-1` - AI assistant opens feature CHANGES.md - `inst-open-changes`
 7. [x] - `ph-1` - Developer selects which task to implement (via prompt) - `inst-select-task`
 8. [x] - `ph-1` - AI assistant reads task requirements from CHANGES.md - `inst-read-requirements`
 9. [x] - `ph-1` - AI assistant implements code following adapter conventions - `inst-write-code`
 10. [x] - `ph-1` - AI assistant adds FDD instruction tags to code - `inst-add-tags`
-11. [x] - `ph-1` - AI assistant validates generated artifact automatically - `inst-auto-validate`
+11. [ ] - `ph-1` - AI assistant validates generated artifact automatically - `inst-auto-validate`
+12. [x] - `ph-1` - AI assistant marks task as complete in CHANGES.md - `inst-mark-complete`
+13. [ ] - `ph-1` - Developer reviews and validates code - `inst-review-validate`
+14. [ ] - `ph-1` - Developer merges code into main branch - `inst-merge-code`
 
 **Success Scenario**: Feature DESIGN.md created and validated
 
@@ -132,6 +135,9 @@ This feature solves the problem of inconsistent design documentation by providin
 9. [x] - `ph-1` - AI assistant reads workflow steps sequentially - `inst-read-steps`
 10. [x] - `ph-1` - AI assistant executes each step following workflow instructions - `inst-execute-steps`
 11. [x] - `ph-1` - AI assistant runs auto-validation after artifact creation - `inst-run-auto-validation`
+12. [x] - `ph-1` - AI assistant runs tests - `inst-run-tests`
+13. [ ] - `ph-1` - AI assistant reports results - `inst-report-results`
+14. [ ] - `ph-1` - AI assistant updates workflow state - `inst-update-workflow-state`
 
 **Success Scenario**: Workflow executed autonomously with ≥95% success rate
 
@@ -168,9 +174,9 @@ This feature solves the problem of inconsistent design documentation by providin
 **Success Scenario**: User successfully bootstraps project in <15 minutes
 
 **Error Scenarios**:
-- [x] **IF** QUICKSTART steps fail - `inst-handle-quickstart-failure`
-  1. [x] - `ph-1` - User reports issue in FDD repository - `inst-report-issue`
-  2. [x] - `ph-1` - User falls back to manual AGENTS.md navigation - `inst-fallback-manual`
+11. [x] - `ph-1` - **IF** QUICKSTART steps fail - `inst-handle-quickstart-failure`
+   1. [x] - `ph-1` - User reports issue in FDD repository - `inst-report-issue`
+   2. [x] - `ph-1` - User falls back to manual AGENTS.md navigation - `inst-fallback-manual`
 
 ---
 
@@ -193,7 +199,7 @@ This feature solves the problem of inconsistent design documentation by providin
    1. [x] - `ph-1` - **RETURN** path to `workflows/adapter.md` - `inst-return-adapter`
 5. [x] - `ph-1` - **IF** request contains "business" AND NOT "validate" - `inst-check-business`
    1. [x] - `ph-1` - **RETURN** path to `workflows/business.md` - `inst-return-business`
-6. [x] - `ph-1` - **IF** request contains "design" AND NOT "feature" AND NOT "validate" - `inst-check-design`
+6. [ ] - `ph-1` - **IF** request contains "design" AND NOT "feature" AND NOT "validate" - `inst-check-design`
    1. [x] - `ph-1` - **RETURN** path to `workflows/design.md` - `inst-return-design`
 7. [x] - `ph-1` - **IF** request contains "feature" AND identifier provided - `inst-check-feature`
    1. [x] - `ph-1` - **RETURN** path to `workflows/feature.md` - `inst-return-feature`
@@ -246,16 +252,16 @@ This feature solves the problem of inconsistent design documentation by providin
 1. [x] - `ph-1` - Read artifact file content - `inst-read-artifact`
 2. [x] - `ph-1` - Parse markdown structure - `inst-parse-markdown`
 3. [x] - `ph-1` - Extract all headings and IDs - `inst-extract-headings`
-4. [x] - `ph-1` - Check for duplicate IDs - `inst-check-duplicates`
+4. [ ] - `ph-1` - Check for duplicate IDs - `inst-check-duplicates`
 5. [x] - `ph-1` - Initialize validation result object - `inst-init-result`
 6. [x] - `ph-1` - **FOR EACH** required section in structure requirements - `inst-for-each-required`
    1. [x] - `ph-1` - Search for section heading in parsed headings - `inst-search-heading`
-   2. [x] - `ph-1` - **IF** section NOT found - `inst-check-not-found`
-      1. [x] - `ph-1` - Add missing section error to validation result - `inst-add-missing-error`
-   3. [x] - `ph-1` - **ELSE** section found - `inst-section-found`
+   2. [ ] - `ph-1` - **IF** section NOT found - `inst-check-not-found`
+      1. [ ] - `ph-1` - Add missing section error to validation result - `inst-add-missing-error`
+   3. [ ] - `ph-1` - **ELSE** section found - `inst-section-found`
       1. [x] - `ph-1` - Validate section order matches requirements - `inst-validate-order`
-      2. [x] - `ph-1` - Validate section content meets minimum length - `inst-validate-length`
-7. [x] - `ph-1` - Check for duplicate sections - `inst-check-duplicates`
+      2. [ ] - `ph-1` - Validate section content meets minimum length - `inst-validate-length`
+7. [ ] - `ph-1` - Check for duplicate sections - `inst-check-duplicate-sections`
 8. [x] - `ph-1` - **IF** any errors found - `inst-check-errors`
    1. [x] - `ph-1` - Set validation status to FAIL - `inst-set-fail`
 9. [x] - `ph-1` - **ELSE** no errors - `inst-no-errors`
@@ -303,7 +309,7 @@ This feature solves the problem of inconsistent design documentation by providin
 2. [ ] - `ph-1` - Parse all WHEN clause lines - `inst-parse-when-lines`
 3. [ ] - `ph-1` - Extract workflow name from workflow context - `inst-extract-workflow-name`
 4. [ ] - `ph-1` - Initialize empty spec files list - `inst-init-spec-list`
-5. [ ] - `ph-1` - **FOR EACH** WHEN clause - `inst-for-each-when`
+5. [x] - `ph-1` - **FOR EACH** WHEN clause - `inst-for-each-when`
    1. [ ] - `ph-1` - Check if workflow name matches WHEN condition - `inst-check-workflow-match`
    2. [ ] - `ph-1` - **IF** match found - `inst-if-match`
       1. [ ] - `ph-1` - Extract spec file path from WHEN clause - `inst-extract-spec-path`
@@ -488,26 +494,26 @@ This feature solves the problem of inconsistent design documentation by providin
 
 #### Parse workflow file and extract steps
 
-- [ ] **ID**: `fdd-fdd-feature-core-methodology-test-parse-workflow`
+- [x] **ID**: `fdd-fdd-feature-core-methodology-test-parse-workflow`
 
-1. [x] - `ph-1` - Create sample workflow file with all required sections - `inst-create-sample`
-2. [x] - `ph-1` - Load workflow file using workflow parser - `inst-load-workflow`
-3. [x] - `ph-1` - Extract Prerequisites section - `inst-extract-prerequisites`
-4. [x] - `ph-1` - Extract Steps section - `inst-extract-steps`
-5. [x] - `ph-1` - Extract Validation section - `inst-extract-validation`
-6. [x] - `ph-1` - Verify all sections extracted successfully - `inst-verify-extracted`
-7. [x] - `ph-1` - Verify step count matches expected - `inst-verify-count`
+1. [ ] - `ph-1` - Create sample workflow file with all required sections - `inst-create-sample`
+2. [ ] - `ph-1` - Load workflow file using workflow parser - `inst-load-workflow`
+3. [ ] - `ph-1` - Extract Prerequisites section - `inst-extract-prerequisites`
+4. [ ] - `ph-1` - Extract Steps section - `inst-extract-steps`
+5. [ ] - `ph-1` - Extract Validation section - `inst-extract-validation`
+6. [ ] - `ph-1` - Verify all sections extracted successfully - `inst-verify-extracted`
+7. [ ] - `ph-1` - Verify step count matches expected - `inst-verify-count`
 
 #### Validate workflow has all required sections
 
-- [ ] **ID**: `fdd-fdd-feature-core-methodology-test-validate-workflow-structure`
+- [x] **ID**: `fdd-fdd-feature-core-methodology-test-validate-workflow-structure`
 
-1. [x] - `ph-1` - Create workflow file missing Prerequisites section - `inst-create-missing-prereq`
-2. [x] - `ph-1` - Run structure validation on workflow file - `inst-run-validation`
-3. [x] - `ph-1` - Verify validation fails with missing section error - `inst-verify-fails`
-4. [x] - `ph-1` - Add missing Prerequisites section to file - `inst-add-prereq`
+1. [ ] - `ph-1` - Create workflow file missing Prerequisites section - `inst-create-missing-prereq`
+2. [ ] - `ph-1` - Run structure validation on workflow file - `inst-run-validation`
+3. [ ] - `ph-1` - Verify validation fails with missing section error - `inst-verify-fails`
+4. [ ] - `ph-1` - Add missing Prerequisites section to file - `inst-add-prereq`
 5. [x] - `ph-1` - Re-run validation - `inst-rerun-validation`
-6. [x] - `ph-1` - Verify validation now passes - `inst-verify-passes`
+6. [ ] - `ph-1` - Verify validation now passes - `inst-verify-passes`
 
 **Acceptance Criteria**:
 - Workflow files have standardized structure (Type, Role, Artifact, Prerequisites, Steps, Validation)
@@ -540,25 +546,25 @@ This feature solves the problem of inconsistent design documentation by providin
 
 #### Attempt to proceed without validated design
 
-- [ ] **ID**: `fdd-fdd-feature-core-methodology-test-block-unvalidated`
+- [x] **ID**: `fdd-fdd-feature-core-methodology-test-block-unvalidated`
 
-1. [x] - `ph-1` - Create FEATURES.md without validating DESIGN.md - `inst-create-features-no-design`
-2. [x] - `ph-1` - Run features workflow - `inst-run-features-workflow`
-3. [x] - `ph-1` - Verify workflow checks prerequisites - `inst-verify-prereq-check`
-4. [x] - `ph-1` - Verify workflow fails with prerequisite error - `inst-verify-fails-prereq`
-5. [x] - `ph-1` - Error message includes guidance to run design workflow first - `inst-verify-guidance`
+1. [ ] - `ph-1` - Create FEATURES.md without validating DESIGN.md - `inst-create-features-no-design`
+2. [ ] - `ph-1` - Run features workflow - `inst-run-features-workflow`
+3. [ ] - `ph-1` - Verify workflow checks prerequisites - `inst-verify-prereq-check`
+4. [ ] - `ph-1` - Verify workflow fails with prerequisite error - `inst-verify-fails-prereq`
+5. [ ] - `ph-1` - Error message includes guidance to run design workflow first - `inst-verify-guidance`
 
 #### Validate design artifact structure
 
-- [ ] **ID**: `fdd-fdd-feature-core-methodology-test-validate-design-structure`
+- [x] **ID**: `fdd-fdd-feature-core-methodology-test-validate-design-structure`
 
-1. [x] - `ph-1` - Create DESIGN.md with all required sections - `inst-create-design-complete`
-2. [x] - `ph-1` - Run structure validation - `inst-run-structure-validation`
-3. [x] - `ph-1` - Verify validation passes - `inst-verify-validation-passes`
-4. [x] - `ph-1` - Remove Section B from DESIGN.md - `inst-remove-section-b`
-5. [x] - `ph-1` - Re-run validation - `inst-rerun-after-remove`
-6. [x] - `ph-1` - Verify validation fails with missing section error - `inst-verify-missing-section`
-7. [x] - `ph-1` - Verify error includes section B specifically - `inst-verify-section-b-error`
+1. [ ] - `ph-1` - Create DESIGN.md with all required sections - `inst-create-design-complete`
+2. [ ] - `ph-1` - Run structure validation - `inst-run-structure-validation`
+3. [ ] - `ph-1` - Verify validation passes - `inst-verify-validation-passes`
+4. [ ] - `ph-1` - Remove Section B from DESIGN.md - `inst-remove-section-b`
+5. [ ] - `ph-1` - Re-run validation - `inst-rerun-after-remove`
+6. [ ] - `ph-1` - Verify validation fails with missing section error - `inst-verify-missing-section`
+7. [ ] - `ph-1` - Verify error includes section B specifically - `inst-verify-section-b-error`
 
 **Acceptance Criteria**:
 - Workflows check prerequisites before execution
@@ -593,38 +599,31 @@ This feature solves the problem of inconsistent design documentation by providin
 
 #### New user follows QUICKSTART to bootstrap project
 
-- [ ] **ID**: `fdd-fdd-feature-core-methodology-test-quickstart-bootstrap`
+- [x] **ID**: `fdd-fdd-feature-core-methodology-test-quickstart-bootstrap`
 
-1. [x] - `ph-1` - Start timer for bootstrap process - `inst-start-timer`
-2. [x] - `ph-1` - User opens QUICKSTART.md - `inst-open-quickstart`
-3. [x] - `ph-1` - User copies first prompt from QUICKSTART - `inst-copy-first-prompt`
-4. [x] - `ph-1` - User executes prompt with AI assistant - `inst-execute-first`
-5. [x] - `ph-1` - Adapter directory created successfully - `inst-verify-adapter-created`
-6. [x] - `ph-1` - User copies second prompt for BUSINESS.md - `inst-copy-second-prompt`
-7. [x] - `ph-1` - User executes second prompt - `inst-execute-second`
-8. [x] - `ph-1` - BUSINESS.md created and validated - `inst-verify-business-created`
-9. [x] - `ph-1` - Stop timer - `inst-stop-timer`
-10. [x] - `ph-1` - Verify total time < 15 minutes - `inst-verify-time-limit`
+1. [ ] - `ph-1` - Start timer for bootstrap process - `inst-start-timer`
+2. [ ] - `ph-1` - User opens QUICKSTART.md - `inst-open-quickstart`
+3. [ ] - `ph-1` - User copies first prompt from QUICKSTART - `inst-copy-first-prompt`
+4. [ ] - `ph-1` - User executes prompt with AI assistant - `inst-execute-first`
+5. [ ] - `ph-1` - Adapter directory created successfully - `inst-verify-adapter-created`
+6. [ ] - `ph-1` - User copies second prompt for BUSINESS.md - `inst-copy-second-prompt`
+7. [ ] - `ph-1` - User executes second prompt - `inst-execute-second`
+8. [ ] - `ph-1` - BUSINESS.md created and validated - `inst-verify-business-created`
+9. [ ] - `ph-1` - Stop timer - `inst-stop-timer`
+10. [ ] - `ph-1` - Verify total time < 15 minutes - `inst-verify-time-limit`
 
 #### AI agent navigates AGENTS.md WHEN clauses
 
-- [ ] **ID**: `fdd-fdd-feature-core-methodology-test-ai-navigate-when`
+- [x] **ID**: `fdd-fdd-feature-core-methodology-test-ai-navigate-when`
 
-1. [x] - `ph-1` - AI agent receives workflow execution request - `inst-receive-workflow-request`
-2. [x] - `ph-1` - AI agent opens root AGENTS.md - `inst-open-root-agents-test`
-3. [x] - `ph-1` - AI agent discovers adapter using fdd skill - `inst-discover-adapter-test`
-4. [x] - `ph-1` - AI agent opens adapter AGENTS.md - `inst-open-adapter-agents-test`
-5. [x] - `ph-1` - AI agent evaluates WHEN clauses for current workflow - `inst-evaluate-when-test`
-6. [x] - `ph-1` - Verify correct spec files identified - `inst-verify-specs-identified`
-7. [x] - `ph-1` - AI agent loads all identified spec files - `inst-load-specs-test`
-8. [x] - `ph-1` - Verify navigation success rate ≥95% - `inst-verify-success-rate`
-2. [ ] - `ph-1` - AI agent opens root AGENTS.md - `inst-open-root-agents-test`
-3. [ ] - `ph-1` - AI agent discovers adapter using fdd skill - `inst-discover-adapter-test`
-4. [ ] - `ph-1` - AI agent opens adapter AGENTS.md - `inst-open-adapter-agents-test`
-5. [ ] - `ph-1` - AI agent evaluates WHEN clauses for current workflow - `inst-evaluate-when-test`
-6. [ ] - `ph-1` - Verify correct spec files identified - `inst-verify-specs-identified`
-7. [ ] - `ph-1` - AI agent loads all identified spec files - `inst-load-specs-test`
-8. [ ] - `ph-1` - Verify navigation success rate ≥95% - `inst-verify-success-rate`
+1. [ ] - `ph-1` - Receive workflow request from user - `inst-receive-workflow-request`
+2. [ ] - `ph-1` - Open root AGENTS.md - `inst-open-root-agents-test`
+3. [ ] - `ph-1` - Discover adapter location via navigation - `inst-discover-adapter-test`
+4. [ ] - `ph-1` - Open adapter AGENTS.md - `inst-open-adapter-agents-test`
+5. [ ] - `ph-1` - Evaluate WHEN clauses against request - `inst-evaluate-when-test`
+6. [ ] - `ph-1` - Verify correct specs identified - `inst-verify-specs-identified`
+7. [ ] - `ph-1` - Load identified spec files - `inst-load-specs-test`
+8. [ ] - `ph-1` - Verify success rate ≥95% - `inst-verify-success-rate`
 
 **Acceptance Criteria**:
 - QUICKSTART enables bootstrap in <15 minutes

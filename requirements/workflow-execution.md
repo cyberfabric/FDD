@@ -39,16 +39,20 @@ ALWAYS open and follow `workflow-execution-validations.md` WHEN executing valida
    - Complete all protocol phases (1-4)
    - Answer all readiness check questions
    - Verify protocol compliance before proceeding
-2. **Check Adapter Initialization** - MANDATORY
-   - Search for `{adapter-directory}/AGENTS.md`
-   - If NOT found: STOP, propose bootstrap, run `adapter` workflow
-   - If found: Continue
+2.
+ 
+<!-- fdd-begin fdd-fdd-feature-core-methodology-flow-ai-execute:ph-1:inst-check-adapter -->
+**Check Adapter Initialization** - MANDATORY
+- Search for `{adapter-directory}/AGENTS.md`
+- If NOT found: STOP, propose bootstrap, run `adapter` workflow
+- If found: Continue
+<!-- fdd-end   fdd-fdd-feature-core-methodology-flow-ai-execute:ph-1:inst-check-adapter -->
 3. Read workflow file completely
-3. Identify workflow type (Operation or Validation)
-4. Read type-specific execution instructions
-5. Read `adapter-triggers.md` for trigger rules
-6. Check all prerequisites
-7. Validate prerequisites before proceeding
+4. Identify workflow type (Operation or Validation)
+5. Read type-specific execution instructions
+6. Read `adapter-triggers.md` for trigger rules
+7. Check all prerequisites
+8. Validate prerequisites before proceeding
 
 **MUST NOT**:
 - Skip adapter initialization check
@@ -111,6 +115,11 @@ ALWAYS open and follow `workflow-execution-validations.md` WHEN executing valida
 - Show score, status, issues, recommendations
 - Suggest next workflow
 - Never create validation report files
+<!-- fdd-begin fdd-fdd-feature-core-methodology-flow-ai-execute:ph-1:inst-run-tests -->
+**When workflow requires tests**:
+- Run the project test suite
+- Report test failures as blocking issues
+<!-- fdd-end   fdd-fdd-feature-core-methodology-flow-ai-execute:ph-1:inst-run-tests -->
 
 ### Adapter Trigger Monitoring
 

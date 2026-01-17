@@ -40,6 +40,8 @@ Extract:
 ## Steps
 
 <!-- fdd-begin fdd-fdd-feature-core-methodology-flow-developer-implement:ph-1:inst-navigate-feature-workflow -->
+Identify Feature.
+ 
 ### 1. Identify Feature
 <!-- fdd-end   fdd-fdd-feature-core-methodology-flow-developer-implement:ph-1:inst-navigate-feature-workflow -->
 

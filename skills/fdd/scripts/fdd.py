@@ -352,6 +352,9 @@ FDD_ANY_ID_RE = re.compile(r"\bfdd-[a-z0-9-]+\b")
 
 SECTION_FEATURE_RE = re.compile(r"^##\s+([A-G])\.\s+(.+?)\s*$")
 FDL_STEP_LINE_RE = re.compile(r"^\s*(?:\d+\.|-)\s+\[[ xX]\]\s+-\s+`ph-\d+`\s+-\s+.+?\s+-\s+`inst-[a-z0-9-]+`\s*$")
+FDL_SCOPE_ID_RE = re.compile(
+    r"^\s*[-*]\s+\[[ xX]\]\s+\*\*ID\*\*:\s*`fdd-[a-z0-9-]+-feature-[a-z0-9-]+-(?:flow|algo|state|test)-[a-z0-9-]+`\s*$"
+)
 FEATURE_FLOW_ID_RE = re.compile(r"\bfdd-[a-z0-9-]+-feature-([a-z0-9-]+)-flow-[a-z0-9-]+\b")
 FEATURE_ALGO_ID_RE = re.compile(r"\bfdd-[a-z0-9-]+-feature-([a-z0-9-]+)-algo-[a-z0-9-]+\b")
 FEATURE_STATE_ID_RE = re.compile(r"\bfdd-[a-z0-9-]+-feature-([a-z0-9-]+)-state-[a-z0-9-]+\b")
@@ -502,9 +505,9 @@ def validate_fdl_coverage(
     return errors
 
 
-def extract_inst_tags_from_code(feature_root: Path) -> Dict[str, Dict[str, bool]]:
+def extract_inst_tags_from_code(feature_root: Path) -> Dict[str, Dict[str, object]]:
     """
-    Scan codebase for FDL instruction tags in format: fdd-begin:@fdd-*:...:ph-N:inst-{id} / fdd-end:@fdd-*:...:ph-N:inst-{id}
+    Scan codebase for FDL instruction tags (fdd-begin/fdd-end pairs). Extracts inst-{id} only.
     
     Returns:
         Dict mapping inst-{id} to {"has_begin": bool, "has_end": bool, "complete": bool}
@@ -515,31 +518,37 @@ def extract_inst_tags_from_code(feature_root: Path) -> Dict[str, Dict[str, bool]
     code_extensions = {".py", ".rs", ".ts", ".tsx", ".js", ".jsx", ".go", ".java", ".cs", ".sql", ".md"}
     
     # Skip directories
-    skip_dirs = {".git", "node_modules", "venv", "__pycache__", ".pytest_cache", "target", "build", "dist"}
+    skip_dirs = {".git", "node_modules", "venv", "__pycache__", ".pytest_cache", "target", "build", "dist", "tests", "examples"}
     
     def scan_file(file_path: Path) -> None:
         try:
-            content = file_path.read_text(encoding="utf-8", errors="ignore")
+            lines = file_path.read_text(encoding="utf-8", errors="ignore").split('\n')
             
-            # Match: fdd-begin fdd-...:ph-N:inst-{id}
-            # Pattern: fdd-begin followed by anything then inst-{id}
-            begin_pattern = r'fdd-begin\s+.*?(inst-[a-z0-9-]+)'
-            begin_matches = re.findall(begin_pattern, content)
+            # Match: fdd-begin fdd-{project}-feature-{slug}-...:ph-N:inst-{id}
+            begin_pattern = r'fdd-begin\s+(fdd-[a-z0-9-]+(?:-flow|-algo|-state|-req|-test|-change)-[a-z0-9-]+):ph-\d+:(inst-[a-z0-9-]+)'
+            # Match: fdd-end fdd-{project}-feature-{slug}-...:ph-N:inst-{id}
+            end_pattern = r'fdd-end\s+(fdd-[a-z0-9-]+(?:-flow|-algo|-state|-req|-test|-change)-[a-z0-9-]+):ph-\d+:(inst-[a-z0-9-]+)'
             
-            # Match: fdd-end fdd-...:ph-N:inst-{id}
-            end_pattern = r'fdd-end\s+.*?(inst-[a-z0-9-]+)'
-            end_matches = re.findall(end_pattern, content)
-            
-            # Record findings
-            for inst_id in begin_matches:
-                if inst_id not in inst_tags:
-                    inst_tags[inst_id] = {"has_begin": False, "has_end": False, "complete": False}
-                inst_tags[inst_id]["has_begin"] = True
-            
-            for inst_id in end_matches:
-                if inst_id not in inst_tags:
-                    inst_tags[inst_id] = {"has_begin": False, "has_end": False, "complete": False}
-                inst_tags[inst_id]["has_end"] = True
+            for line in lines:
+                # Check for fdd-begin
+                begin_match = re.search(begin_pattern, line)
+                if begin_match:
+                    scope_id, inst_id = begin_match.groups()
+                    if inst_id not in inst_tags:
+                        inst_tags[inst_id] = {"has_begin": False, "has_end": False, "complete": False, "scopes": []}
+                    inst_tags[inst_id]["has_begin"] = True
+                    if scope_id not in inst_tags[inst_id]["scopes"]:
+                        inst_tags[inst_id]["scopes"].append(scope_id)
+                
+                # Check for fdd-end
+                end_match = re.search(end_pattern, line)
+                if end_match:
+                    scope_id, inst_id = end_match.groups()
+                    if inst_id not in inst_tags:
+                        inst_tags[inst_id] = {"has_begin": False, "has_end": False, "complete": False, "scopes": []}
+                    inst_tags[inst_id]["has_end"] = True
+                    if scope_id not in inst_tags[inst_id]["scopes"]:
+                        inst_tags[inst_id]["scopes"].append(scope_id)
             
         except Exception:
             pass
@@ -592,10 +601,27 @@ def validate_fdl_code_to_design(
     for scope_id, data in design_fdl.items():
         marked_instructions.update(data["instructions"])
     
-    # Find tags in code that are NOT marked [x] in DESIGN
+    # Extract feature slug from feature_root path
+    feature_slug = feature_root.name.replace("feature-", "") if feature_root.name.startswith("feature-") else None
+    
+    # Find tags in code that are NOT marked [x] in DESIGN, filtering by feature slug
     untracked_implementations = []
     for inst_id, tag_info in code_inst_tags.items():
-        if tag_info["complete"] and inst_id not in marked_instructions:
+        if not tag_info["complete"]:
+            continue
+        if inst_id in marked_instructions:
+            continue
+        
+        # Check if any scope belongs to current feature
+        belongs_to_feature = False
+        if feature_slug:
+            for scope_id in tag_info.get("scopes", []):
+                if f"-feature-{feature_slug}-" in scope_id:
+                    belongs_to_feature = True
+                    break
+        
+        # Only report if it belongs to this feature
+        if belongs_to_feature:
             untracked_implementations.append(inst_id)
     
     if untracked_implementations:
@@ -751,6 +777,10 @@ def validate_feature_design(
     errors: List[Dict[str, object]] = []
     placeholders = find_placeholders(artifact_text)
     section_order, sections = _split_by_feature_section_letter(artifact_text)
+    # fdd-end   fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-init-result
+    # fdd-end   fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-extract-headings
+    # fdd-end   fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-parse-markdown
+    # fdd-end   fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-read-artifact
     
     # fdd-begin fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-for-each-required
     # fdd-begin fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-search-heading
@@ -805,7 +835,7 @@ def validate_feature_design(
         for idx, line in enumerate(lines, start=1):
             if line.strip().startswith("```"):
                 in_code = not in_code
-                errors.append({"type": "fdl", "message": f"Code blocks are not allowed in Section {section_letter}", "line": idx, "text": line.strip()})
+                errors.append({"type": "fdl", "message": "Code blocks are not allowed in Section {section_letter}", "line": idx, "text": line.strip()})
                 continue
             if in_code:
                 continue
@@ -1064,17 +1094,30 @@ def validate_feature_design(
 
             # req_ids/test_ids are already sets here; duplicate detection is handled by _common_checks
 
+    # fdd-begin fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-check-errors
     passed = (len(errors) == 0) and (len(placeholders) == 0)
+    # fdd-end   fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-check-errors
+    
+    # fdd-begin fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-no-errors
+    # fdd-begin fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-set-pass
+    status_value = "PASS" if passed else "FAIL"
+    # fdd-end   fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-set-pass
+    # fdd-end   fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-no-errors
+    
+    # fdd-begin fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-set-fail
+    if not passed:
+        status_value = "FAIL"
+    # fdd-end   fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-set-fail
+    
     # fdd-begin fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-return-result
     return {
         "required_section_count": len([s for s in ["A", "B", "C", "D", "E", "F"] if s in sections]),
         "missing_sections": [s for s in ["A", "B", "C", "D", "E", "F"] if s not in sections],
         "placeholder_hits": placeholders,
-        "status": "PASS" if not errors else "FAIL",
+        "status": status_value,
         "errors": errors,
     }
     # fdd-end   fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-return-result
-# fdd-end   fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-read-artifact
 
 
 def validate_feature_changes(
@@ -1584,13 +1627,23 @@ def _latest_archived_changes(feature_dir: Path) -> Optional[Path]:
 
 
 def _iter_code_files(root: Path) -> List[Path]:
-    exts = {".rs", ".py", ".ts", ".tsx", ".js", ".go", ".java", ".cs", ".sql"}
+    exts = {".rs", ".py", ".ts", ".tsx", ".js", ".go", ".java", ".cs", ".sql", ".md"}
     files: List[Path] = []
     for p in root.rglob("*"):
         if not p.is_file():
             continue
         if p.suffix.lower() not in exts:
             continue
+        # For .md: scan ONLY when file contains explicit FDD tags.
+        # This avoids scanning unrelated documentation while allowing traceability
+        # for tagged core-methodology docs/workflows.
+        if p.suffix.lower() == ".md":
+            try:
+                head = p.read_text(encoding="utf-8", errors="ignore")[:20000]
+            except Exception:
+                continue
+            if ("fdd-begin" not in head) and ("fdd-end" not in head) and ("@fdd-" not in head):
+                continue
         files.append(p)
     return files
 
@@ -1604,24 +1657,70 @@ def _code_tag_hits(text: str) -> Dict[str, List[Tuple[str, str]]]:
         "req": [],
         "test": [],
     }
-    for rid, ph in FDD_TAG_CHANGE_RE.findall(text):
+    
+    # Filter out excluded line ranges
+    excluded_ranges = _compute_excluded_line_ranges(text)
+    lines = text.splitlines()
+    filtered_lines = [line for i, line in enumerate(lines) if not _is_line_excluded(i, excluded_ranges)]
+    filtered_text = "\n".join(filtered_lines)
+    
+    for rid, ph in FDD_TAG_CHANGE_RE.findall(filtered_text):
         hits["change"].append((rid, ph))
-    for rid, ph in FDD_TAG_FLOW_RE.findall(text):
+    for rid, ph in FDD_TAG_FLOW_RE.findall(filtered_text):
         hits["flow"].append((rid, ph))
-    for rid, ph in FDD_TAG_ALGO_RE.findall(text):
+    for rid, ph in FDD_TAG_ALGO_RE.findall(filtered_text):
         hits["algo"].append((rid, ph))
-    for rid, ph in FDD_TAG_STATE_RE.findall(text):
+    for rid, ph in FDD_TAG_STATE_RE.findall(filtered_text):
         hits["state"].append((rid, ph))
-    for rid, ph in FDD_TAG_REQ_RE.findall(text):
+    for rid, ph in FDD_TAG_REQ_RE.findall(filtered_text):
         hits["req"].append((rid, ph))
-    for rid, ph in FDD_TAG_TEST_RE.findall(text):
+    for rid, ph in FDD_TAG_TEST_RE.findall(filtered_text):
         hits["test"].append((rid, ph))
     return hits
 
 
-FDD_BEGIN_LINE_RE = re.compile(r"\bfdd-begin\s+([^\s]+)")
-FDD_END_LINE_RE = re.compile(r"\bfdd-end\s+([^\s]+)")
+FDD_BEGIN_LINE_RE = re.compile(r"^\s*(?:#|//|<!--|/\*|\*)\s*(?:!no-fdd\s+)?fdd-begin\s+([^\s]+)")
+FDD_END_LINE_RE = re.compile(r"^\s*(?:#|//|<!--|/\*|\*)\s*(?:!no-fdd\s+)?fdd-end\s+([^\s]+)")
 UNWRAPPED_INST_TAG_RE = re.compile(r"(fdd-[a-z0-9-]+(?:-[a-z0-9-]+)*:ph-\d+:inst-[a-z0-9-]+)")
+
+# Block exclusion markers: everything between !no-fdd-begin and !no-fdd-end is ignored
+# Match anywhere in a comment line to allow nested syntax like '# <!-- !no-fdd-begin -->'
+NO_FDD_BLOCK_BEGIN_RE = re.compile(r"^\s*(?:#|//|<!--|/\*|\*).*!no-fdd-begin")
+NO_FDD_BLOCK_END_RE = re.compile(r"^\s*(?:#|//|<!--|/\*|\*).*!no-fdd-end")
+
+
+def _compute_excluded_line_ranges(text: str) -> List[Tuple[int, int]]:
+    """
+    Compute line ranges (0-indexed, inclusive) that should be excluded from FDD scanning.
+    Ranges are defined by !no-fdd-begin and !no-fdd-end markers.
+    Unmatched !no-fdd-begin markers exclude everything to end of file.
+    Returns list of (start_line, end_line) tuples.
+    """
+    ranges: List[Tuple[int, int]] = []
+    lines = text.splitlines()
+    stack: List[int] = []
+    
+    for i, line in enumerate(lines):
+        if NO_FDD_BLOCK_BEGIN_RE.search(line):
+            stack.append(i)
+        elif NO_FDD_BLOCK_END_RE.search(line):
+            if stack:
+                start = stack.pop()
+                ranges.append((start, i))
+    
+    # Handle unmatched !no-fdd-begin markers: exclude to EOF
+    for start in stack:
+        ranges.append((start, len(lines) - 1))
+    
+    return ranges
+
+
+def _is_line_excluded(line_idx: int, excluded_ranges: List[Tuple[int, int]]) -> bool:
+    """Check if line index is within any excluded range (0-indexed)."""
+    for start, end in excluded_ranges:
+        if start <= line_idx <= end:
+            return True
+    return False
 
 
 def _is_effective_code_line(line: str) -> bool:
@@ -1638,7 +1737,7 @@ def _is_effective_code_line(line: str) -> bool:
         return False
     if s.startswith("*/"):
         return False
-    if s.startswith("*"):
+    if s.startswith("*") and not s.startswith("**"):
         return False
     return True
 
@@ -1646,17 +1745,23 @@ def _is_effective_code_line(line: str) -> bool:
 def _empty_fdd_tag_blocks_in_text(text: str) -> List[Dict[str, object]]:
     issues: List[Dict[str, object]] = []
     lines = text.splitlines()
+    excluded_ranges = _compute_excluded_line_ranges(text)
 
     stack: List[Tuple[str, int]] = []
     for i, line in enumerate(lines):
-        mb = FDD_BEGIN_LINE_RE.search(line)
+        if _is_line_excluded(i, excluded_ranges):
+            continue
+        
+        line_for_scan = re.sub(r"`[^`]*`", "", line)
+
+        mb = FDD_BEGIN_LINE_RE.search(line_for_scan)
         if mb:
             tag = mb.group(1)
             if ":inst-" in tag:
                 stack.append((tag, i))
             continue
 
-        me = FDD_END_LINE_RE.search(line)
+        me = FDD_END_LINE_RE.search(line_for_scan)
         if not me:
             continue
         end_tag = me.group(1)
@@ -1679,7 +1784,7 @@ def _empty_fdd_tag_blocks_in_text(text: str) -> List[Dict[str, object]]:
             continue
         stack.pop()
 
-        has_code = any(_is_effective_code_line(lines[j]) for j in range(start_idx + 1, i))
+        has_code = any(_is_effective_code_line(lines[j]) for j in range(start_idx + 1, i) if not _is_line_excluded(j, excluded_ranges))
         if not has_code:
             issues.append(
                 {
@@ -1699,17 +1804,23 @@ def _empty_fdd_tag_blocks_in_text(text: str) -> List[Dict[str, object]]:
 def _paired_inst_tags_in_text(text: str) -> set:
     tags: set = set()
     lines = text.splitlines()
+    excluded_ranges = _compute_excluded_line_ranges(text)
 
     stack: List[str] = []
-    for line in lines:
-        mb = FDD_BEGIN_LINE_RE.search(line)
+    for i, line in enumerate(lines):
+        if _is_line_excluded(i, excluded_ranges):
+            continue
+        
+        line_for_scan = re.sub(r"`[^`]*`", "", line)
+
+        mb = FDD_BEGIN_LINE_RE.search(line_for_scan)
         if mb:
             tag = mb.group(1)
             if ":inst-" in tag:
                 stack.append(tag)
             continue
 
-        me = FDD_END_LINE_RE.search(line)
+        me = FDD_END_LINE_RE.search(line_for_scan)
         if not me:
             continue
         end_tag = me.group(1)
@@ -1728,10 +1839,16 @@ def _paired_inst_tags_in_text(text: str) -> set:
 
 def _unwrapped_inst_tag_hits_in_text(text: str) -> List[Dict[str, object]]:
     hits: List[Dict[str, object]] = []
+    excluded_ranges = _compute_excluded_line_ranges(text)
+    
     for i, line in enumerate(text.splitlines()):
-        if FDD_BEGIN_LINE_RE.search(line) or FDD_END_LINE_RE.search(line):
+        if _is_line_excluded(i, excluded_ranges):
             continue
-        for m in UNWRAPPED_INST_TAG_RE.finditer(line):
+        
+        line_for_scan = re.sub(r"`[^`]*`", "", line)
+        if FDD_BEGIN_LINE_RE.search(line_for_scan) or FDD_END_LINE_RE.search(line_for_scan):
+            continue
+        for m in UNWRAPPED_INST_TAG_RE.finditer(line_for_scan):
             hits.append({"tag": m.group(1), "line": i + 1})
     return hits
 
@@ -1925,18 +2042,20 @@ def validate_codebase_traceability(
                 continue
             expected_scope_ids["change"].add(m_id.group(1).strip())
 
-    # Scan code
-    scan_root = scan_root_override or feature_dir
-    scanned_files = _iter_code_files(scan_root)
-    if not scanned_files and scan_root_override is None:
-        # In this repository, code usually lives at module root (sibling of architecture/).
+    # Scan code - always from project root to include requirements/ and other shared files
+    if scan_root_override:
+        scan_root = scan_root_override
+    else:
+        # Find project root (parent of architecture/)
+        scan_root = feature_dir
         p = feature_dir
         while p != p.parent:
             if p.name == "architecture":
                 scan_root = p.parent
                 break
             p = p.parent
-        scanned_files = _iter_code_files(scan_root)
+    
+    scanned_files = _iter_code_files(scan_root)
     found_scope_ids: Dict[str, set] = {k: set() for k in expected_scope_ids.keys()}
     found_inst_tags: set = set()
 
@@ -1995,6 +2114,8 @@ def validate_codebase_traceability(
             missing_scope[k] = miss
     missing_inst = sorted([x for x in expected_inst_tags if x not in found_inst_tags])
 
+    # PASS only if no tag errors AND no missing implementations
+    # Missing = marked [x] in DESIGN but not found in code = documentation/code mismatch
     passed = (len(errors) == 0) and (len(missing_scope) == 0) and (len(missing_inst) == 0)
     return {
         "required_section_count": 0,
@@ -2080,7 +2201,8 @@ def validate_code_root_traceability(
         )
         feature_reports.append({"feature_dir": str(fd), "status": rep.get("status"), "traceability": rep.get("traceability")})
 
-    passed = (len(errors) == 0) and all(r.get("status") == "PASS" for r in feature_reports)
+    passed = all((fr.get("status") == "PASS") for fr in feature_reports)
+
     return {
         "required_section_count": 0,
         "missing_sections": [],

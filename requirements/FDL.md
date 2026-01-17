@@ -251,6 +251,53 @@ Goal: Create new dashboard
 
 ---
 
+## Excluding Examples from Validation
+
+**Purpose**: Documentation and workflow files often contain **example** FDD tags that should not be validated as real implementation.
+
+**Solution**: Use `!no-fdd-begin` / `!no-fdd-end` block markers to exclude content from FDD scanning.
+
+**Syntax**:
+
+- Markdown/HTML comments: `<!-- !no-fdd-begin -->` ... `<!-- !no-fdd-end -->`
+- Code comments (Python): `# !no-fdd-begin` ... `# !no-fdd-end`
+- Code comments (Rust/C++): `// !no-fdd-begin` ... `// !no-fdd-end`
+
+**Behavior**:
+
+- Everything between markers is **completely ignored** by the validator
+- Unmatched `!no-fdd-begin` (without closing `!no-fdd-end`) excludes everything to end of file
+- Nested exclusion blocks are supported
+- This is different from single-line `!no-fdd` which only excludes one line
+
+**Use Cases**:
+
+1. **Documentation examples**: Wrap example FDD tags in docs with exclusion blocks
+2. **Deprecated code**: Mark old code that still has FDD tags but shouldn't be validated
+3. **Template/boilerplate code**: Exclude scaffolding/template code from validation
+
+**Example**:
+
+```markdown
+Real implementation:
+<!-- fdd-begin fdd-myproject-feature-x-flow-y:ph-1:inst-real -->
+Actual workflow step
+<!-- fdd-end   fdd-myproject-feature-x-flow-y:ph-1:inst-real -->
+
+Documentation example (excluded from validation):
+<!-- !no-fdd-begin -->
+```rust
+// fdd-begin fdd-example-feature-z-algo-w:ph-1:inst-example
+example_code();
+// fdd-end   fdd-example-feature-z-algo-w:ph-1:inst-example
+```
+<!-- !no-fdd-end -->
+```
+
+**Important**: Use this sparingly. Most FDD tags should be real and validated. Only exclude genuine examples/documentation.
+
+---
+
 ## Validation Criteria
 
 ### Structure (25 points)

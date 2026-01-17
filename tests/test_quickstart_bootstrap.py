@@ -5,6 +5,8 @@ Tests for QUICKSTART bootstrap workflow.
 
 Validates that QUICKSTART.md is readable and has proper structure.
 """
+
+# @fdd-test:fdd-fdd-feature-core-methodology-test-quickstart-bootstrap:ph-1
 import sys
 import unittest
 from pathlib import Path

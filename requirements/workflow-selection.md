@@ -73,25 +73,29 @@ This guide helps you select the correct FDD workflow based on:
 
 ### Phase 1: Business & Architecture
 
-#<!-- fdd-begin fdd-fdd-feature-core-methodology-algo-resolve-workflow:ph-1:inst-check-business -->
+<!-- fdd-begin fdd-fdd-feature-core-methodology-algo-resolve-workflow:ph-1:inst-check-business -->
+ 
 ## Phase 1: Business & Architecture
 
 ### Workflow: `business-context`
-<!-- fdd-end   fdd-fdd-feature-core-methodology-algo-resolve-workflow:ph-1:inst-check-business -->.md** - Create or update BUSINESS.md
+ 
+**business-context.md** - Create or update BUSINESS.md
 - **Use when**: Need to document business context
 - **Creates**: `architecture/BUSINESS.md`
 - **Sections**: Vision, Actors, Capabilities
 - **Modes**: CREATE or UPDATE
 - **Next**: `business-validate`
-
-**business-validate.md** - Validate business<!-- fdd-begin fdd-fdd-feature-core-methodology-algo-resolve-workflow:ph-1:inst-check-business -->
+ 
 ### Workflow: `business-validate`
-
+ 
+**business-validate.md** - Validate business
+ 
 **When**: After BUSINESS.md created or updated
-<!-- fdd-end   fdd-fdd-feature-core-methodology-algo-resolve-workflow:ph-1:inst-check-business -->  
 - **Validates**: Required sections, actor/capability IDs
 - **Score**: ≥90/100
 - **Next**: `design`
+ 
+<!-- fdd-end   fdd-fdd-feature-core-methodology-algo-resolve-workflow:ph-1:inst-check-business -->
 
 **design.md** - Create or update overall design
 - **Use when**: Need architecture/system design
@@ -123,15 +127,19 @@ This guide helps you select the correct FDD workflow based on:
 
 ### Phase 2: Feature Planning
 
-#<!-- fdd-begin fdd-fdd-feature-core-methodology-algo-resolve-workflow:ph-1:inst-check-feature -->
+<!-- fdd-begin fdd-fdd-feature-core-methodology-algo-resolve-workflow:ph-1:inst-check-feature -->
+ 
 ## Phase 2: Feature Planning
-
+ 
 ### Workflow: `features`
-<!-- fdd-end   fdd-fdd-feature-core-methodology-algo-resolve-workflow:ph-1:inst-check-feature -->.md** - Create or update features manifest
+ 
+**features.md** - Create or update features manifest
 - **Use when**: Need to plan/list features
 - **Creates**: `architecture/FEATURES.md`
 - **Modes**: CREATE (from DESIGN.md) or UPDATE (manual)
 - **Next**: `features-validate`
+ 
+<!-- fdd-end   fdd-fdd-feature-core-methodology-algo-resolve-workflow:ph-1:inst-check-feature -->
 
 **features-validate.md** - Validate features manifest
 - **Use when**: FEATURES.md created or updated

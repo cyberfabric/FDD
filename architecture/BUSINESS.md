@@ -205,7 +205,7 @@
 
 #### ADR Management
 
-**ID**: `fdd-fdd-capability-adr-management`  
+**ID**: `fdd-fdd-capability-arch-decision-mgmt`  
 - Create and track architecture decisions with structured format
 - Link ADRs to affected design sections and features
 - Decision status tracking (PROPOSED, ACCEPTED, DEPRECATED, SUPERSEDED)
@@ -677,7 +677,7 @@
 1. Architect identifies significant technical decision requiring documentation
 2. Architect executes `adr` workflow to create new ADR (uses capability `fdd-fdd-capability-workflow-execution`)
 3. AI Assistant assigns sequential ADR ID (e.g., ADR-0001, ADR-0002)
-4. Architect documents decision context, considered options, and chosen solution (uses capability `fdd-fdd-capability-adr-management`)
+4. Architect documents decision context, considered options, and chosen solution (uses capability `fdd-fdd-capability-arch-decision-mgmt`)
 5. Architect links ADR to affected DESIGN.md sections and feature IDs
 6. Architect sets status to PROPOSED for review
 7. Technical Lead and Security Engineer review ADR decision

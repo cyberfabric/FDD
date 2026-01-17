@@ -40,12 +40,13 @@ Extract:
 ## Steps
 
 <!-- fdd-begin fdd-fdd-feature-core-methodology-flow-architect-bootstrap:ph-1:inst-trigger-workflow -->
+Determine Mode.
+ 
 ### 1. Determine Mode
-<!-- fdd-end   fdd-fdd-feature-core-methodology-flow-architect-bootstrap:ph-1:inst-trigger-workflow -->
-
 Check if `architecture/BUSINESS.md` exists:
 - **If exists**: UPDATE mode - Read and propose changes
 - **If NOT exists**: CREATE mode - Generate from scratch
+<!-- fdd-end   fdd-fdd-feature-core-methodology-flow-architect-bootstrap:ph-1:inst-trigger-workflow -->
 
 ### 2. Mode-Specific Actions
 

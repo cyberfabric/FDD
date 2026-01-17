@@ -1,4 +1,5 @@
 # @fdd-change:fdd-fdd-feature-core-methodology-change-agents-navigation:ph-1
+# @fdd-test:fdd-fdd-feature-core-methodology-test-ai-navigate-when:ph-1
 # Tests implement: fdd-fdd-feature-core-methodology-test-ai-navigate-when
 """
 Tests for AI agent WHEN clause navigation.
@@ -30,6 +31,10 @@ class TestWhenClauseNavigation(unittest.TestCase):
         self.assertTrue(agents_file.exists(), "AGENTS.md must exist")
         
         content = agents_file.read_text(encoding='utf-8')
+
+        # fdd-begin fdd-fdd-feature-core-methodology-algo-navigate-when:ph-1:inst-for-each-when
+        when_lines = [line for line in content.splitlines() if "WHEN" in line]
+        # fdd-end   fdd-fdd-feature-core-methodology-algo-navigate-when:ph-1:inst-for-each-when
         self.assertIn("WHEN", content, "AGENTS.md must contain WHEN clauses")
         self.assertIn("ALWAYS", content, "AGENTS.md must contain ALWAYS rules")
 # fdd-end   fdd-fdd-feature-core-methodology-test-ai-navigate-when:ph-1:inst-verify-success-rate
