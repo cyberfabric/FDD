@@ -739,44 +739,16 @@ def validate_fdl_completion(
 
 
 # fdd-begin fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-read-artifact
-# fdd-begin fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-parse-markdown
-# fdd-begin fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-extract-headings
-# fdd-begin fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-check-duplicates
-# fdd-begin fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-init-result
-# fdd-begin fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-return-result
-def validate_feature_design(design_file: Path, feature_root: Path) -> Dict[str, Any]:
+def validate_feature_design(
+    artifact_text: str,
     *,
     artifact_path: Optional[Path] = None,
     skip_fs_checks: bool = False,
 ) -> Dict[str, object]:
-    # fdd-begin fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-init-result
     errors: List[Dict[str, object]] = []
-    placeholders = find_placeholders(design_file.read_text())
-    # fdd-end   fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-init-result
-    # fdd-begin fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-parse-markdown
-    section_order, sections = _split_by_feature_section_letter(design_file.read_text())
-    # fdd-end   fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-parse-markdown
-    # fdd-begin fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-extract-headings
-    required = ["A", "B", "C", "D", "E", "F"]
-    missing = [s for s in required if s not in sections]
-    if missing:
-        errors.append({"type": "structure", "message": "Missing required top-level sections", "missing": missing})
-    # fdd-end   fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-extract-headings
-
-    # fdd-begin fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-check-duplicates
-    allowed = set(["A", "B", "C", "D", "E", "F", "G"])
-    unknown = [s for s in sections.keys() if s not in allowed]
-    if unknown:
-        errors.append({"type": "structure", "message": "Unknown top-level sections", "sections": sorted(unknown)})
-    return errors
-    # fdd-end   fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-check-duplicates
-    # fdd-end   fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-return-result
-    # fdd-end   fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-init-result
-    # fdd-end   fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-check-duplicates
-    # fdd-end   fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-extract-headings
-    # fdd-end   fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-parse-markdown
-    # fdd-end   fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-read-artifact
-
+    placeholders = find_placeholders(artifact_text)
+    section_order, sections = _split_by_feature_section_letter(artifact_text)
+    
     expected = ["A", "B", "C", "D", "E", "F"]
     if "G" in sections:
         expected.append("G")
