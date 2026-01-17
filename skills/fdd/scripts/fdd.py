@@ -739,6 +739,9 @@ def validate_fdl_completion(
 
 
 # fdd-begin fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-read-artifact
+# fdd-begin fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-parse-markdown
+# fdd-begin fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-extract-headings
+# fdd-begin fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-init-result
 def validate_feature_design(
     artifact_text: str,
     *,
@@ -749,11 +752,17 @@ def validate_feature_design(
     placeholders = find_placeholders(artifact_text)
     section_order, sections = _split_by_feature_section_letter(artifact_text)
     
+    # fdd-begin fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-for-each-required
+    # fdd-begin fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-search-heading
     expected = ["A", "B", "C", "D", "E", "F"]
     if "G" in sections:
         expected.append("G")
+    # fdd-begin fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-validate-order
     if section_order and section_order[: len(expected)] != expected:
         errors.append({"type": "structure", "message": "Section order invalid", "required_order": expected, "found_order": section_order})
+    # fdd-end   fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-validate-order
+    # fdd-end   fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-search-heading
+    # fdd-end   fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-for-each-required
 
     feature_slug: Optional[str] = None
     if artifact_path is not None:
@@ -3064,17 +3073,28 @@ def validate_generic_sections(artifact_text: str, requirements_path: Path) -> Di
     placeholders = find_placeholders(artifact_text)
     passed = (len(missing) == 0) and (len(placeholders) == 0) and (len(errors) == 0)
 
+    # fdd-begin fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-check-errors
+    # fdd-begin fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-set-fail
+    # fdd-begin fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-no-errors
+    # fdd-begin fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-set-pass
+    # fdd-begin fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-return-result
     return {
         "required_section_count": len(required_sections),
         "missing_sections": missing,
         "placeholder_hits": placeholders,
         "status": "PASS" if passed else "FAIL",
         "errors": errors,
+        "artifact_kind": "feature-design"
     }
-
-
-def validate(
-    artifact_path: Path,
+    # fdd-end   fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-return-result
+    # fdd-end   fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-set-pass
+    # fdd-end   fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-no-errors
+    # fdd-end   fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-set-fail
+    # fdd-end   fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-check-errors
+    # fdd-end   fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-init-result
+    # fdd-end   fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-extract-headings
+    # fdd-end   fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-parse-markdown
+    # fdd-end   fdd-fdd-feature-core-methodology-algo-validate-structure:ph-1:inst-read-artifactartifact_path: Path,
     requirements_path: Path,
     artifact_kind: str,
     *,

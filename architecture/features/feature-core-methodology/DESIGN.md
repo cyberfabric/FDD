@@ -248,21 +248,19 @@ This feature solves the problem of inconsistent design documentation by providin
 3. [x] - `ph-1` - Extract all headings and IDs - `inst-extract-headings`
 4. [x] - `ph-1` - Check for duplicate IDs - `inst-check-duplicates`
 5. [x] - `ph-1` - Initialize validation result object - `inst-init-result`
-5. [x] - `ph-1` - **FOR EACH** required section in structure requirements - `inst-for-each-required`
+6. [x] - `ph-1` - **FOR EACH** required section in structure requirements - `inst-for-each-required`
    1. [x] - `ph-1` - Search for section heading in parsed headings - `inst-search-heading`
    2. [x] - `ph-1` - **IF** section NOT found - `inst-check-not-found`
       1. [x] - `ph-1` - Add missing section error to validation result - `inst-add-missing-error`
    3. [x] - `ph-1` - **ELSE** section found - `inst-section-found`
       1. [x] - `ph-1` - Validate section order matches requirements - `inst-validate-order`
       2. [x] - `ph-1` - Validate section content meets minimum length - `inst-validate-length`
-      1. [ ] - `ph-1` - Validate section order matches requirements - `inst-validate-order`
-      2. [ ] - `ph-1` - Validate section content meets minimum length - `inst-validate-length`
-6. [x] - `ph-1` - Check for duplicate sections - `inst-check-duplicates`
-7. [ ] - `ph-1` - **IF** any errors found - `inst-check-errors`
-   1. [ ] - `ph-1` - Set validation status to FAIL - `inst-set-fail`
-8. [ ] - `ph-1` - **ELSE** no errors - `inst-no-errors`
-   1. [ ] - `ph-1` - Set validation status to PASS - `inst-set-pass`
-9. [x] - `ph-1` - **RETURN** validation result - `inst-return-result`
+7. [x] - `ph-1` - Check for duplicate sections - `inst-check-duplicates`
+8. [x] - `ph-1` - **IF** any errors found - `inst-check-errors`
+   1. [x] - `ph-1` - Set validation status to FAIL - `inst-set-fail`
+9. [x] - `ph-1` - **ELSE** no errors - `inst-no-errors`
+   1. [x] - `ph-1` - Set validation status to PASS - `inst-set-pass`
+10. [x] - `ph-1` - **RETURN** validation result - `inst-return-result`
 
 ---
 
